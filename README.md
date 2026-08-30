@@ -1,4 +1,8 @@
-﻿# ⚡ SUper Suite — The Master Unified AI Engineering Operating System
+﻿<p align="center">
+  <img src="assets/banner.png" alt="SUper Agent — Orchestrate. Connect. Verify. Execute." width="680" />
+</p>
+
+# ⚡ SUper Suite — The Master Unified AI Engineering Operating System
 
 > **The Ultimate Standalone Monorepo for Autonomous AI Software Engineering.**  
 > Bundles **SUper Orchestrator** (Lead Supervisor), **SUper Skills Engine** (286+ engineering workflows), **SUper Core Engine** (Multi-Process Worktree Isolation), and **SUper Divisions** (18 Specialist Divisions / 273+ Subagents) into a single, fully portable, one-click Git repository.
@@ -249,3 +253,4 @@ cd "G:\0000 PY PROGRAM\_AI_TOOLS\SUper"
 
 ## 📜 License
 MIT License. Built for autonomous AI-powered software engineering.
+
