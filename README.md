@@ -22,6 +22,104 @@
 
 ---
 
+## ⚖️ Deep-Dive Analysis: SUper Suite vs. Foundational Agent Engines
+
+```
+                                 ┌─────────────────────────────────────────┐
+                                 │               SUPER SUITE               │
+                                 └────────────────────┬────────────────────┘
+                                                      │
+         ┌───────────────────────────┬────────────────┴───────────────────────────┬───────────────────────────┐
+         ▼                           ▼                                            ▼                           ▼
+┌──────────────────┐       ┌──────────────────┐                         ┌──────────────────┐       ┌──────────────────┐
+│SUPER ORCHESTRATOR│       │   SUPER CORE     │                         │   SUPER SKILLS   │       │ SUPER DIVISIONS  │
+│(Lead Supervisor) │       │(Execution Engine)│                         │ (Skills & Rules) │       │ (18 Specialists) │
+└────────┬─────────┘       └────────┬─────────┘                         └────────┬─────────┘       └────────┬─────────┘
+         │                          │                                            │                          │
+┌────────┴─────────┐       ┌────────┴─────────┐                         ┌────────┴─────────┐       ┌────────┴─────────┐
+│ Antigravity IDE  │       │ DeepSeek Harness │                         │ Everything Claude│       │    The Agency    │
+│  & Gemini CLI    │       │ (Cordis Engine)  │                         │    Code (ECC)    │       │ (273+ Personas)  │
+└──────────────────┘       └──────────────────┘                         └──────────────────┘       └──────────────────┘
+```
+
+A common question from software engineers is: **"How does SUper Suite compare to standalone agent frameworks like DeepSeek Harness, and which one should I use?"**
+
+### 1. The Fundamental Distinction: Core Engine vs. Complete Operating System
+
+- **DeepSeek Harness (`dsh`)** is a powerful **foundational execution engine**. Built on the Cordis spatiotemporal plugin paradigm, it provides the low-level primitives: process sandboxing, tool routing, worktree lifecycle, and extensible plugin interfaces.
+- **SUper Suite** is the **complete, production-ready AI software development operating system**. It incorporates DeepSeek Harness at its foundational execution layer (`frameworks/super-core/`) and builds a massive, pre-configured multi-agent hierarchy on top of it — integrating lead supervision, 273+ specialized domain personas, 286+ engineering skills, TDD guardrails, and universal architectural constraints.
+
+> **Key Insight**: SUper Suite does **not** compete with or replace DeepSeek Harness; rather, **SUper Suite harnesses DeepSeek Harness as its engine**, equipping it with a complete roster of specialist agents, strict engineering rules, and 1-click cross-platform deployment.
+
+---
+
+### 2. Feature-by-Feature Comparison Matrix
+
+| Architectural Capability | 🟦 Standalone Harness (DeepSeek Engine) | 🟩 SUper Suite (Complete Ecosystem) |
+|---|:---:|:---:|
+| **Agent Execution Runtime** | ⭐⭐⭐⭐⭐ (Fast, modular, Cordis-driven) | ⭐⭐⭐⭐⭐ (Powered by DeepSeek Core) |
+| **Plugin Architecture** | ⭐⭐⭐⭐⭐ ("Everything is a plugin") | ⭐⭐⭐⭐⭐ (Fully preserved & extended) |
+| **Worktree Snapshot Isolation** | ✅ Built-in | ✅ Built-in (`RESULT - BASE SNAPSHOT`) |
+| **Out-of-the-Box Skills** | ⚠️ Core framework skills only | ✅ **286+ Production Skills** |
+| **Pre-Configured Specialist Agents** | ⚠️ Generic templates (developer must build) | ✅ **273+ Specialized Personas** |
+| **Enterprise Divisions** | ❌ None (requires manual plugins) | ✅ **18 Full Divisions** (Security, Health, GIS, etc.) |
+| **Lead Orchestrator / Supervisor** | ⚠️ Basic task routing | ✅ **SUper Orchestrator** (345+ auto-skills) |
+| **Universal Hard Rules** | ❌ Manual prompt design | ✅ **5-Level Decomposition & Doc-First Gate** |
+| **Security & AppSec Reviewers** | ⚠️ Generic prompt | ✅ **12+ Specialized AppSec/OWASP Agents** |
+| **Skeptical QA & Reality Checkers** | ⚠️ Generic test prompts | ✅ **9+ Skeptical QA & Accessibility Agents** |
+| **Antigravity / Gemini CLI Support** | ❌ Not built-in | ✅ **Native Platform Layer** |
+| **OpenCode Direct Mentions (`@agent`)** | ⚠️ Indirect | ✅ **283+ Global Mentionable Personas** |
+| **Zero-Config 1-Click Installation** | ⚠️ Requires manual repo setup & build | ✅ **30-Second 1-Click Script (`install.ps1`)** |
+| **Project Scaffolding Tooling** | ❌ Manual configuration | ✅ **Instant Scaffolder (`scaffold.ps1`)** |
+| **Best For** | *Building custom AI tools from scratch* | *Immediate, high-rigor software engineering* |
+
+---
+
+### 3. Contrasting Design Philosophies
+
+#### 🟦 The DeepSeek Harness Philosophy: *"Build Your Own Ecosystem"*
+DeepSeek Harness focuses on foundational flexibility:
+```
+[Model] ➔ [Cordis Core] ➔ [Sandboxes / Tools / Storage Plugins]
+```
+- Ideal for AI infrastructure researchers and developers who want to write custom plugins, design their own agent memory systems from the ground up, or experiment with novel execution harnesses.
+
+#### 🟩 The SUper Suite Philosophy: *"Zero-Friction, Immediate Specialist Execution"*
+SUper Suite focuses on real-world engineering productivity:
+```
+[User Objective]
+       │
+       ▼
+[SUper Orchestrator (Lead Supervisor)]
+       │
+       ├─► [5-Level Modular Decomposition Gate]
+       ├─► [Documentation-First Reality Check]
+       │
+       ▼
+[SUper Core (Worktree Isolation)]
+       │
+       ├─► 💻 Engineering Division (Backend, Mobile, Database, SRE)
+       ├─► 🛡️ Security Division (OWASP, Secrets, AI Code Auditor)
+       ├─► 🧪 QA & Testing Division (TDD Guide, Reality Checker, A11y)
+       ├─► 🎨 Design & UI Division (Tokens, Micro-animations, Finish Gate)
+       └─► 📋 Product & Domain Divisions (Health, GIS, Finance, GameDev)
+```
+- Eliminates the need to spend weeks writing prompts, defining rules, configuring MCPs, or setting up agent roles. Everything is pre-wired, verified, and ready to execute immediately.
+
+---
+
+### 4. Which One Should You Choose?
+
+- **Choose Standalone DeepSeek Harness if**:
+  1. You are an AI researcher building a new, experimental agent framework from scratch.
+  2. You want to modify low-level Cordis runtime bindings or design unique memory engines.
+- **Choose SUper Suite if**:
+  1. You want to build, refactor, debug, test, and ship real-world software (C#, .NET, Python, TypeScript, React, Java, Go, Rust, Mobile, Cloud).
+  2. You need an immediate team of specialized agents (AppSec auditor, QA reality checker, database optimizer, frontend designer) without manual prompt engineering.
+  3. You demand strict engineering discipline (5-Level Modular Architecture, Test-Driven Development with 80%+ coverage, and documentation-first planning).
+
+---
+
 ## 🌟 What is SUper Suite?
 
 **SUper Suite** is an enterprise-grade AI software development ecosystem designed to be completely portable across machines, operating systems, and fresh installations. Cloning this repository and running a single script immediately configures:
