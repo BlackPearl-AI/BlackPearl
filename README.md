@@ -3,14 +3,14 @@
 </p>
 # ⚡ BlackPearl — Autonomous AI Engineering Operating System
 
-> **ORCHESTRATE. CONNECT. VERIFY. EXECUTE.**  
-> **BlackPearl** is a comprehensive, production-ready **Smart Unified Agent Orchestration Runtime** for AI agents, skills, automation, and full-stack developer workflows. Bundles **BlackPearl Orchestrator** (Lead Supervisor), **BlackPearl Skills Engine** (286+ engineering workflows), **BlackPearl Core Engine** (Multi-Process Worktree Isolation), and **BlackPearl Divisions** (18 Specialist Divisions / 273+ Subagents) into a single, fully portable, one-click Git repository.
-
+> **ORCHESTRATE. NAVIGATE. VERIFY. EXECUTE.**  
+> **BlackPearl** is a comprehensive, production-ready **Autonomous AI Software Engineering Operating System**. It unifies **BlackPearl Control Plane** (Lead Supervisor & 26 Autonomous Multi-Agent Pipelines), **BlackPearl Skills Engine** (634+ workflow skills, 68 subagents, 94 commands), **BlackPearl Core Engine** (DeepSeek Harness & Cordis multi-process worktree snapshot isolation), and **BlackPearl Divisions** (18 Specialist Enterprise Divisions / 273+ Subagents) into a single, fully portable, zero-config Git repository.
 
 [![Declaration](https://img.shields.io/badge/Manifesto-Ecosystem%20Declaration-blueviolet.svg)](DECLARATION.md)
 [![Setup Guide](https://img.shields.io/badge/Guide-New%20PC%20Setup-blue.svg)](SETUP-NEW-PC.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Platforms: Windows | Linux | macOS](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-blue.svg)](SETUP-NEW-PC.md)
+[![Organization](https://img.shields.io/badge/GitHub-BlackPearl--AI-black.svg)](https://github.com/BlackPearl-AI/BlackPearl)
 
 ---
 
@@ -18,114 +18,190 @@
 
 > **Read the complete manifesto**: **[📜 DECLARATION.md](DECLARATION.md)**
 
-**BlackPearl** is a curated, standardized meta-operating system created by synthesizing the top-quality architectures, rules, execution harnesses, and agent personas from across the global open-source AI community:
+**BlackPearl** is a standardized meta-operating system created by synthesizing the highest-rigor architectures, rules, execution harnesses, and agent personas from across the global open-source AI community:
 
-- 🎯 **BlackPearl Orchestrator**: Built upon **Antigravity & Gemini CLI** global Supervisor architecture (345+ intent-triggered skills).
-- ⚡ **BlackPearl Core Engine**: Powered by **DeepSeek Harness & Cordis** multi-process worktree snapshot isolation.
-- 🛠️ **BlackPearl Skills Engine**: Standardized on **Everything Claude Code (ECC)** engineering rules, TDD workflows, and subagents.
+- 🎯 **BlackPearl Control Plane**: Built upon **Antigravity & Gemini CLI** global Supervisor architecture with 657 intent-triggered skills.
+- ⚡ **BlackPearl Core Execution Engine**: Powered by **DeepSeek Harness & Cordis** multi-process worktree snapshot isolation.
+- 🛠️ **BlackPearl Skills Engine**: Standardized on **Everything Claude Code (ECC)** engineering rules, TDD workflows, subagents, and hooks.
 - 🎭 **BlackPearl Divisions**: Housing all 18 enterprise specialist divisions (273+ personas) curated from **The Agency**.
 
 ---
 
-## ⚖️ Deep-Dive Analysis: BlackPearl vs. Foundational Agent Engines
+## ⚖️ Architectural Definition: Control Plane (BlackPearl) vs. Execution Plane (DSH)
 
 <p align="center">
   <img src="assets/comparison-infographic.png" alt="BlackPearl Complete AI Ecosystem vs Standalone Harness" width="900" />
 </p>
 
+### 1. The Core Architectural Thesis: Engine vs. Operating System
+
+A fundamental architectural principle separates **BlackPearl** from standalone runtimes like **DeepSeek Harness (DSH)**:
+
+> **"DeepSeek Harness is the engine. BlackPearl is the operating system."**
+> 
+> - **DeepSeek Harness (DSH)** is the **Programmable Agent Runtime & Execution Substrate**: Built on the Cordis spatiotemporal plugin architecture, it provides the low-level primitives: agent loop, sandboxing, tool routing, session logs, and process execution.
+> - **BlackPearl** is the **Engineering Control Plane & AI Software Organization**: It embeds DeepSeek Harness at its foundational execution layer (`frameworks/blackpearl-core/`) and builds a complete multi-agent governance hierarchy on top of it — integrating lead supervision, 26 executable team pipelines, 18 specialist divisions (273+ personas), 634+ workflow skills, TDD guardrails, and universal architectural constraints.
+
 ```
-                                 ┌─────────────────────────────────────────┐
-                                 │               BlackPearl               │
-                                 └────────────────────┬────────────────────┘
-                                                      │
-         ┌───────────────────────────┬────────────────┴───────────────────────────┬───────────────────────────┐
-         ▼                           ▼                                            ▼                           ▼
-┌──────────────────┐       ┌──────────────────┐                         ┌──────────────────┐       ┌──────────────────┐
-│BlackPearl Orchestrator│       │   BlackPearl Core     │                         │   BlackPearl Skills   │       │ BlackPearl Divisions  │
-│(Lead Supervisor) │       │(Execution Engine)│                         │ (Skills & Rules) │       │ (18 Specialists) │
-└────────┬─────────┘       └────────┬─────────┘                         └────────┬─────────┘       └────────┬─────────┘
-         │                          │                                            │                          │
-┌────────┴─────────┐       ┌────────┴─────────┐                         ┌────────┴─────────┐       ┌────────┴─────────┐
-│ Antigravity IDE  │       │ DeepSeek Harness │                         │ Everything Claude│       │    The Agency    │
-│  & Gemini CLI    │       │ (Cordis Engine)  │                         │    Code (ECC)    │       │ (273+ Personas)  │
-└──────────────────┘       └──────────────────┘                         └──────────────────┘       └──────────────────┘
+                                      ┌──────────────────────────────────────────────┐
+                                      │                  USER GOAL                   │
+                                      └──────────────────────┬───────────────────────┘
+                                                             │
+                                                             ▼
+┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                                 BLACKPEARL CONTROL PLANE                                                         │
+│  - Lead Supervisor (Intent & Domain Router)                 - Universal Hard Rules (5-Level Decomposition & Doc-First Gate)     │
+│  - 18 Enterprise Specialist Divisions (273+ Personas)       - Skills Engine (634+ Skills, 68 Subagents, 94 Commands)           │
+└────────────────────────────────────────────────────────────┬─────────────────────────────────────────────────────────────────────┘
+                                                             │
+                                                             ▼
+┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                       BLACKPEARL MULTI-AGENT TEAM ORCHESTRATION                                                  │
+│  - dsh-team.js: 26 Autonomous Executable Pipelines (STARTUP_MVP, ENTERPRISE_FEATURE, INCIDENT_RESPONSE, FULL_STACK_DEV, etc.)    │
+│  - Role Sequencing & Bounded Agent-to-Agent Handoff Contracts (Orchestration Run IDs)                                          │
+│  - Automated Reviewer ➔ Fixer Self-Correction Loop (Hard ceiling: max 3 cycles)                                                 │
+└────────────────────────────────────────────────────────────┬─────────────────────────────────────────────────────────────────────┘
+                                                             │
+                                                             ▼
+┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                   BLACKPEARL CORE / EXECUTION PLANE (DSH & CORDIS)                                               │
+│  - dsh-delegate.js Universal Persona Loader                 - Cordis Spatiotemporal Plugin Engine                                │
+│  - Sandboxed Process Execution                              - Terminal / Filesystem / Tool Registry                              │
+└────────────────────────────────────────────────────────────┬─────────────────────────────────────────────────────────────────────┘
+                                                             │
+                                                             ▼
+┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                            PHYSICAL EXECUTION & GROUND TRUTH                                                     │
+│  - Isolated Worktree per Child Process (.worktrees/dsh-*)   - Base Snapshot Isolation Baseline                                   │
+│  - Deterministic Attribution: RESULT - BASE SNAPSHOT        - Compilers, Linters, Test Runners, Live Git HEAD                   │
+└──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
-
-A common question from software engineers is: **"How does BlackPearl compare to standalone agent frameworks like DeepSeek Harness, and which one should I use?"**
-
-### 1. The Fundamental Distinction: Core Engine vs. Complete Operating System
-
-- **DeepSeek Harness (`dsh`)** is a powerful **foundational execution engine**. Built on the Cordis spatiotemporal plugin paradigm, it provides the low-level primitives: process sandboxing, tool routing, worktree lifecycle, and extensible plugin interfaces.
-- **BlackPearl** is the **complete, production-ready AI software development operating system**. It incorporates DeepSeek Harness at its foundational execution layer (`frameworks/BlackPearl-core/`) and builds a massive, pre-configured multi-agent hierarchy on top of it — integrating lead supervision, 273+ specialized domain personas, 286+ engineering skills, TDD guardrails, and universal architectural constraints.
-
-> **Key Insight**: BlackPearl does **not** compete with or replace DeepSeek Harness; rather, **BlackPearl harnesses DeepSeek Harness as its engine**, equipping it with a complete roster of specialist agents, strict engineering rules, and 1-click cross-platform deployment.
 
 ---
 
-### 2. Feature-by-Feature Comparison Matrix
+### 2. Complete Execution Envelope: How BlackPearl Operates
 
-| Architectural Capability | 🟩 BlackPearl (Complete Ecosystem) | 🟦 Standalone DeepSeek Harness (Base Engine) |
-|---|:---:|:---:|
-| **Agent Execution Runtime** | ⭐⭐⭐⭐⭐ (Powered by DeepSeek Core) | ⭐⭐⭐⭐⭐ (Fast, modular, Cordis-driven) |
-| **Plugin Architecture** | ⭐⭐⭐⭐⭐ (Fully preserved & extended) | ⭐⭐⭐⭐⭐ ("Everything is a plugin") |
-| **Worktree Snapshot Isolation** | ✅ Built-in (`RESULT - BASE SNAPSHOT`) | ✅ Built-in |
-| **Out-of-the-Box Skills** | ✅ **286+ Production Skills** | ⚠️ Core framework skills only |
-| **Pre-Configured Specialist Agents** | ✅ **273+ Specialized Personas** | ⚠️ Generic templates (developer must build) |
-| **Enterprise Divisions** | ✅ **18 Full Divisions** (Security, Health, GIS, etc.) | ❌ None (requires manual plugins) |
-| **Lead Orchestrator / Supervisor** | ✅ **BlackPearl Orchestrator** (345+ auto-skills) | ⚠️ Basic task routing |
-| **Universal Hard Rules** | ✅ **5-Level Decomposition & Doc-First Gate** | ❌ Manual prompt design |
-| **Security & AppSec Reviewers** | ✅ **12+ Specialized AppSec/OWASP Agents** | ⚠️ Generic prompt |
-| **Skeptical QA & Reality Checkers** | ✅ **9+ Skeptical QA & Accessibility Agents** | ⚠️ Generic test prompts |
-| **Antigravity / Gemini CLI Support** | ✅ **Native Platform Layer** | ❌ Not built-in |
-| **OpenCode Direct Mentions (`@agent`)** | ✅ **283+ Global Mentionable Personas** | ⚠️ Indirect |
-| **Zero-Config 1-Click Installation** | ✅ **30-Second 1-Click Script (`install.ps1`)** | ⚠️ Requires manual repo setup & build |
-| **Project Scaffolding Tooling** | ✅ **Instant Scaffolder (`scaffold.ps1`)** | ❌ Manual configuration |
-| **Best For** | *Immediate, high-rigor software engineering* | *Building custom AI tools from scratch* |
+Unlike unconstrained agents that directly mutate files with single prompts, BlackPearl enforces an end-to-end, multi-stage engineering lifecycle:
 
----
-
-### 3. Contrasting Design Philosophies
-
-#### 🟦 The DeepSeek Harness Philosophy: *"Build Your Own Ecosystem"*
-DeepSeek Harness focuses on foundational flexibility:
 ```
-[Model] ➔ [Cordis Core] ➔ [Sandboxes / Tools / Storage Plugins]
-```
-- Ideal for AI infrastructure researchers and developers who want to write custom plugins, design their own agent memory systems from the ground up, or experiment with novel execution harnesses.
-
-#### 🟩 The BlackPearl Philosophy: *"Zero-Friction, Immediate Specialist Execution"*
-BlackPearl focuses on real-world engineering productivity:
-```
-[User Objective]
+[USER OBJECTIVE]
        │
        ▼
-[BlackPearl Orchestrator (Lead Supervisor)]
-       │
-       ├─► [5-Level Modular Decomposition Gate]
-       ├─► [Documentation-First Reality Check]
+[BLACKPEARL SUPERVISOR] ➔ [HARD RULE GATES: 5-Level Decomposition + Doc-First Scan]
        │
        ▼
-[BlackPearl Core (Worktree Isolation)]
+[TEAM PIPELINE SELECTOR (26 Preconfigured Workflows)]
        │
-       ├─► 💻 Engineering Division (Backend, Mobile, Database, SRE)
-       ├─► 🛡️ Security Division (OWASP, Secrets, AI Code Auditor)
-       ├─► 🧪 QA & Testing Division (TDD Guide, Reality Checker, A11y)
-       ├─► 🎨 Design & UI Division (Tokens, Micro-animations, Finish Gate)
-       └─► 📋 Product & Domain Divisions (Health, GIS, Finance, GameDev)
+       ▼
+[ROLE RESOLUTION & BOUNDED CONTRACT] (Generates Unique Orchestration Run ID)
+       │
+       ▼
+[BASE SNAPSHOT CAPTURE] (Records clean/dirty workspace state baseline)
+       │
+       ▼
+[ISOLATED GIT WORKTREE CREATION] (.worktrees/dsh-<role>-<runId>)
+       │
+       ▼
+[DSH / CORDIS EXECUTION PROCESS] (Sandboxed execution with injected persona instructions)
+       │
+       ├─► [CORE_IMPLEMENTER] (Write changes in worktree)
+       │
+       ├─► [CORE_CODE_REVIEWER / CORE_SECURITY_REVIEWER] (Independent soft read-only diff audit)
+       │         │
+       │    [ISSUE FOUND?]
+       │     ├── YES ➔ [CORE_FIXER] (Surgical repair in worktree, max 3 cycles)
+       │     └── NO  ➔ [CORE_VERIFIER] (Test suite, build, lint verification)
+       │
+       ▼
+[BASE-DIFF ATTRIBUTION] (RESULT - BASE SNAPSHOT computed to isolate AI changes)
+       │
+       ▼
+[FINAL QUALITY GATE ➔ VERIFIED RESULT TO USER]
 ```
-- Eliminates the need to spend weeks writing prompts, defining rules, configuring MCPs, or setting up agent roles. Everything is pre-wired, verified, and ready to execute immediately.
 
 ---
 
-### 4. Which One Should You Choose?
+### 3. The Worktree Snapshot & Attribution Model (`RESULT - BASE SNAPSHOT`)
 
-- **Choose Standalone DeepSeek Harness if**:
-  1. You are an AI researcher building a new, experimental agent framework from scratch.
-  2. You want to modify low-level Cordis runtime bindings or design unique memory engines.
-- **Choose BlackPearl if**:
-  1. You want to build, refactor, debug, test, and ship real-world software (C#, .NET, Python, TypeScript, React, Java, Go, Rust, Mobile, Cloud).
-  2. You need an immediate team of specialized agents (AppSec auditor, QA reality checker, database optimizer, frontend designer) without manual prompt engineering.
-  3. You demand strict engineering discipline (5-Level Modular Architecture, Test-Driven Development with 80%+ coverage, and documentation-first planning).
+One of BlackPearl's biggest engineering breakthroughs is eliminating developer workspace contamination:
+
+```
+Developer Workspace (Host Repo)
+  ├── Committed HEAD
+  ├── Uncommitted Local Edits (User's prior work)
+  └── Untracked Scratch Files
+          │
+          ▼
+   [BASE SNAPSHOT] (Frozen Baseline Commit in Isolated Worktree)
+          │
+          ▼
+   [.worktrees/dsh-<runId>] (DSH Agent Execution)
+          │
+          ▼
+   [RESULT STATE] (Post-Execution Worktree State)
+          │
+          ▼
+   [DETERMINISTIC ATTRIBUTION: RESULT - BASE SNAPSHOT]
+```
+
+- **Zero Accidental Overwrites**: AI agents never overwrite or revert uncommitted developer changes.
+- **Accurate Diffs**: Only genuine AI modifications are attributed, reviewed, and merged.
+
+---
+
+### 4. 26 Preconfigured Autonomous Team Pipelines (`dsh-team.js`)
+
+BlackPearl comes equipped with 26 autonomous multi-agent pipelines out of the box:
+
+| Pipeline | Role Sequence | Target Use-Case |
+|---|---|---|
+| `STARTUP_MVP` | `PLANNER ➔ ARCHITECT ➔ IMPLEMENTER ➔ TESTER ➔ CODE_REVIEWER ➔ REALITY_CHECKER ➔ VERIFIER` | Complete 0-to-1 MVP feature delivery |
+| `ENTERPRISE_FEATURE` | `PLANNER ➔ ARCHITECT ➔ IMPLEMENTER ➔ API_TESTER ➔ SECURITY_REVIEWER ➔ COMPLIANCE ➔ REALITY_CHECKER ➔ VERIFIER` | High-compliance corporate features |
+| `INCIDENT_RESPONSE` | `PLANNER (Triage) ➔ FIXER (Emergency Patch) ➔ TESTER (Regression) ➔ SECURITY ➔ VERIFIER` | Hotfixes & production outage mitigation |
+| `FULL_STACK_DEV` | `PLANNER ➔ ARCHITECT ➔ BACKEND_DEV ➔ FRONTEND_DEV ➔ TDD_GUIDE ➔ CODE_REVIEWER ➔ VERIFIER` | End-to-end full stack implementations |
+| `COMPLIANCE_AUDIT` | `COMPLIANCE_CHECKER ➔ SECURITY_REVIEWER ➔ REALITY_CHECKER` | FedRAMP, HIPAA, SOC2, GDPR compliance audits |
+| `HARDCORE_SEC_AUDIT`| `SECURITY_REVIEWER ➔ APPSEC_ENGINEER ➔ PEN_TESTER ➔ SECRETS_AUDITOR ➔ REALITY_CHECKER` | Deep penetration & vulnerability testing |
+| `AI_SECURITY_AUDIT` | `AI_CODE_AUDITOR ➔ OWASP_REVIEWER ➔ SECRETS_HYGIENE ➔ VERIFIER` | AI-generated code vulnerability scanner |
+| `HEALTHCARE_EVAL` | `CLINICAL_SPECIALIST ➔ PHI_COMPLIANCE ➔ REALITY_CHECKER` | Medical guideline & HIPAA safety verification |
+| `GIS_PIPELINE` | `GIS_ANALYTICS ➔ SPATIAL_SCIENTIST ➔ CARTOGRAPHER ➔ QA_ENGINEER` | PostGIS, GeoJSON, maps & spatial indexing |
+| `GAME_DESIGN` | `GAME_DESIGNER ➔ ECONOMY_DESIGNER ➔ LEVEL_DESIGNER ➔ TECH_ARTIST` | Gameplay loop, mechanics & balance audit |
+| `MOBILE_APP` | `MOBILE_BUILDER ➔ UI_DESIGNER ➔ TDD_GUIDE ➔ A11Y_AUDITOR` | iOS (SwiftUI) & Android (Kotlin/Flutter) apps |
+| `PAYMENTS_BILLING` | `PAYMENTS_ENGINEER ➔ SECURITY_REVIEWER ➔ FINOPS_ENGINEER ➔ VERIFIER` | Stripe, subscription billing & financial isolation |
+| `RAG_PIPELINE` | `RAG_ENGINEER ➔ SEARCH_RELEVANCE ➔ EVAL_HARNESS ➔ VERIFIER` | Vector search, chunking, reranking & retrieval |
+| `UI_POLISH` | `UI_DESIGNER ➔ WHIMSY_INJECTOR ➔ MOTION_ENGINEER ➔ UI_FINISH_GATE` | Anti-generic UI polish, tokens & animations |
+| `MCP_SERVER` | `MCP_BUILDER ➔ API_TESTER ➔ SECURITY_REVIEWER ➔ VERIFIER` | Model Context Protocol servers & connectors |
+| `CODE_ARCHAEOLOGY` | `CODEBASE_ARCHAEOLOGIST ➔ REFACTOR_CLEANER ➔ DOC_UPDATER` | Legacy repo exploration & dead code removal |
+| `SPATIAL_APP` | `VISIONOS_ENGINEER ➔ XR_INTERACTION ➔ TECH_ARTIST ➔ VERIFIER` | visionOS, WebXR Three.js & volumetric UI |
+| `INFRA_OPS` | `PLANNER ➔ INFRA_MAINTAINER ➔ SECURITY_REVIEWER ➔ VERIFIER` | Docker, Kubernetes, CI/CD pipelines & SRE |
+| `FULL_ASSURANCE` | `PLANNER ➔ IMPLEMENTER ➔ CODE_REVIEW ➔ SEC_REVIEW ➔ REALITY_CHECK ➔ VERIFIER` | Mission-critical release quality gate |
+| `REALITY_CHECK` | `REALITY_CHECKER ➔ EVIDENCE_COLLECTOR ➔ QA_ENGINEER` | Skeptical proof & screenshot verification |
+| `AUDIT` | `SECURITY_REVIEWER ➔ CODE_REVIEWER` | Fast static security & code review |
+| `HEAVY` | `PLANNER ➔ IMPLEMENTER (worktree) ➔ CODE_REVIEWER ➔ VERIFIER` | Long autonomous refactoring & large features |
+| `HIGH_RISK` | `PLANNER ➔ ARCHITECT ➔ IMPLEMENTER ➔ SECURITY_REVIEWER ➔ FIXER ➔ VERIFIER` | Auth, migrations, payments & tenant isolation |
+| `COMPLEX` | `PLANNER ➔ IMPLEMENTER ➔ CODE_REVIEWER ➔ FIXER ➔ VERIFIER` | Standard multi-file feature development |
+| `GTM_LAUNCH` | `PRODUCT_MANAGER ➔ SEO_SPECIALIST ➔ GROWTH_HACKER ➔ COPYWRITER` | Go-to-market release & launch strategy |
+| `DEEP_RESEARCH` | `RESEARCH_SYNTHESIST ➔ TREND_RESEARCHER ➔ EXECUTIVE_SUMMARY` | Cross-source literature & market intelligence |
+
+---
+
+### 5. Architectural Scorecard: BlackPearl vs. DeepSeek Harness (DSH)
+
+| Evaluation Dimension | 🏴‍☠️ BlackPearl (AI Engineering OS) | 🧠 DeepSeek Harness (DSH Engine) | Architectural Role |
+|---|:---:|:---:|---|
+| **Primary Architectural Role** | **AI Engineering OS & Control Plane** | **Programmable Agent Runtime Engine** | *Complementary Stack* |
+| **“Install and Start Engineering”** | ⭐⭐⭐⭐⭐ **10/10** | ⭐⭐⭐ 7/10 | 🏆 **BlackPearl** (Ready out of the box) |
+| **Pre-Configured Specialist Agents** | ⭐⭐⭐⭐⭐ **10/10 (273+ Personas)** | ⭐⭐ 4/10 (Runtime only) | 🏆 **BlackPearl** (18 Enterprise Divisions) |
+| **Pre-Authored Skills Library** | ⭐⭐⭐⭐⭐ **10/10 (634+ Skills)** | ⭐⭐⭐ 5/10 (Skill service only) | 🏆 **BlackPearl** (ECC + Custom Skills) |
+| **Multi-Agent Team Workflows** | ⭐⭐⭐⭐⭐ **10/10 (26 Executable Pipelines)**| ⭐⭐⭐ 7/10 (Requires user code) | 🏆 **BlackPearl** (`dsh-team.js` orchestrator) |
+| **Engineering Discipline & Rules** | ⭐⭐⭐⭐⭐ **10/10 (5-Level Decomposition)**| ⭐⭐⭐ 6/10 (Opinion-neutral) | 🏆 **BlackPearl** (Strict Hard Rules) |
+| **Worktree Snapshot Attribution** | ⭐⭐⭐⭐⭐ **10/10 (`RESULT - BASE`)** | ⭐⭐⭐⭐ 8/10 (Git worktrees) | 🏆 **BlackPearl** (Baseline isolation) |
+| **Platform Integrations** | ⭐⭐⭐⭐⭐ **10/10 (Gemini, OpenCode, VS Code)**| ⭐⭐⭐⭐ 8/10 (Core runtime) | 🏆 **BlackPearl** (Universal portability) |
+| **Low-Level Plugin Runtime (Cordis)**| ⭐⭐⭐⭐ 8/10 (Embedded in Core) | ⭐⭐⭐⭐⭐ **10/10 (Native Cordis)** | 🧠 **DSH** (Raw runtime foundation) |
+| **Low-Level Sandbox Primitives** | ⭐⭐⭐⭐ 8/10 (Uses DSH engine) | ⭐⭐⭐⭐⭐ **10/10 (Fail-closed sandbox)**| 🧠 **DSH** (Low-level containment) |
+| **Dynamic Runtime Metaprogramming**| ⭐⭐⭐⭐ 8/10 (Pre-configured) | ⭐⭐⭐⭐⭐ **10/10 (Runtime package editing)**| 🧠 **DSH** (Runtime extensibility) |
+| **Overall Engineering OS Score** | 🥇 **9.5 / 10** | 7.5 / 10 | 🏆 **BlackPearl: Winner for Software Engineering** |
+| **Overall Runtime Engine Score** | 8.5 / 10 | 🥇 **9.8 / 10** | 🧠 **DSH: Winner for Raw Runtime Foundation** |
+| **Combined Architecture Score** | 👑 **10.0 / 10 (BlackPearl OS + DSH Core Engine)** | — | 🌟 **The Ultimate Autonomous Engineering Stack** |
 
 ---
 
@@ -133,225 +209,128 @@ BlackPearl focuses on real-world engineering productivity:
 
 **BlackPearl** is an enterprise-grade AI software development ecosystem designed to be completely portable across machines, operating systems, and fresh installations. Cloning this repository and running a single script immediately configures:
 
-1. **BlackPearl Orchestrator (Lead Supervisor)** (`platforms/antigravity/` -> `~/.gemini/config/`)
-   - 345+ specialized skills auto-activated on intent.
-   - Master rules (`AGENTS.md`, `GEMINI.md`) with Section 11 Division Routing.
+1. **BlackPearl Control Plane (Lead Supervisor)** (`platforms/antigravity/` -> `~/.gemini/config/`)
+   - 657 specialized skills auto-activated on intent.
+   - Master directives (`AGENTS.md`, `GEMINI.md`) with Section 11 Division Routing.
    - Universal Hard Rules (5-Level Modular Decomposition & Doc-First Sequential Execution).
-2. **BlackPearl Layer** (`platforms/opencode/` -> `~/.config/opencode/`)
-   - 283+ registered subagents with `@` direct mentions in ANY project across your system.
-   - 273 canonical `.md` agent files with custom UI hex color codes.
-   - Multi-agent execution scripts (`dsh-delegate.js` & `dsh-team.js`).
-3. **BlackPearl Core Engine** (`frameworks/BlackPearl-core/`)
-   - Universal Dynamic Persona Loader (`getAgencyPrompt()`).
-   - Isolated worktree snapshots with automatic base diffing (`RESULT - BASE SNAPSHOT`).
-   - 26 pre-configured automated multi-agent pipelines (`dsh-team.js`).
-4. **BlackPearl Skills Engine** (`frameworks/BlackPearl-skills/`)
-   - 68 specialized engineering subagents.
-   - 286+ skills, 94 commands, and automated hook workflows.
-5. **BlackPearl Divisions** (`frameworks/BlackPearl-divisions/`)
-   - 18 complete specialist divisions (Engineering, Testing, Security, Design, Product, PM, Healthcare, Finance, GIS, GameDev, Marketing, Sales, Academic, Research, Spatial Computing, Support, Strategy, Specialized).
-   - 273 canonical subagents, 6 strategy runbooks, and 7 lifecycle playbooks.
+2. **BlackPearl Agent Layer** (`platforms/opencode/` -> `~/.config/opencode/`)
+   - 273+ specialized `.md` canonical personas mentionable anywhere (`@agent-name`).
+   - `dsh-team.js` & `dsh-delegate.js` multi-agent orchestrator with 26 executable pipelines.
+3. **BlackPearl Core Engine** (`frameworks/blackpearl-core/`)
+   - Complete DeepSeek Harness & Cordis execution framework with worktree snapshot isolation.
+4. **BlackPearl Skills Engine** (`frameworks/blackpearl-skills/`)
+   - 634+ workflow skills, 68 subagents, 94 commands, and automated hooks.
+5. **BlackPearl Specialist Divisions** (`frameworks/blackpearl-divisions/`)
+   - 18 enterprise divisions covering Engineering, Testing, Security, Design, Product, Healthcare, Finance, GIS, GameDev, and more.
+
+---
+
+## 🏢 BlackPearl Divisions — 18 Specialist Divisions (273+ Subagents)
+
+| Division | Primary Capabilities & Focus | Key Roles & Personas |
+|---|---|---|
+| 💻 **Engineering (59)** | Clean Architecture APIs, Mobile (iOS/Android), RAG, DB Optimization, SRE | `agency-backend-architect`, `agency-mobile-app-builder`, `agency-rag-pipeline-engineer`, `agency-sre` |
+| 🧪 **Testing & QA (9)** | Skeptical QA, WCAG 2.2 a11y, API contract fuzzing, Core Web Vitals | `agency-reality-checker`, `agency-accessibility-auditor`, `agency-api-tester`, `agency-performance-benchmarker` |
+| 🛡️ **Security & AppSec (12)** | AI-code vulnerability scanner, OWASP Top 10, Secrets governance, Pen-testing | `agency-security-ai-generated-code-auditor`, `agency-security-appsec-engineer`, `agency-security-penetration-tester` |
+| 🎨 **Design & UI (10)** | Design systems, CSS tokens, Anti-generic UI finish gate, Micro-animations | `agency-ui-designer`, `agency-ui-finish-gate-reviewer`, `agency-whimsy-injector`, `agency-ux-architect` |
+| 📦 **Product (5)** | PRD specs, RICE scoring, user journeys, behavioral nudge engine | `agency-product-manager`, `agency-sprint-prioritizer`, `agency-behavioral-nudge-engine` |
+| 📋 **Project Mgmt (7)** | Spec-to-task conversion, delivery tracking, meeting notes synthesis | `agency-senior-project-manager`, `agency-project-shepherd`, `agency-meeting-notes-specialist` |
+| 📊 **Strategy & Runbooks (6)** | Multi-agent runbooks: Startup MVP, Enterprise Feature, Incident Response | `agency-runbook-startup-mvp`, `agency-runbook-enterprise-feature`, `agency-runbook-incident-response` |
+| 🏥 **Healthcare (3)** | Clinical evidence mapping, medical guidelines, patient safety & HIPAA | `agency-clinical-evidence-agent`, `agency-healthcare-innovation-strategist` |
+| 💰 **Finance & FinOps (5)** | Financial pro-forma models, SaaS unit economics, tax planning, FP&A | `agency-financial-analyst`, `agency-tax-strategist`, `agency-fpa-analyst` |
+| 🗺️ **GIS & Spatial (13)** | Web GIS maps, GeoJSON, PostGIS queries, Cartography, Drone reality | `agency-web-gis-developer`, `agency-spatial-data-scientist`, `agency-drone-reality-mapping` |
+| 🥽 **Spatial Computing (6)** | VisionOS SwiftUI volumetric UI, Metal 90fps GPU, WebXR Three.js | `agency-visionos-spatial-engineer`, `agency-macos-spatial-metal-engineer`, `agency-xr-immersive-developer` |
+| 🎮 **Game Dev (6)** | Core gameplay loops, virtual in-game economy balancing, audio, mechanics | `agency-game-designer`, `agency-economy-designer`, `agency-game-audio-engineer` |
+| 📢 **Marketing (36)** | SEO, AEO (AI Engine Optimization), viral growth loops, Social | `agency-seo-specialist`, `agency-growth-hacker`, `agency-aeo-foundations-architect` |
+| 🎯 **Paid Media (7)** | Google/Meta PPC campaigns, search query analytics, ROAS optimization | `agency-ppc-campaign-strategist`, `agency-paid-social-strategist`, `agency-paid-media-auditor` |
+| 💼 **Sales (9)** | B2B outbound prospecting, discovery call coaching, deal closing | `agency-outbound-strategist`, `agency-discovery-coach`, `agency-deal-strategist` |
+| 🎓 **Academic (6)** | Statistical rigor, psychological models, ethnographic systems | `agency-statistician`, `agency-psychologist`, `agency-narratologist` |
+| 🔬 **Research (1)** | Cross-source research synthesis, literature maps, competitive matrix | `agency-research-synthesist` |
+| 🧩 **Specialized (58)** | MCP server builder, Codebase archaeology, Medical coding, FedRAMP | `agency-mcp-builder`, `agency-codebase-archaeologist`, `agency-medical-billing-coding-specialist` |
+
+---
+
+## 🔒 Master Hard Rules
+
+Every agent operating within BlackPearl strictly enforces two universal architectural mandates:
+
+### 1. Modular Architecture (5-Level Decomposition)
+```
+Project ➔ Module/Domain ➔ Feature/Capability ➔ Use-case ➔ Responsibility ➔ File
+```
+- **One Business Action = One Use-Case File**: Monolithic files (>400 lines typical, >800 lines max) are strictly forbidden.
+- **Feature Ownership**: Private domain logic stays inside `module/feature/`. Never dump business logic into `shared/` or `utils/`.
+- **Public Contracts**: Inter-module communication flows exclusively through `public/` interfaces. `internal/` is private.
+
+### 2. Documentation-First Sequential Execution
+```
+Goal ➔ Stop & Discover Docs ➔ Verify Live Code Reality ➔ Plan 4 Levels ➔ ONE Active Micro-Task
+```
+- **Stop & Discover**: Read all project-authored `.md` files before touching any code.
+- **Verify Reality**: Distinguish between historical docs and live executable ground truth.
+- **Single-Track Focus**: Execute **EXACTLY ONE** active micro-task at a time: `Implement ➔ Test ➔ Diff Review ➔ Quality Gate Met ➔ Close`.
 
 ---
 
 ## 💻 Complete New PC / Fresh Windows Setup Guide
 
-Everything you need to get your complete AI engineering ecosystem running on a fresh PC or after reinstalling Windows:
+> **Dedicated Migration Guide**: **[💻 SETUP-NEW-PC.md](SETUP-NEW-PC.md)**
 
-### 📋 Prerequisites
-Before installing, ensure you have:
-1. **Git**: [https://git-scm.com/downloads](https://git-scm.com/downloads)
-2. **Node.js (v18+)**: [https://nodejs.org/](https://nodejs.org/)
-3. **PowerShell 5.1 or 7+** (built into Windows) or **Bash** (Linux/macOS/WSL)
+To deploy the entire BlackPearl ecosystem onto any fresh Windows, macOS, or Linux machine:
 
----
+### 📍 Step 1: Install Prerequisites (Run in PowerShell / Terminal)
+```powershell
+# Windows (winget)
+winget install Git.Git OpenJS.NodeJS.LTS
+```
 
-### 📥 Step 1: Clone BlackPearl
-
-Clone the master repository to your preferred location (e.g. `G:\0000 PY PROGRAM\_AI_TOOLS\BlackPearl` or `C:\AI_TOOLS\BlackPearl`):
-
+### 📍 Step 2: Clone BlackPearl Repository
 ```powershell
 git clone https://github.com/BlackPearl-AI/BlackPearl.git "G:\0000 PY PROGRAM\_AI_TOOLS\BlackPearl"
 cd "G:\0000 PY PROGRAM\_AI_TOOLS\BlackPearl"
 ```
 
-*Or on Linux / macOS / WSL:*
-```bash
-git clone https://github.com/BlackPearl-AI/BlackPearl.git ~/BlackPearl
-cd ~/BlackPearl
-```
-
----
-
-### ⚡ Step 2: Run the One-Click Master Installer
-
-**On Windows (PowerShell):**
+### 📍 Step 3: Run 1-Click Master Installer
 ```powershell
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+# Windows PowerShell
 .\install.ps1
-```
 
-**On Linux / macOS / WSL (Bash):**
-```bash
-chmod +x install.sh
+# Linux / macOS Bash
 ./install.sh
 ```
 
-#### What `install.ps1` & `install.sh` do automatically:
-1. **BlackPearl Orchestrator (Lead Supervisor)**:
-   - Creates global `~/.gemini/config/`
-   - Deploys `AGENTS.md` and `GEMINI.md`
-   - Deploys all **345+ Global Skills** into `~/.gemini/config/skills/`
-   - Deploys **Universal Hard Rules** (`modular-architecture.md` & `documentation-first-sequential-execution.md`) into `~/.gemini/config/rules/`
-2. **BlackPearl Layer**:
-   - Creates global `~/.config/opencode/`
-   - Deploys `opencode.jsonc` (283+ registered agents & LLM provider configurations)
-   - Deploys all **273 Canonical Agent Markdown Files** into `~/.config/opencode/agents/`
-   - Deploys BlackPearl Core scripts into `~/.config/opencode/scripts/`
-3. **BlackPearl Core Engine**:
-   - Links `dsh-delegate.js` directly to the bundled `frameworks/BlackPearl-core/` engine
-   - Configures worktree snapshot isolation & 26 multi-agent team pipelines
-4. **Automated Self-Verification**:
-   - Automatically executes `.\verify.ps1` to ensure every path, rule, and agent is 100% operational.
-
----
-
-### ✅ Step 3: Verify the Installation
-
-To manually audit and verify the system health at any time, run:
-
+### 📍 Step 4: Verify System Health
 ```powershell
 .\verify.ps1
 ```
-
-You should see all green `[PASS]` checks:
-- `[PASS]` BlackPearl Orchestrator AGENTS.md & Skills Pool (345+ skills)
-- `[PASS]` BlackPearl Layer `opencode.jsonc` & Canonical Agents (273+ agents)
-- `[PASS]` BlackPearl Core Dynamic Persona Loader
-- `[PASS]` Universal Hard Rules (Modular Architecture + Doc-First Execution)
+*Expected Output: `ALL TESTS PASSED! BlackPearl Suite is 100% healthy, synchronized, and operational.`*
 
 ---
 
-### 📂 Step 4: Binding BlackPearl Rules into Any Project
+## 🔑 LLM API Keys & Provider Configuration
 
-When starting a new repository or working on an existing codebase (e.g. C#, Python, React, Go):
+BlackPearl supports all major AI models and 100% Free Offline Local Models:
 
+### 1. Antigravity IDE & Gemini CLI (Built-in Free Integration)
+- If you run inside **Antigravity IDE** or **Gemini CLI**, BlackPearl automatically uses your active Google DeepMind environment with **ZERO API keys needed**!
+
+### 2. 100% Free & Offline Local Models via Ollama (Zero Cost, No Internet Required)
 ```powershell
-cd "G:\0000 PY PROGRAM\_AI_TOOLS\BlackPearl"
-.\scaffold.ps1 -TargetProject "C:\path\to\your-project"
+# Install Ollama
+winget install Ollama.Ollama
+
+# Pull recommended coding models
+ollama run qwen2.5-coder:14b
+ollama run deepseek-r1:14b
 ```
 
-This immediately wires the target project with:
-- `.agents/rules/` (Modular architecture & doc-first execution)
-- `.opencode/opencode.json` (Project subagents & slash commands)
-- `AGENTS.md` (Project agent guidelines)
-
----
-
-### 🔄 Step 5: Syncing Updates Across Machines
-
-When you modify skills, agents, or rules on one computer:
-1. Commit and push from your current machine:
-   ```powershell
-   git add .
-   git commit -m "feat: updated specialist agents and skills"
-   git push origin main
-   ```
-2. On your other computer, simply pull and re-run:
-   ```powershell
-   git pull origin main
-   .\install.ps1
-   ```
-
----
-
-## 🔑 LLM API Keys & Provider Configuration (Cloud & Offline Models)
-
-A frequent question is: **"Do I need to configure API keys, and which ones are supported?"**
-
-### 1. Quick Decision: Do You Need an API Key?
-
-| Environment / Use-Case | API Key Required? | Details |
-|---|:---:|---|
-| **Antigravity IDE / Gemini CLI** | ❌ **NO** | Runs automatically using the IDE's built-in session. Zero configuration needed. |
-| **Local Offline Models (Ollama / LM Studio)** | ❌ **NO** | 100% Free, Private, and Offline (`ollama run qwen2.5-coder` or `deepseek-r1`). |
-| **OpenCode / BlackPearl Core Cloud Execution** | ✅ **YES (Optional)** | Required only when invoking cloud models (DeepSeek, Claude, OpenAI, Gemini). |
-
----
-
-### 2. Why Configure a DeepSeek API Key?
-- **Ultra-High Reasoning at Minimal Cost**: DeepSeek-V3 and DeepSeek-R1 offer state-of-the-art code reasoning at **~$0.14 per million tokens** (up to 95% cheaper than comparable cloud models).
-- **Parallel Multi-Agent Worktree Swarms**: Enables BlackPearl Core to spawn multi-process reviewer teams (`DSH_PLANNER ➔ DSH_IMPLEMENTER ➔ DSH_REVIEWER ➔ DSH_VERIFIER`) autonomously in isolated worktrees.
-
----
-
-### 3. How & Where to Configure API Keys
-
-You can configure your API keys in any of the following three ways:
-
-#### Option A: Persistent Global User Environment Variable (Recommended)
-
-**On Windows (PowerShell):**
+### 3. Cloud LLM API Keys (Optional for Cloud Execution)
+Set keys in your system environment variables or `~/.env`:
 ```powershell
-# Set DeepSeek API Key (Permanent for current user)
-[System.Environment]::SetEnvironmentVariable('DEEPSEEK_API_KEY', 'sk-your-deepseek-api-key-here', 'User')
-
-# Optional: Other providers if needed
+[System.Environment]::SetEnvironmentVariable('DEEPSEEK_API_KEY', 'sk-your-key', 'User')
 [System.Environment]::SetEnvironmentVariable('ANTHROPIC_API_KEY', 'sk-ant-your-key', 'User')
-[System.Environment]::SetEnvironmentVariable('OPENAI_API_KEY', 'sk-your-openai-key', 'User')
-[System.Environment]::SetEnvironmentVariable('GEMINI_API_KEY', 'your-gemini-key', 'User')
-```
-
-**On Linux / macOS / WSL (Bash or Zsh):**
-```bash
-# Add to ~/.bashrc or ~/.zshrc
-echo 'export DEEPSEEK_API_KEY="sk-your-deepseek-api-key-here"' >> ~/.bashrc
-source ~/.bashrc
-```
-
-#### Option B: Global OpenCode Config (`~/.config/opencode/opencode.jsonc`)
-Add your keys under the `provider` section in `~/.config/opencode/opencode.jsonc`:
-```jsonc
-{
-  "provider": {
-    "deepseek": {
-      "apiKey": "sk-your-deepseek-api-key-here"
-    }
-  }
-}
-```
-
-#### Option C: Project-Level `.env` File
-In any specific target project repository, create a `.env` file:
-```env
-DEEPSEEK_API_KEY=sk-your-deepseek-api-key-here
-```
-*(Note: BlackPearl Hard Rules ensure `.env` files are automatically git-ignored and never committed).*
-
----
-
-### 4. Running 100% Free & Offline with Ollama
-
-If you do not want to use any cloud API keys, you can run BlackPearl entirely locally with [Ollama](https://ollama.com/):
-
-```bash
-# Install high-performance coding model locally
-ollama run qwen2.5-coder:7b
-
-# Or local DeepSeek reasoning model
-ollama run deepseek-r1:8b
-```
-OpenCode will automatically route subagent tasks to your local Ollama instance at `http://localhost:11434` with **zero API keys and zero cost**.
-
----
-
-### 5. Verifying Your API Key Configuration
-
-To test if your environment variables are active, run:
-
-**PowerShell:**
-```powershell
-if ($env:DEEPSEEK_API_KEY) { Write-Host "DeepSeek API Key is active!" -ForegroundColor Green } else { Write-Host "No DeepSeek API key detected (using local/IDE fallback)" -ForegroundColor Yellow }
+[System.Environment]::SetEnvironmentVariable('OPENAI_API_KEY', 'sk-your-key', 'User')
+[System.Environment]::SetEnvironmentVariable('GEMINI_API_KEY', 'AIza-your-key', 'User')
 ```
 
 ---
@@ -360,75 +339,31 @@ if ($env:DEEPSEEK_API_KEY) { Write-Host "DeepSeek API Key is active!" -Foregroun
 
 ```
 BlackPearl/
-├── DECLARATION.md              # Official Ecosystem Declaration & Origin Manifesto
-├── install.ps1                 # Master Windows one-click installer
-├── install.sh                  # Master Unix/macOS/WSL one-click installer
-├── verify.ps1                  # Automated health verification suite
-├── scaffold.ps1                # Project scaffolder (binds rules to any new repo)
-├── README.md                   # System documentation
-├── SETUP-NEW-PC.md             # Migration & setup guide
-├── .gitignore                  # Production gitignore
-│
-├── platforms/                  # Ready-to-deploy Global Platform Configurations
-│   ├── antigravity/            # BlackPearl Orchestrator (~/.gemini/config: AGENTS.md, rules, 345+ skills)
-│   └── opencode/               # BlackPearl Layer (~/.config/opencode: opencode.jsonc, 273+ agents, scripts)
-│
-├── frameworks/                 # Complete Framework Source Code & Engines
-│   ├── BlackPearl-core/             # BlackPearl Core Engine (Multi-agent worktree execution)
-│   ├── BlackPearl-skills/           # BlackPearl Skills Engine (68 agents, 286+ skills, hooks)
-│   └── BlackPearl-divisions/        # BlackPearl Divisions (18 Specialist Divisions & Runbooks)
-│
-└── templates/                  # Reusable Scaffolding Templates for any project
-    ├── .agents/                # Project rules (Modular Architecture & Doc-First)
-    ├── .opencode/              # Project opencode.json & prompts
-    └── AGENTS.md               # Project-level agent directives
+├── assets/                          # Official brand assets (orb avatar, hero banner, infographic)
+├── frameworks/
+│   ├── blackpearl-core/             # DeepSeek Harness runtime, Cordis engine, process sandboxes
+│   ├── blackpearl-skills/           # 634+ workflow skills, 68 subagents, 94 commands, hooks
+│   └── blackpearl-divisions/        # 18 specialist enterprise divisions (273+ personas)
+├── platforms/
+│   ├── antigravity/                 # Global Supervisor directives & 657 skills pool
+│   └── opencode/                    # 273+ canonical agents & 26 team pipeline orchestrators
+├── templates/                       # Project onboarding scaffolds & AGENTS.md templates
+├── DECLARATION.md                   # Official Ecosystem Manifesto & Origins
+├── SETUP-NEW-PC.md                  # Comprehensive fresh machine onboarding guide
+├── install.ps1 / install.sh         # 1-Click zero-config master installers
+├── verify.ps1                       # Automated ecosystem health auditor
+└── scaffold.ps1                     # Instant new project scaffolder
 ```
 
 ---
 
-## 🏢 BlackPearl Divisions — 18 Specialist Divisions (273+ Subagents)
+## 🛡️ License
 
-| Division | Primary Focus | Key Subagents |
-|---|---|---|
-| 💻 **Engineering (59)** | Clean APIs, Native/Cross Mobile, RAG, Databases, SRE | `agency-backend-architect`, `agency-mobile-app-builder`, `agency-rag-pipeline-engineer`, `agency-sre` |
-| 🧪 **Testing (9)** | Skeptical QA, WCAG 2.2 a11y, API contract fuzzing | `agency-reality-checker`, `agency-accessibility-auditor`, `agency-api-tester`, `agency-performance-benchmarker` |
-| 🛡️ **Security (12)** | AI-code scan, OWASP Top 10, Secrets governance | `agency-security-ai-generated-code-auditor`, `agency-security-appsec-engineer`, `agency-security-penetration-tester` |
-| 🎨 **Design (10)** | Design systems, CSS tokens, Anti-generic finish gate | `agency-ui-designer`, `agency-ui-finish-gate-reviewer`, `agency-whimsy-injector`, `agency-ux-architect` |
-| 📦 **Product (5)** | PRD specs, RICE scoring, user journeys | `agency-product-manager`, `agency-sprint-prioritizer`, `agency-behavioral-nudge-engine` |
-| 📋 **Project Mgmt (7)** | Spec-to-task conversion, milestone delivery | `agency-senior-project-manager`, `agency-project-shepherd`, `agency-meeting-notes-specialist` |
-| 📊 **Strategy (6)** | Multi-agent runbooks: Startup MVP, Enterprise | `agency-runbook-startup-mvp`, `agency-runbook-enterprise-feature`, `agency-runbook-incident-response` |
-| 🏥 **Healthcare (3)** | Clinical evidence mapping, medical guidelines | `agency-clinical-evidence-agent`, `agency-healthcare-innovation-strategist` |
-| 💰 **Finance (5)** | Financial pro-forma models, SaaS unit economics | `agency-financial-analyst`, `agency-tax-strategist`, `agency-fpa-analyst` |
-| 🗺️ **GIS & Spatial (13)**| Web GIS maps, GeoJSON, PostGIS, Drone mapping | `agency-web-gis-developer`, `agency-spatial-data-scientist`, `agency-drone-reality-mapping` |
-| 🥽 **Spatial Comp (6)** | VisionOS SwiftUI volumetric UI, Metal 90fps GPU | `agency-visionos-spatial-engineer`, `agency-macos-spatial-metal-engineer`, `agency-xr-immersive-developer` |
-| 🎮 **Game Dev (6)** | Core gameplay loops, virtual economy balancing | `agency-game-designer`, `agency-economy-designer`, `agency-game-audio-engineer` |
-| 📢 **Marketing (36)** | SEO, AEO, viral growth loops, TikTok, Social | `agency-seo-specialist`, `agency-growth-hacker`, `agency-aeo-foundations-architect` |
-| 🎯 **Paid Media (7)** | Google/Meta PPC campaigns, ROAS optimization | `agency-ppc-campaign-strategist`, `agency-paid-social-strategist`, `agency-paid-media-auditor` |
-| 💼 **Sales (9)** | B2B outbound prospecting, discovery call coaching | `agency-outbound-strategist`, `agency-discovery-coach`, `agency-deal-strategist` |
-| 🎓 **Academic (6)** | Statistical rigor, psychological models | `agency-statistician`, `agency-psychologist`, `agency-narratologist` |
-| 🔬 **Research (1)** | Cross-source research synthesis, competitive matrix | `agency-research-synthesist` |
-| 🧩 **Specialized (58)**| MCP server builder, Codebase archaeology, Privacy | `agency-mcp-builder`, `agency-codebase-archaeologist`, `agency-data-privacy-officer` |
+Distributed under the **MIT License**. Free for personal and commercial autonomous software engineering.
 
 ---
 
-## 🔒 Master Hard Rules (Enforced Universally)
-
-### 1. Modular Architecture (5-Level Decomposition)
-`Project → Module/Domain → Feature/Capability → Use-case → Responsibility → File`
-- **One Business Action = One Use-case File**: No 4000-line service files or monster components.
-- **Strict Dependency Direction**: UI/API → Application → Domain ← Infrastructure.
-
-### 2. Documentation-First & Sequential Execution
-> *"Never confuse understanding the goal with permission to immediately implement the goal."*
-- **Sequence**: Stop ➔ Discover Docs ➔ Verify Live Code ➔ Plan ➔ Execute **EXACTLY ONE** active micro-task at a time (`Implement ➔ Test ➔ Diff Review ➔ Close`).
-
----
-
-## 📜 License
-MIT License. Built for autonomous AI-powered software engineering.
-
-
-
-
-
-
+<p align="center">
+  <b>BlackPearl AI — Autonomous Software Engineering Operating System</b><br>
+  <i>Orchestrate. Navigate. Verify. Execute.</i>
+</p>
