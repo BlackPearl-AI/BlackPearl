@@ -1,30 +1,30 @@
-﻿# ⚡ SUper — The Master Unified AI Engineering Ecosystem
+﻿# ⚡ SUper Suite — The Master Unified AI Engineering Operating System
 
 > **The Ultimate Standalone Monorepo for Autonomous AI Software Engineering.**  
-> Bundles **Antigravity Lead Orchestrator**, **Everything Claude Code (ECC)**, **DeepSeek Harness (Multi-Process Worktree Isolation)**, and **The Agency (18 Specialist Divisions / 273+ Subagents)** into a single, fully portable, one-click Git repository.
+> Bundles **SUper Orchestrator** (Lead Supervisor), **SUper Skills Engine** (286+ engineering workflows), **SUper Core Engine** (Multi-Process Worktree Isolation), and **SUper Divisions** (18 Specialist Divisions / 273+ Subagents) into a single, fully portable, one-click Git repository.
 
 ---
 
-## 🌟 What is SUper?
+## 🌟 What is SUper Suite?
 
-**SUper** is an enterprise-grade AI software development repository designed to be portable across machines, operating systems, and fresh installations. Cloning this repository and running a single script immediately configures:
+**SUper Suite** is an enterprise-grade AI software development ecosystem designed to be completely portable across machines, operating systems, and fresh installations. Cloning this repository and running a single script immediately configures:
 
-1. **Antigravity Global Lead Supervisor** (`~/.gemini/config/`)
+1. **SUper Orchestrator (Lead Supervisor)** (`platforms/antigravity/` -> `~/.gemini/config/`)
    - 345+ specialized skills auto-activated on intent.
    - Master rules (`AGENTS.md`, `GEMINI.md`) with Section 11 Division Routing.
    - Universal Hard Rules (5-Level Modular Decomposition & Doc-First Sequential Execution).
-2. **OpenCode Global Environment** (`~/.config/opencode/`)
+2. **SUper Agent Layer** (`platforms/opencode/` -> `~/.config/opencode/`)
    - 283+ registered subagents with `@` direct mentions in ANY project across your system.
    - 273 canonical `.md` agent files with custom UI hex color codes.
-   - DeepSeek Harness execution scripts (`dsh-delegate.js` & `dsh-team.js`).
-3. **DeepSeek Harness Multi-Agent Worktree Layer** (`frameworks/deepseek-harness/`)
-   - Universal Dynamic Agency Persona Loader (`getAgencyPrompt()`).
-   - Isolated worktree snapshots with automatic base diffing (`DSH RESULT - BASE SNAPSHOT`).
+   - Multi-agent execution scripts (`dsh-delegate.js` & `dsh-team.js`).
+3. **SUper Core Engine** (`frameworks/super-core/`)
+   - Universal Dynamic Persona Loader (`getAgencyPrompt()`).
+   - Isolated worktree snapshots with automatic base diffing (`RESULT - BASE SNAPSHOT`).
    - 26 pre-configured automated multi-agent pipelines (`dsh-team.js`).
-4. **Everything Claude Code (ECC)** (`frameworks/ecc/`)
+4. **SUper Skills Engine** (`frameworks/super-skills/`)
    - 68 specialized engineering subagents.
-   - 286+ skills, 94 slash commands, and automated hook workflows.
-5. **The Agency Ecosystem** (`frameworks/the-agency/`)
+   - 286+ skills, 94 commands, and automated hook workflows.
+5. **SUper Divisions** (`frameworks/super-divisions/`)
    - 18 complete specialist divisions (Engineering, Testing, Security, Design, Product, PM, Healthcare, Finance, GIS, GameDev, Marketing, Sales, Academic, Research, Spatial Computing, Support, Strategy, Specialized).
    - 273 canonical subagents, 6 strategy runbooks, and 7 lifecycle playbooks.
 
@@ -34,7 +34,7 @@
 
 ### Step 1: Clone the Repository
 ```powershell
-git clone <YOUR-GIT-REPO-URL> "G:\0000 PY PROGRAM\_AI_TOOLS\SUper"
+git clone https://github.com/modarif/SUper.git "G:\0000 PY PROGRAM\_AI_TOOLS\SUper"
 cd "G:\0000 PY PROGRAM\_AI_TOOLS\SUper"
 ```
 
@@ -66,13 +66,13 @@ SUper/
 ├── .gitignore                  # Production gitignore
 │
 ├── platforms/                  # Ready-to-deploy Global Platform Configurations
-│   ├── antigravity/            # ~/.gemini/config (AGENTS.md, rules, 345+ skills)
-│   └── opencode/               # ~/.config/opencode (opencode.jsonc, 273+ agents, scripts)
+│   ├── antigravity/            # SUper Orchestrator (~/.gemini/config: AGENTS.md, rules, 345+ skills)
+│   └── opencode/               # SUper Agent Layer (~/.config/opencode: opencode.jsonc, 273+ agents, scripts)
 │
 ├── frameworks/                 # Complete Framework Source Code & Engines
-│   ├── ecc/                    # Everything Claude Code (68 agents, skills, hooks)
-│   ├── the-agency/             # The Agency 18 Specialist Divisions & Runbooks
-│   └── deepseek-harness/       # DeepSeek Harness Execution Engine
+│   ├── super-core/             # SUper Core Engine (Multi-agent worktree execution)
+│   ├── super-skills/           # SUper Skills Engine (68 agents, 286+ skills, hooks)
+│   └── super-divisions/        # SUper Divisions (18 Specialist Divisions & Runbooks)
 │
 └── templates/                  # Reusable Scaffolding Templates for any project
     ├── .agents/                # Project rules (Modular Architecture & Doc-First)
@@ -82,7 +82,7 @@ SUper/
 
 ---
 
-## 🏢 The Agency — 18 Specialist Divisions (273+ Subagents)
+## 🏢 SUper Divisions — 18 Specialist Divisions (273+ Subagents)
 
 | Division | Primary Focus | Key Subagents |
 |---|---|---|
@@ -107,9 +107,9 @@ SUper/
 
 ---
 
-## 🛠️ Binding AI Engineering Rules into Any Project
+## 🛠️ Binding SUper Rules into Any Project
 
-To bind Antigravity, OpenCode, and the Hard Rules into any software project:
+To bind SUper Suite rules into any software project:
 
 ```powershell
 cd "G:\0000 PY PROGRAM\_AI_TOOLS\SUper"

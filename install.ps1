@@ -1,6 +1,6 @@
 ﻿# ==============================================================================
 # SUper UNIFIED AI CODING ECOSYSTEM — MASTER INSTALLER
-# Antigravity Lead Orchestrator + Everything Claude Code + DeepSeek Harness + The Agency
+# SUper Orchestrator + SUper Skills + SUper Core + SUper Divisions
 # ==============================================================================
 
 [CmdletBinding()]
@@ -14,7 +14,7 @@ $ErrorActionPreference = "Stop"
 Write-Host @"
 ==============================================================================
                     SUPER MASTER AI ECOSYSTEM INSTALLER                       
-   [Antigravity Orchestrator + ECC + DeepSeek Harness + The Agency (18 Divs)] 
+      [SUper Orchestrator + SUper Skills + SUper Core + SUper Divisions]      
 ==============================================================================
 "@ -ForegroundColor Cyan
 
@@ -35,11 +35,11 @@ try {
     $nodeVer = node -v
     Write-Host "  [OK] Node.js detected: $nodeVer" -ForegroundColor Green
 } catch {
-    Write-Warning "  [WARN] Node.js is not in PATH. Node.js v18+ is required for DSH multi-agent execution."
+    Write-Warning "  [WARN] Node.js is not in PATH. Node.js v18+ is required for SUper Core multi-agent execution."
 }
 
-# --- 2. Configure Antigravity Global Environment ---
-Write-Host "`n[2/5] Deploying Antigravity Lead Supervisor (~/.gemini/config)..." -ForegroundColor Yellow
+# --- 2. Configure SUper Orchestrator Global Environment ---
+Write-Host "`n[2/5] Deploying SUper Orchestrator Lead Supervisor (~/.gemini/config)..." -ForegroundColor Yellow
 
 $geminiRoot = Join-Path $TargetUserHome ".gemini\config"
 $geminiSkills = Join-Path $geminiRoot "skills"
@@ -64,10 +64,10 @@ Write-Host "  Syncing global skills pool (345+ specialized skills)..." -Foregrou
 Copy-Item (Join-Path $agPlatformSrc "skills\*") -Destination $geminiSkills -Recurse -Force
 
 $activeSkills = (Get-ChildItem $geminiSkills -Directory).Count
-Write-Host "  [OK] Antigravity Lead configured! ($activeSkills active skills in ~/.gemini/config/skills/)" -ForegroundColor Green
+Write-Host "  [OK] SUper Orchestrator configured! ($activeSkills active skills in ~/.gemini/config/skills/)" -ForegroundColor Green
 
-# --- 3. Configure OpenCode Global Environment ---
-Write-Host "`n[3/5] Deploying OpenCode Global Environment (~/.config/opencode)..." -ForegroundColor Yellow
+# --- 3. Configure SUper Agent Layer (OpenCode) ---
+Write-Host "`n[3/5] Deploying SUper Agent Layer Global Environment (~/.config/opencode)..." -ForegroundColor Yellow
 
 $opencodeRoot = Join-Path $TargetUserHome ".config\opencode"
 $opencodeAgents = Join-Path $opencodeRoot "agents"
@@ -82,28 +82,28 @@ if (-not (Test-Path $opencodeScripts)) { New-Item -ItemType Directory -Path $ope
 Copy-Item (Join-Path $ocPlatformSrc "opencode.jsonc") -Destination $opencodeRoot -Force
 
 # Copy Canonical Agent Markdown Files
-Write-Host "  Syncing canonical OpenCode agents (273+ specialized agents)..." -ForegroundColor Gray
+Write-Host "  Syncing canonical SUper agents (273+ specialized agents)..." -ForegroundColor Gray
 Copy-Item (Join-Path $ocPlatformSrc "agents\*") -Destination $opencodeAgents -Recurse -Force
 
-# Copy DeepSeek Harness execution scripts
+# Copy SUper Core execution scripts
 Copy-Item (Join-Path $ocPlatformSrc "scripts\*") -Destination $opencodeScripts -Recurse -Force
 
 $activeAgents = (Get-ChildItem $opencodeAgents -Filter "*.md").Count
-Write-Host "  [OK] OpenCode configured! ($activeAgents agents active in ~/.config/opencode/agents/)" -ForegroundColor Green
+Write-Host "  [OK] SUper Agent Layer configured! ($activeAgents agents active in ~/.config/opencode/agents/)" -ForegroundColor Green
 
-# --- 4. Wire DeepSeek Harness Execution Layer ---
-Write-Host "`n[4/5] Wiring DeepSeek Harness Multi-Agent Worktree Layer..." -ForegroundColor Yellow
+# --- 4. Wire SUper Core Multi-Agent Execution Layer ---
+Write-Host "`n[4/5] Wiring SUper Core Multi-Agent Worktree Layer..." -ForegroundColor Yellow
 
-$localDshRoot = Join-Path $ScriptDir "frameworks\deepseek-harness"
+$localDshRoot = Join-Path $ScriptDir "frameworks\super-core"
 $dshDelegateFile = Join-Path $opencodeScripts "dsh-delegate.js"
 
 if (Test-Path $dshDelegateFile) {
-    # Dynamically update DSH_ROOT to point to local frameworks/deepseek-harness
+    # Dynamically update DSH_ROOT to point to local frameworks/super-core
     $dshContent = Get-Content $dshDelegateFile -Raw
     $escapedDshPath = $localDshRoot.Replace("\", "\\")
     $dshContent = $dshContent -replace 'const DSH_ROOT = ".*?";', "const DSH_ROOT = `"$escapedDshPath`";"
     Set-Content -Path $dshDelegateFile -Value $dshContent -Encoding UTF8
-    Write-Host "  [OK] dsh-delegate.js linked to local DeepSeek engine at $localDshRoot" -ForegroundColor Green
+    Write-Host "  [OK] dsh-delegate.js linked to local SUper Core engine at $localDshRoot" -ForegroundColor Green
 }
 
 # --- 5. Self-Verification Suite ---
@@ -119,9 +119,9 @@ Write-Host @"
 ==============================================================================
 
 How to use on this machine:
-1. Antigravity IDE: All 345+ skills and hard rules automatically trigger on intent.
-2. OpenCode CLI/UI: Type '@' to summon any of the 273+ agents in ANY project.
-3. DeepSeek Harness: Run multi-agent team pipelines:
+1. SUper Orchestrator: All 345+ skills and hard rules automatically trigger on intent.
+2. SUper Agent Layer: Type '@' to summon any of the 273+ agents in ANY project.
+3. SUper Core: Run multi-agent team pipelines:
    node "$opencodeScripts\dsh-team.js" --pipeline FULL_STACK_DEV --objective "<GOAL>"
 4. New Project Scaffolding:
    .\scaffold.ps1 -TargetProject "C:\path\to\new-project"

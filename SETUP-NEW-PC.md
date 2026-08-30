@@ -1,4 +1,4 @@
-﻿# 💻 Complete New PC / Fresh Windows Setup Guide for SUper
+﻿# 💻 Complete New PC / Fresh Windows Setup Guide for SUper Suite
 
 This guide provides step-by-step instructions for getting your complete AI engineering ecosystem running on a fresh PC or after reinstalling Windows.
 
@@ -13,12 +13,12 @@ Before installing, ensure you have:
 
 ---
 
-## 📥 Step 1: Clone SUper
+## 📥 Step 1: Clone SUper Suite
 
 Clone the master repository to your preferred tools folder (e.g. `G:\0000 PY PROGRAM\_AI_TOOLS\SUper` or `C:\AI_TOOLS\SUper`):
 
 ```powershell
-git clone <YOUR-GIT-REPO-URL> "G:\0000 PY PROGRAM\_AI_TOOLS\SUper"
+git clone https://github.com/modarif/SUper.git "G:\0000 PY PROGRAM\_AI_TOOLS\SUper"
 cd "G:\0000 PY PROGRAM\_AI_TOOLS\SUper"
 ```
 
@@ -34,18 +34,18 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 ```
 
 ### What `install.ps1` does automatically:
-1. **Antigravity Lead Orchestrator**:
+1. **SUper Orchestrator (Lead Supervisor)**:
    - Creates `~/.gemini/config/`
    - Deploys `AGENTS.md` and `GEMINI.md`
    - Deploys all **345+ Global Skills** into `~/.gemini/config/skills/`
    - Deploys **Universal Hard Rules** (`modular-architecture.md` & `documentation-first-sequential-execution.md`) into `~/.gemini/config/rules/`
-2. **OpenCode Global Environment**:
+2. **SUper Agent Layer**:
    - Creates `~/.config/opencode/`
    - Deploys `opencode.jsonc` (283+ registered agents & LLM provider configurations)
    - Deploys all **273 Canonical Agent Markdown Files** into `~/.config/opencode/agents/`
-   - Deploys DeepSeek Harness scripts into `~/.config/opencode/scripts/`
-3. **DeepSeek Harness Engine**:
-   - Links `dsh-delegate.js` directly to the bundled `frameworks/deepseek-harness/` engine
+   - Deploys SUper Core scripts into `~/.config/opencode/scripts/`
+3. **SUper Core Engine**:
+   - Links `dsh-delegate.js` directly to the bundled `frameworks/super-core/` engine
    - Configures worktree snapshot isolation & 26 multi-agent team pipelines
 4. **Self-Verification**:
    - Automatically runs `.\verify.ps1` to ensure every path, rule, and agent is 100% operational.
@@ -61,9 +61,9 @@ To manually verify the system at any time, run:
 ```
 
 You should see all green `[PASS]` checks for:
-- Antigravity AGENTS.md & Skills Pool (345+ skills)
-- OpenCode `opencode.jsonc` & Canonical Agents (273+ agents)
-- DeepSeek Harness dynamic persona loader
+- SUper Orchestrator AGENTS.md & Skills Pool (345+ skills)
+- SUper Agent Layer `opencode.jsonc` & Canonical Agents (273+ agents)
+- SUper Core dynamic persona loader
 - Universal Hard Rules (Modular Architecture + Doc-First Execution)
 
 ---

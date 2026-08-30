@@ -9,14 +9,14 @@ param (
 
 Write-Host @"
 ==============================================================================
-               SUPER UNIFIED AI CODING ECOSYSTEM HEALTH AUDIT                 
+                    SUPER AI ECOSYSTEM HEALTH AUDIT                           
 ==============================================================================
 "@ -ForegroundColor Cyan
 
 $allPassed = $true
 
-# 1. Antigravity Global Environment
-Write-Host "`n1. Checking Antigravity Lead Orchestrator..." -ForegroundColor Yellow
+# 1. SUper Orchestrator Global Environment
+Write-Host "`n1. Checking SUper Orchestrator Lead Supervisor..." -ForegroundColor Yellow
 $geminiDir = Join-Path $UserHome ".gemini\config"
 $geminiAgents = Join-Path $geminiDir "AGENTS.md"
 $geminiSkills = Join-Path $geminiDir "skills"
@@ -30,16 +30,16 @@ if (Test-Path $geminiAgents) {
 }
 
 $agencySkills = (Get-ChildItem $geminiSkills -Directory -Filter "agency-*" -ErrorAction SilentlyContinue).Count
-Write-Host "  [INFO] Agency Skills in ~/.gemini/config/skills/: $agencySkills (Expected: 300+)" -ForegroundColor Gray
-if ($agencySkills -ge 273) {
-    Write-Host "  [PASS] Antigravity skills pool verified" -ForegroundColor Green
+Write-Host "  [INFO] Skills Pool in ~/.gemini/config/skills/: $agencySkills (Expected: 270+)" -ForegroundColor Gray
+if ($agencySkills -ge 270) {
+    Write-Host "  [PASS] SUper Orchestrator skills pool verified" -ForegroundColor Green
 } else {
-    Write-Host "  [FAIL] Incomplete Antigravity skills pool ($agencySkills found)" -ForegroundColor Red
+    Write-Host "  [FAIL] Incomplete SUper skills pool ($agencySkills found)" -ForegroundColor Red
     $allPassed = $false
 }
 
-# 2. OpenCode Global Environment
-Write-Host "`n2. Checking OpenCode Global Environment..." -ForegroundColor Yellow
+# 2. SUper Agent Layer Global Environment
+Write-Host "`n2. Checking SUper Agent Layer Environment..." -ForegroundColor Yellow
 $opencodeDir = Join-Path $UserHome ".config\opencode"
 $opencodeJsonc = Join-Path $opencodeDir "opencode.jsonc"
 $opencodeAgents = Join-Path $opencodeDir "agents"
@@ -54,23 +54,23 @@ if (Test-Path $opencodeJsonc) {
 $ocAgentFiles = (Get-ChildItem $opencodeAgents -Filter "*.md" -ErrorAction SilentlyContinue).Count
 Write-Host "  [INFO] Canonical Agents in ~/.config/opencode/agents/: $ocAgentFiles (Expected: 273)" -ForegroundColor Gray
 if ($ocAgentFiles -ge 273) {
-    Write-Host "  [PASS] OpenCode canonical agents verified" -ForegroundColor Green
+    Write-Host "  [PASS] SUper canonical agents verified" -ForegroundColor Green
 } else {
-    Write-Host "  [FAIL] Incomplete OpenCode agents ($ocAgentFiles found)" -ForegroundColor Red
+    Write-Host "  [FAIL] Incomplete SUper agents ($ocAgentFiles found)" -ForegroundColor Red
     $allPassed = $false
 }
 
-# 3. DeepSeek Harness Layer
-Write-Host "`n3. Checking DeepSeek Harness Execution Layer..." -ForegroundColor Yellow
+# 3. SUper Core Multi-Agent Layer
+Write-Host "`n3. Checking SUper Core Execution Layer..." -ForegroundColor Yellow
 $dshDelegate = Join-Path $opencodeDir "scripts\dsh-delegate.js"
 $dshTeam = Join-Path $opencodeDir "scripts\dsh-team.js"
 
 if (Test-Path $dshDelegate) {
     $content = Get-Content $dshDelegate -Raw
     if ($content -match "getAgencyPrompt") {
-        Write-Host "  [PASS] dsh-delegate.js verified with Universal Agency Persona Loader" -ForegroundColor Green
+        Write-Host "  [PASS] dsh-delegate.js verified with Universal Persona Loader" -ForegroundColor Green
     } else {
-        Write-Host "  [WARN] dsh-delegate.js present but Universal Agency Loader missing" -ForegroundColor Yellow
+        Write-Host "  [WARN] dsh-delegate.js present but Universal Persona Loader missing" -ForegroundColor Yellow
     }
 } else {
     Write-Host "  [FAIL] dsh-delegate.js missing" -ForegroundColor Red
@@ -106,7 +106,7 @@ if (Test-Path $docRule) {
 # Final Summary
 Write-Host "`n==============================================================================" -ForegroundColor Cyan
 if ($allPassed) {
-    Write-Host "  ALL TESTS PASSED! System is 100% healthy, synchronized, and operational.  " -ForegroundColor Green
+    Write-Host "  ALL TESTS PASSED! SUper Suite is 100% healthy, synchronized, and operational. " -ForegroundColor Green
 } else {
     Write-Host "  SOME CHECKS FAILED. Please review the output above and run .\install.ps1   " -ForegroundColor Red
 }
