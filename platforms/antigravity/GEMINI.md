@@ -51,3 +51,4 @@ Before any commit:
 - `commands/` for slash-command patterns worth adapting into prompts/macros
 - `mcp-configs/` for shared connector baselines
 
+

@@ -56,7 +56,7 @@ A common question from software engineers is: **"How does BlackPearl compare to 
 ### 1. The Fundamental Distinction: Core Engine vs. Complete Operating System
 
 - **DeepSeek Harness (`dsh`)** is a powerful **foundational execution engine**. Built on the Cordis spatiotemporal plugin paradigm, it provides the low-level primitives: process sandboxing, tool routing, worktree lifecycle, and extensible plugin interfaces.
-- **BlackPearl** is the **complete, production-ready AI software development operating system**. It incorporates DeepSeek Harness at its foundational execution layer (`frameworks/BlackPearl-core/`) and builds a massive, pre-configured multi-agent hierarchy on top of it — integrating lead BlackPearlvision, 273+ specialized domain personas, 286+ engineering skills, TDD guardrails, and universal architectural constraints.
+- **BlackPearl** is the **complete, production-ready AI software development operating system**. It incorporates DeepSeek Harness at its foundational execution layer (`frameworks/BlackPearl-core/`) and builds a massive, pre-configured multi-agent hierarchy on top of it — integrating lead supervision, 273+ specialized domain personas, 286+ engineering skills, TDD guardrails, and universal architectural constraints.
 
 > **Key Insight**: BlackPearl does **not** compete with or replace DeepSeek Harness; rather, **BlackPearl harnesses DeepSeek Harness as its engine**, equipping it with a complete roster of specialist agents, strict engineering rules, and 1-click cross-platform deployment.
 
@@ -426,6 +426,7 @@ BlackPearl/
 
 ## 📜 License
 MIT License. Built for autonomous AI-powered software engineering.
+
 
 
 
