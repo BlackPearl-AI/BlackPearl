@@ -1,4 +1,4 @@
-﻿# 💻 Complete New PC / Fresh Windows Setup Guide for SUper Suite
+﻿# 💻 Complete New PC / Fresh Windows Setup Guide for SUper Agent
 
 This guide provides step-by-step instructions for getting your complete AI engineering ecosystem running on a fresh PC or after reinstalling Windows.
 
@@ -137,3 +137,4 @@ When you modify skills, agents, or rules:
    git pull origin main
    .\install.ps1
    ```
+

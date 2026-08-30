@@ -1,7 +1,8 @@
-﻿# ⚡ SUper Suite — The Master Unified AI Engineering Operating System
+﻿# ⚡ SUper Agent — Smart Unified Agent Orchestration Runtime
 
-> **The Ultimate Standalone Monorepo for Autonomous AI Software Engineering.**  
-> Bundles **SUper Orchestrator** (Lead Supervisor), **SUper Skills Engine** (286+ engineering workflows), **SUper Core Engine** (Multi-Process Worktree Isolation), and **SUper Divisions** (18 Specialist Divisions / 273+ Subagents) into a single, fully portable, one-click Git repository.
+> **ORCHESTRATE. CONNECT. VERIFY. EXECUTE.**  
+> **SUper Agent** is a comprehensive, production-ready **Smart Unified Agent Orchestration Runtime** for AI agents, skills, automation, and full-stack developer workflows. Bundles **SUper Orchestrator** (Lead Supervisor), **SUper Skills Engine** (286+ engineering workflows), **SUper Core Engine** (Multi-Process Worktree Isolation), and **SUper Divisions** (18 Specialist Divisions / 273+ Subagents) into a single, fully portable, one-click Git repository.
+
 
 [![Declaration](https://img.shields.io/badge/Manifesto-Ecosystem%20Declaration-blueviolet.svg)](DECLARATION.md)
 [![Setup Guide](https://img.shields.io/badge/Guide-New%20PC%20Setup-blue.svg)](SETUP-NEW-PC.md)
@@ -422,4 +423,5 @@ SUper/
 
 ## 📜 License
 MIT License. Built for autonomous AI-powered software engineering.
+
 
