@@ -1,12 +1,10 @@
-# ECC for Gemini CLI
+﻿# ⚡ SUper Suite for Gemini & Antigravity IDE
 
-This file provides Gemini CLI with the baseline ECC workflow, review standards, and security checks for repositories that install the Gemini target.
+This file provides the baseline **SUper Suite** workflow, review standards, and security checks for repositories and global environments.
 
 ## Overview
 
-Everything Claude Code (ECC) is a cross-harness coding system with 36 specialized agents, 142 skills, and 68 commands.
-
-Gemini support is currently focused on a strong project-local instruction layer via `.gemini/GEMINI.md`, plus the shared MCP catalog and package-manager setup assets shipped by the installer.
+**SUper Suite** is a unified autonomous AI coding operating system with 68 specialized core agents, 345+ skills, 94 commands, and 18 specialist divisions (273+ subagents).
 
 ## Core Workflow (DUAL HARD RULES)
 
@@ -33,7 +31,6 @@ Gemini support is currently focused on a strong project-local instruction layer 
 ## Security Checklist
 
 Before any commit:
-
 - No hardcoded API keys, passwords, or tokens
 - All external input validated
 - Parameterized queries for database writes
@@ -47,7 +44,7 @@ Before any commit:
 - Run targeted verification for touched areas before shipping
 - Prefer contained local implementations over adding new third-party runtime dependencies
 
-## ECC Areas To Reuse
+## SUper Suite Areas To Reuse
 
 - `AGENTS.md` for repo-wide operating rules
 - `skills/` for deep workflow guidance

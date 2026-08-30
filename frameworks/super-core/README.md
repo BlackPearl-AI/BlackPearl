@@ -1,59 +1,43 @@
-# DeepSeek Harness
+﻿# ⚡ SUper Core Engine (Multi-Agent Worktree Isolation & Execution)
 
-English | [中文](README.zh.md)
+> **The Core Execution & Isolation Engine of SUper Suite.**  
+> Provides isolated worktree snapshotting, multi-agent process pipelines, automatic base diff computation (`RESULT - BASE SNAPSHOT`), and dynamic persona injection.
 
-DeepSeek Harness (`dsh`) is an open-source agent harness developed by [DeepSeek AI](https://deepseek.com).
+---
 
-It uses an architecture where **everything is a plugin**, and is powered by [Cordis](https://github.com/cordiverse/cordis), whose design is described in [_A Programming Paradigm for Spatiotemporal Composability_](https://github.com/cordiverse/paper).
+## 🌟 Overview
 
-## Developer preview
+**SUper Core Engine** is the execution backbone for multi-agent autonomous engineering within **SUper Suite**. It powers:
 
-DeepSeek Harness is currently in _developer preview_ and is iterating rapidly. **THERE WILL BE COMPATIBILITY-BREAKING CHANGES.**
+1. **Worktree Snapshot Isolation**: Real OS processes running inside dedicated temporary git worktrees (`.worktrees/dsh-*`) so that the host repository stays 100% clean.
+2. **Automated Multi-Agent Pipelines**: 26 pre-configured automated workflows (Full Stack Feature, High-Risk Security Audits, Migration Gate, Refactoring loops).
+3. **Dynamic Persona Loader**: Dynamically loads any of the 273+ SUper Division specialist personas into runtime tasks.
+4. **Base Snapshot Diffing**: Ensures prior uncommitted work from the developer is never falsely attributed to AI tasks.
 
-## Run
+---
 
-### Run from `npm`
+## 🚀 Execution Commands
 
-Install `Node.js`, then run:
-
-```sh
-npx @deepseek-ai/dsh web
+### Run Multi-Agent Team Pipeline
+```bash
+node scripts/dsh-team.js --pipeline FULL_STACK_DEV --objective "<YOUR_OBJECTIVE>"
 ```
 
-The command starts the Web UI at `http://127.0.0.1:3080` by default and opens it in the default browser for a local launch. An SSH launch only prints the host URL because the SSH client or editor owns the local forwarded address. Pass `--no-open` to run the server without opening a browser. See [Web UI guide](docs/user/guide/index.md).
-
-### Run from source
-
-To run from a repository checkout:
-
-```sh
-git clone https://github.com/deepseek-ai/deepseek-harness.git
-cd deepseek-harness
-pnpm install
-pnpm run build
-pnpm dsh web
+### Run Single Bounded Role Session
+```bash
+node scripts/dsh-delegate.js --role DSH_PLANNER --task "<TASK>" --allowed-files "src/**"
 ```
 
-`pnpm run build` prepares the repository artifacts. `pnpm dsh web` uses those built artifacts without rebuilding.
+---
 
-## Community and support
+## 📂 Architecture
 
-- Feel free to submit feedback or bug reports through [GitHub Discussions](https://github.com/deepseek-ai/deepseek-harness/discussions).
-- Add the [`dsh-plugin`](https://github.com/topics/dsh-plugin) topic to your plugin repository for discoverability.
-- Join <a href="https://discord.gg/Ycq5dCaS4">DeepSeek Harness Discord community</a>.
+- **`apps/cli`**: CLI interface and interactive terminal runner.
+- **`apps/web`**: Web monitoring UI for live agent telemetry.
+- **`packages/`**: Core runtime libraries, cordis plugin framework, diff isolation adapters.
+- **`scripts/`**: Pipeline runners (`dsh-delegate.js`, `dsh-team.js`, etc.).
 
-## Contributing
+---
 
-See [CONTRIBUTING.md](CONTRIBUTING.md).
-
-## Development
-
-Start with the [development guide](docs/development.md) and [architecture documentation](docs/architecture.md).
-
-For agents, follow [AGENTS.md](AGENTS.md).
-
-## License
-
-[MIT](LICENSE)
-
-Third-party dependencies and their licenses are disclosed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+## 📜 License
+MIT License. Part of the SUper Suite ecosystem.
