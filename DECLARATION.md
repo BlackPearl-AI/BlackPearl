@@ -86,7 +86,8 @@ BlackPearl respects, honors, and builds upon the open-source community:
 ---
 
 **Crafted with precision for the future of Autonomous AI Engineering.**  
-*Official Repository: [https://github.com/modarif/BlackPearl](https://github.com/modarif/BlackPearl)*
+*Official Repository: [https://github.com/BlackPearl-AI/BlackPearl](https://github.com/BlackPearl-AI/BlackPearl)*
+
 
 
 

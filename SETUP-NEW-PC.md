@@ -25,13 +25,13 @@ Before installing, ensure you have:
 Clone the master repository to your preferred tools folder (e.g. `G:\0000 PY PROGRAM\_AI_TOOLS\BlackPearl` or `C:\AI_TOOLS\BlackPearl`):
 
 ```powershell
-git clone https://github.com/modarif/BlackPearl.git "G:\0000 PY PROGRAM\_AI_TOOLS\BlackPearl"
+git clone https://github.com/BlackPearl-AI/BlackPearl.git "G:\0000 PY PROGRAM\_AI_TOOLS\BlackPearl"
 cd "G:\0000 PY PROGRAM\_AI_TOOLS\BlackPearl"
 ```
 
 *Or on Linux / macOS / WSL:*
 ```bash
-git clone https://github.com/modarif/BlackPearl.git ~/BlackPearl
+git clone https://github.com/BlackPearl-AI/BlackPearl.git ~/BlackPearl
 cd ~/BlackPearl
 ```
 
@@ -140,6 +140,7 @@ When you modify skills, agents, or rules:
    git pull origin main
    .\install.ps1
    ```
+
 
 
 
