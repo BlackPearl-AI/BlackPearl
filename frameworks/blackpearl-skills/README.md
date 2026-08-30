@@ -1,13 +1,13 @@
-﻿# ⚡ SUper Skills Engine (Engineering Workflows, Agents & Skills)
+﻿# ⚡ BlackPearl Skills Engine (Engineering Workflows, Agents & Skills)
 
-> **The Comprehensive Skills & Engineering Workflows Engine of SUper Suite.**  
+> **The Comprehensive Skills & Engineering Workflows Engine of BlackPearl.**  
 > Contains 68 specialized engineering subagents, 286+ skills, 94 commands, and automated hooks for production-ready AI software development.
 
 ---
 
 ## 🌟 Overview
 
-**SUper Skills Engine** provides a comprehensive collection of battle-tested engineering capabilities:
+**BlackPearl Skills Engine** provides a comprehensive collection of battle-tested engineering capabilities:
 
 - **68 Specialized Subagents**: Full-stack engineers, architects, TDD guides, security reviewers, database reviewers, and build error resolvers.
 - **286+ Workflow Skills**: Automated patterns for React, Next.js, Node, Python, Django, Spring Boot, Go, Rust, and GIS.
@@ -27,4 +27,5 @@
 ---
 
 ## 📜 License
-MIT License. Part of the SUper Suite ecosystem.
+MIT License. Part of the BlackPearl ecosystem.
+

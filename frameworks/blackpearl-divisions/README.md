@@ -1,6 +1,6 @@
-﻿# 🎭 SUper Divisions — 18 Specialist Divisions (273+ Subagents)
+﻿# 🎭 BlackPearl Divisions — 18 Specialist Divisions (273+ Subagents)
 
-> **The Enterprise Specialist Division Roster of SUper Suite.**  
+> **The Enterprise Specialist Division Roster of BlackPearl.**  
 > 18 complete specialist divisions covering Engineering, Testing, Security, Design, Product, PM, Healthcare, Finance, GIS, GameDev, Marketing, Sales, Academic, Research, Spatial Computing, Support, Strategy, and Specialized domains.
 
 ---
@@ -31,4 +31,5 @@
 ---
 
 ## 📜 License
-MIT License. Part of the SUper Suite ecosystem.
+MIT License. Part of the BlackPearl ecosystem.
+

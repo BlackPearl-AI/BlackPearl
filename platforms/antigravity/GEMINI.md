@@ -1,10 +1,10 @@
-﻿# ⚡ SUper Suite for Gemini & Antigravity IDE
+﻿# ⚡ BlackPearl for Gemini & Antigravity IDE
 
-This file provides the baseline **SUper Suite** workflow, review standards, and security checks for repositories and global environments.
+This file provides the baseline **BlackPearl** workflow, review standards, and security checks for repositories and global environments.
 
 ## Overview
 
-**SUper Suite** is a unified autonomous AI coding operating system with 68 specialized core agents, 345+ skills, 94 commands, and 18 specialist divisions (273+ subagents).
+**BlackPearl** is a unified autonomous AI coding operating system with 68 specialized core agents, 345+ skills, 94 commands, and 18 specialist divisions (273+ subagents).
 
 ## Core Workflow (DUAL HARD RULES)
 
@@ -44,9 +44,10 @@ Before any commit:
 - Run targeted verification for touched areas before shipping
 - Prefer contained local implementations over adding new third-party runtime dependencies
 
-## SUper Suite Areas To Reuse
+## BlackPearl Areas To Reuse
 
 - `AGENTS.md` for repo-wide operating rules
 - `skills/` for deep workflow guidance
 - `commands/` for slash-command patterns worth adapting into prompts/macros
 - `mcp-configs/` for shared connector baselines
+

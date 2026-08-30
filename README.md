@@ -1,7 +1,7 @@
-﻿# ⚡ SUper Agent — Smart Unified Agent Orchestration Runtime
+﻿# ⚡ BlackPearl — Smart Unified Agent Orchestration Runtime
 
 > **ORCHESTRATE. CONNECT. VERIFY. EXECUTE.**  
-> **SUper Agent** is a comprehensive, production-ready **Smart Unified Agent Orchestration Runtime** for AI agents, skills, automation, and full-stack developer workflows. Bundles **SUper Orchestrator** (Lead Supervisor), **SUper Skills Engine** (286+ engineering workflows), **SUper Core Engine** (Multi-Process Worktree Isolation), and **SUper Divisions** (18 Specialist Divisions / 273+ Subagents) into a single, fully portable, one-click Git repository.
+> **BlackPearl** is a comprehensive, production-ready **Smart Unified Agent Orchestration Runtime** for AI agents, skills, automation, and full-stack developer workflows. Bundles **BlackPearl Orchestrator** (Lead Supervisor), **BlackPearl Skills Engine** (286+ engineering workflows), **BlackPearl Core Engine** (Multi-Process Worktree Isolation), and **BlackPearl Divisions** (18 Specialist Divisions / 273+ Subagents) into a single, fully portable, one-click Git repository.
 
 
 [![Declaration](https://img.shields.io/badge/Manifesto-Ecosystem%20Declaration-blueviolet.svg)](DECLARATION.md)
@@ -15,30 +15,30 @@
 
 > **Read the complete manifesto**: **[📜 DECLARATION.md](DECLARATION.md)**
 
-**SUper Suite** is a curated, standardized meta-operating system created by synthesizing the top-quality architectures, rules, execution harnesses, and agent personas from across the global open-source AI community:
+**BlackPearl** is a curated, standardized meta-operating system created by synthesizing the top-quality architectures, rules, execution harnesses, and agent personas from across the global open-source AI community:
 
-- 🎯 **SUper Orchestrator**: Built upon **Antigravity & Gemini CLI** global supervisor architecture (345+ intent-triggered skills).
-- ⚡ **SUper Core Engine**: Powered by **DeepSeek Harness & Cordis** multi-process worktree snapshot isolation.
-- 🛠️ **SUper Skills Engine**: Standardized on **Everything Claude Code (ECC)** engineering rules, TDD workflows, and subagents.
-- 🎭 **SUper Divisions**: Housing all 18 enterprise specialist divisions (273+ personas) curated from **The Agency**.
+- 🎯 **BlackPearl Orchestrator**: Built upon **Antigravity & Gemini CLI** global Supervisor architecture (345+ intent-triggered skills).
+- ⚡ **BlackPearl Core Engine**: Powered by **DeepSeek Harness & Cordis** multi-process worktree snapshot isolation.
+- 🛠️ **BlackPearl Skills Engine**: Standardized on **Everything Claude Code (ECC)** engineering rules, TDD workflows, and subagents.
+- 🎭 **BlackPearl Divisions**: Housing all 18 enterprise specialist divisions (273+ personas) curated from **The Agency**.
 
 ---
 
-## ⚖️ Deep-Dive Analysis: SUper Suite vs. Foundational Agent Engines
+## ⚖️ Deep-Dive Analysis: BlackPearl vs. Foundational Agent Engines
 
 <p align="center">
-  <img src="assets/comparison-infographic.png" alt="SUper Agent Complete AI Ecosystem vs Standalone Harness" width="900" />
+  <img src="assets/comparison-infographic.png" alt="BlackPearl Complete AI Ecosystem vs Standalone Harness" width="900" />
 </p>
 
 ```
                                  ┌─────────────────────────────────────────┐
-                                 │               SUPER SUITE               │
+                                 │               BlackPearl               │
                                  └────────────────────┬────────────────────┘
                                                       │
          ┌───────────────────────────┬────────────────┴───────────────────────────┬───────────────────────────┐
          ▼                           ▼                                            ▼                           ▼
 ┌──────────────────┐       ┌──────────────────┐                         ┌──────────────────┐       ┌──────────────────┐
-│SUPER ORCHESTRATOR│       │   SUPER CORE     │                         │   SUPER SKILLS   │       │ SUPER DIVISIONS  │
+│BlackPearl Orchestrator│       │   BlackPearl Core     │                         │   BlackPearl Skills   │       │ BlackPearl Divisions  │
 │(Lead Supervisor) │       │(Execution Engine)│                         │ (Skills & Rules) │       │ (18 Specialists) │
 └────────┬─────────┘       └────────┬─────────┘                         └────────┬─────────┘       └────────┬─────────┘
          │                          │                                            │                          │
@@ -48,20 +48,20 @@
 └──────────────────┘       └──────────────────┘                         └──────────────────┘       └──────────────────┘
 ```
 
-A common question from software engineers is: **"How does SUper Suite compare to standalone agent frameworks like DeepSeek Harness, and which one should I use?"**
+A common question from software engineers is: **"How does BlackPearl compare to standalone agent frameworks like DeepSeek Harness, and which one should I use?"**
 
 ### 1. The Fundamental Distinction: Core Engine vs. Complete Operating System
 
 - **DeepSeek Harness (`dsh`)** is a powerful **foundational execution engine**. Built on the Cordis spatiotemporal plugin paradigm, it provides the low-level primitives: process sandboxing, tool routing, worktree lifecycle, and extensible plugin interfaces.
-- **SUper Suite** is the **complete, production-ready AI software development operating system**. It incorporates DeepSeek Harness at its foundational execution layer (`frameworks/super-core/`) and builds a massive, pre-configured multi-agent hierarchy on top of it — integrating lead supervision, 273+ specialized domain personas, 286+ engineering skills, TDD guardrails, and universal architectural constraints.
+- **BlackPearl** is the **complete, production-ready AI software development operating system**. It incorporates DeepSeek Harness at its foundational execution layer (`frameworks/BlackPearl-core/`) and builds a massive, pre-configured multi-agent hierarchy on top of it — integrating lead BlackPearlvision, 273+ specialized domain personas, 286+ engineering skills, TDD guardrails, and universal architectural constraints.
 
-> **Key Insight**: SUper Suite does **not** compete with or replace DeepSeek Harness; rather, **SUper Suite harnesses DeepSeek Harness as its engine**, equipping it with a complete roster of specialist agents, strict engineering rules, and 1-click cross-platform deployment.
+> **Key Insight**: BlackPearl does **not** compete with or replace DeepSeek Harness; rather, **BlackPearl harnesses DeepSeek Harness as its engine**, equipping it with a complete roster of specialist agents, strict engineering rules, and 1-click cross-platform deployment.
 
 ---
 
 ### 2. Feature-by-Feature Comparison Matrix
 
-| Architectural Capability | 🟩 SUper Suite (Complete Ecosystem) | 🟦 Standalone DeepSeek Harness (Base Engine) |
+| Architectural Capability | 🟩 BlackPearl (Complete Ecosystem) | 🟦 Standalone DeepSeek Harness (Base Engine) |
 |---|:---:|:---:|
 | **Agent Execution Runtime** | ⭐⭐⭐⭐⭐ (Powered by DeepSeek Core) | ⭐⭐⭐⭐⭐ (Fast, modular, Cordis-driven) |
 | **Plugin Architecture** | ⭐⭐⭐⭐⭐ (Fully preserved & extended) | ⭐⭐⭐⭐⭐ ("Everything is a plugin") |
@@ -69,7 +69,7 @@ A common question from software engineers is: **"How does SUper Suite compare to
 | **Out-of-the-Box Skills** | ✅ **286+ Production Skills** | ⚠️ Core framework skills only |
 | **Pre-Configured Specialist Agents** | ✅ **273+ Specialized Personas** | ⚠️ Generic templates (developer must build) |
 | **Enterprise Divisions** | ✅ **18 Full Divisions** (Security, Health, GIS, etc.) | ❌ None (requires manual plugins) |
-| **Lead Orchestrator / Supervisor** | ✅ **SUper Orchestrator** (345+ auto-skills) | ⚠️ Basic task routing |
+| **Lead Orchestrator / Supervisor** | ✅ **BlackPearl Orchestrator** (345+ auto-skills) | ⚠️ Basic task routing |
 | **Universal Hard Rules** | ✅ **5-Level Decomposition & Doc-First Gate** | ❌ Manual prompt design |
 | **Security & AppSec Reviewers** | ✅ **12+ Specialized AppSec/OWASP Agents** | ⚠️ Generic prompt |
 | **Skeptical QA & Reality Checkers** | ✅ **9+ Skeptical QA & Accessibility Agents** | ⚠️ Generic test prompts |
@@ -90,19 +90,19 @@ DeepSeek Harness focuses on foundational flexibility:
 ```
 - Ideal for AI infrastructure researchers and developers who want to write custom plugins, design their own agent memory systems from the ground up, or experiment with novel execution harnesses.
 
-#### 🟩 The SUper Suite Philosophy: *"Zero-Friction, Immediate Specialist Execution"*
-SUper Suite focuses on real-world engineering productivity:
+#### 🟩 The BlackPearl Philosophy: *"Zero-Friction, Immediate Specialist Execution"*
+BlackPearl focuses on real-world engineering productivity:
 ```
 [User Objective]
        │
        ▼
-[SUper Orchestrator (Lead Supervisor)]
+[BlackPearl Orchestrator (Lead Supervisor)]
        │
        ├─► [5-Level Modular Decomposition Gate]
        ├─► [Documentation-First Reality Check]
        │
        ▼
-[SUper Core (Worktree Isolation)]
+[BlackPearl Core (Worktree Isolation)]
        │
        ├─► 💻 Engineering Division (Backend, Mobile, Database, SRE)
        ├─► 🛡️ Security Division (OWASP, Secrets, AI Code Auditor)
@@ -119,33 +119,33 @@ SUper Suite focuses on real-world engineering productivity:
 - **Choose Standalone DeepSeek Harness if**:
   1. You are an AI researcher building a new, experimental agent framework from scratch.
   2. You want to modify low-level Cordis runtime bindings or design unique memory engines.
-- **Choose SUper Suite if**:
+- **Choose BlackPearl if**:
   1. You want to build, refactor, debug, test, and ship real-world software (C#, .NET, Python, TypeScript, React, Java, Go, Rust, Mobile, Cloud).
   2. You need an immediate team of specialized agents (AppSec auditor, QA reality checker, database optimizer, frontend designer) without manual prompt engineering.
   3. You demand strict engineering discipline (5-Level Modular Architecture, Test-Driven Development with 80%+ coverage, and documentation-first planning).
 
 ---
 
-## 🌟 What is SUper Suite?
+## 🌟 What is BlackPearl?
 
-**SUper Suite** is an enterprise-grade AI software development ecosystem designed to be completely portable across machines, operating systems, and fresh installations. Cloning this repository and running a single script immediately configures:
+**BlackPearl** is an enterprise-grade AI software development ecosystem designed to be completely portable across machines, operating systems, and fresh installations. Cloning this repository and running a single script immediately configures:
 
-1. **SUper Orchestrator (Lead Supervisor)** (`platforms/antigravity/` -> `~/.gemini/config/`)
+1. **BlackPearl Orchestrator (Lead Supervisor)** (`platforms/antigravity/` -> `~/.gemini/config/`)
    - 345+ specialized skills auto-activated on intent.
    - Master rules (`AGENTS.md`, `GEMINI.md`) with Section 11 Division Routing.
    - Universal Hard Rules (5-Level Modular Decomposition & Doc-First Sequential Execution).
-2. **SUper Agent Layer** (`platforms/opencode/` -> `~/.config/opencode/`)
+2. **BlackPearl Layer** (`platforms/opencode/` -> `~/.config/opencode/`)
    - 283+ registered subagents with `@` direct mentions in ANY project across your system.
    - 273 canonical `.md` agent files with custom UI hex color codes.
    - Multi-agent execution scripts (`dsh-delegate.js` & `dsh-team.js`).
-3. **SUper Core Engine** (`frameworks/super-core/`)
+3. **BlackPearl Core Engine** (`frameworks/BlackPearl-core/`)
    - Universal Dynamic Persona Loader (`getAgencyPrompt()`).
    - Isolated worktree snapshots with automatic base diffing (`RESULT - BASE SNAPSHOT`).
    - 26 pre-configured automated multi-agent pipelines (`dsh-team.js`).
-4. **SUper Skills Engine** (`frameworks/super-skills/`)
+4. **BlackPearl Skills Engine** (`frameworks/BlackPearl-skills/`)
    - 68 specialized engineering subagents.
    - 286+ skills, 94 commands, and automated hook workflows.
-5. **SUper Divisions** (`frameworks/super-divisions/`)
+5. **BlackPearl Divisions** (`frameworks/BlackPearl-divisions/`)
    - 18 complete specialist divisions (Engineering, Testing, Security, Design, Product, PM, Healthcare, Finance, GIS, GameDev, Marketing, Sales, Academic, Research, Spatial Computing, Support, Strategy, Specialized).
    - 273 canonical subagents, 6 strategy runbooks, and 7 lifecycle playbooks.
 
@@ -163,19 +163,19 @@ Before installing, ensure you have:
 
 ---
 
-### 📥 Step 1: Clone SUper Suite
+### 📥 Step 1: Clone BlackPearl
 
-Clone the master repository to your preferred location (e.g. `G:\0000 PY PROGRAM\_AI_TOOLS\SUper` or `C:\AI_TOOLS\SUper`):
+Clone the master repository to your preferred location (e.g. `G:\0000 PY PROGRAM\_AI_TOOLS\BlackPearl` or `C:\AI_TOOLS\BlackPearl`):
 
 ```powershell
-git clone https://github.com/modarif/SUper.git "G:\0000 PY PROGRAM\_AI_TOOLS\SUper"
-cd "G:\0000 PY PROGRAM\_AI_TOOLS\SUper"
+git clone https://github.com/modarif/BlackPearl.git "G:\0000 PY PROGRAM\_AI_TOOLS\BlackPearl"
+cd "G:\0000 PY PROGRAM\_AI_TOOLS\BlackPearl"
 ```
 
 *Or on Linux / macOS / WSL:*
 ```bash
-git clone https://github.com/modarif/SUper.git ~/SUper
-cd ~/SUper
+git clone https://github.com/modarif/BlackPearl.git ~/BlackPearl
+cd ~/BlackPearl
 ```
 
 ---
@@ -195,18 +195,18 @@ chmod +x install.sh
 ```
 
 #### What `install.ps1` & `install.sh` do automatically:
-1. **SUper Orchestrator (Lead Supervisor)**:
+1. **BlackPearl Orchestrator (Lead Supervisor)**:
    - Creates global `~/.gemini/config/`
    - Deploys `AGENTS.md` and `GEMINI.md`
    - Deploys all **345+ Global Skills** into `~/.gemini/config/skills/`
    - Deploys **Universal Hard Rules** (`modular-architecture.md` & `documentation-first-sequential-execution.md`) into `~/.gemini/config/rules/`
-2. **SUper Agent Layer**:
+2. **BlackPearl Layer**:
    - Creates global `~/.config/opencode/`
    - Deploys `opencode.jsonc` (283+ registered agents & LLM provider configurations)
    - Deploys all **273 Canonical Agent Markdown Files** into `~/.config/opencode/agents/`
-   - Deploys SUper Core scripts into `~/.config/opencode/scripts/`
-3. **SUper Core Engine**:
-   - Links `dsh-delegate.js` directly to the bundled `frameworks/super-core/` engine
+   - Deploys BlackPearl Core scripts into `~/.config/opencode/scripts/`
+3. **BlackPearl Core Engine**:
+   - Links `dsh-delegate.js` directly to the bundled `frameworks/BlackPearl-core/` engine
    - Configures worktree snapshot isolation & 26 multi-agent team pipelines
 4. **Automated Self-Verification**:
    - Automatically executes `.\verify.ps1` to ensure every path, rule, and agent is 100% operational.
@@ -222,19 +222,19 @@ To manually audit and verify the system health at any time, run:
 ```
 
 You should see all green `[PASS]` checks:
-- `[PASS]` SUper Orchestrator AGENTS.md & Skills Pool (345+ skills)
-- `[PASS]` SUper Agent Layer `opencode.jsonc` & Canonical Agents (273+ agents)
-- `[PASS]` SUper Core Dynamic Persona Loader
+- `[PASS]` BlackPearl Orchestrator AGENTS.md & Skills Pool (345+ skills)
+- `[PASS]` BlackPearl Layer `opencode.jsonc` & Canonical Agents (273+ agents)
+- `[PASS]` BlackPearl Core Dynamic Persona Loader
 - `[PASS]` Universal Hard Rules (Modular Architecture + Doc-First Execution)
 
 ---
 
-### 📂 Step 4: Binding SUper Rules into Any Project
+### 📂 Step 4: Binding BlackPearl Rules into Any Project
 
 When starting a new repository or working on an existing codebase (e.g. C#, Python, React, Go):
 
 ```powershell
-cd "G:\0000 PY PROGRAM\_AI_TOOLS\SUper"
+cd "G:\0000 PY PROGRAM\_AI_TOOLS\BlackPearl"
 .\scaffold.ps1 -TargetProject "C:\path\to\your-project"
 ```
 
@@ -272,13 +272,13 @@ A frequent question is: **"Do I need to configure API keys, and which ones are s
 |---|:---:|---|
 | **Antigravity IDE / Gemini CLI** | ❌ **NO** | Runs automatically using the IDE's built-in session. Zero configuration needed. |
 | **Local Offline Models (Ollama / LM Studio)** | ❌ **NO** | 100% Free, Private, and Offline (`ollama run qwen2.5-coder` or `deepseek-r1`). |
-| **OpenCode / SUper Core Cloud Execution** | ✅ **YES (Optional)** | Required only when invoking cloud models (DeepSeek, Claude, OpenAI, Gemini). |
+| **OpenCode / BlackPearl Core Cloud Execution** | ✅ **YES (Optional)** | Required only when invoking cloud models (DeepSeek, Claude, OpenAI, Gemini). |
 
 ---
 
 ### 2. Why Configure a DeepSeek API Key?
 - **Ultra-High Reasoning at Minimal Cost**: DeepSeek-V3 and DeepSeek-R1 offer state-of-the-art code reasoning at **~$0.14 per million tokens** (up to 95% cheaper than comparable cloud models).
-- **Parallel Multi-Agent Worktree Swarms**: Enables SUper Core to spawn multi-process reviewer teams (`DSH_PLANNER ➔ DSH_IMPLEMENTER ➔ DSH_REVIEWER ➔ DSH_VERIFIER`) autonomously in isolated worktrees.
+- **Parallel Multi-Agent Worktree Swarms**: Enables BlackPearl Core to spawn multi-process reviewer teams (`DSH_PLANNER ➔ DSH_IMPLEMENTER ➔ DSH_REVIEWER ➔ DSH_VERIFIER`) autonomously in isolated worktrees.
 
 ---
 
@@ -323,13 +323,13 @@ In any specific target project repository, create a `.env` file:
 ```env
 DEEPSEEK_API_KEY=sk-your-deepseek-api-key-here
 ```
-*(Note: SUper Hard Rules ensure `.env` files are automatically git-ignored and never committed).*
+*(Note: BlackPearl Hard Rules ensure `.env` files are automatically git-ignored and never committed).*
 
 ---
 
 ### 4. Running 100% Free & Offline with Ollama
 
-If you do not want to use any cloud API keys, you can run SUper Suite entirely locally with [Ollama](https://ollama.com/):
+If you do not want to use any cloud API keys, you can run BlackPearl entirely locally with [Ollama](https://ollama.com/):
 
 ```bash
 # Install high-performance coding model locally
@@ -356,7 +356,7 @@ if ($env:DEEPSEEK_API_KEY) { Write-Host "DeepSeek API Key is active!" -Foregroun
 ## 📁 Repository Architecture
 
 ```
-SUper/
+BlackPearl/
 ├── DECLARATION.md              # Official Ecosystem Declaration & Origin Manifesto
 ├── install.ps1                 # Master Windows one-click installer
 ├── install.sh                  # Master Unix/macOS/WSL one-click installer
@@ -367,13 +367,13 @@ SUper/
 ├── .gitignore                  # Production gitignore
 │
 ├── platforms/                  # Ready-to-deploy Global Platform Configurations
-│   ├── antigravity/            # SUper Orchestrator (~/.gemini/config: AGENTS.md, rules, 345+ skills)
-│   └── opencode/               # SUper Agent Layer (~/.config/opencode: opencode.jsonc, 273+ agents, scripts)
+│   ├── antigravity/            # BlackPearl Orchestrator (~/.gemini/config: AGENTS.md, rules, 345+ skills)
+│   └── opencode/               # BlackPearl Layer (~/.config/opencode: opencode.jsonc, 273+ agents, scripts)
 │
 ├── frameworks/                 # Complete Framework Source Code & Engines
-│   ├── super-core/             # SUper Core Engine (Multi-agent worktree execution)
-│   ├── super-skills/           # SUper Skills Engine (68 agents, 286+ skills, hooks)
-│   └── super-divisions/        # SUper Divisions (18 Specialist Divisions & Runbooks)
+│   ├── BlackPearl-core/             # BlackPearl Core Engine (Multi-agent worktree execution)
+│   ├── BlackPearl-skills/           # BlackPearl Skills Engine (68 agents, 286+ skills, hooks)
+│   └── BlackPearl-divisions/        # BlackPearl Divisions (18 Specialist Divisions & Runbooks)
 │
 └── templates/                  # Reusable Scaffolding Templates for any project
     ├── .agents/                # Project rules (Modular Architecture & Doc-First)
@@ -383,7 +383,7 @@ SUper/
 
 ---
 
-## 🏢 SUper Divisions — 18 Specialist Divisions (273+ Subagents)
+## 🏢 BlackPearl Divisions — 18 Specialist Divisions (273+ Subagents)
 
 | Division | Primary Focus | Key Subagents |
 |---|---|---|
@@ -423,5 +423,6 @@ SUper/
 
 ## 📜 License
 MIT License. Built for autonomous AI-powered software engineering.
+
 
 

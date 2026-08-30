@@ -1,9 +1,9 @@
-﻿# 💻 Complete New PC / Fresh Windows Setup Guide for SUper Agent
+﻿# 💻 Complete New PC / Fresh Windows Setup Guide for BlackPearl
 
 This guide provides step-by-step instructions for getting your complete AI engineering ecosystem running on a fresh PC or after reinstalling Windows.
 
 <p align="center">
-  <img src="assets/comparison-infographic.png" alt="SUper Agent Complete AI Ecosystem vs Standalone Harness" width="850" />
+  <img src="assets/comparison-infographic.png" alt="BlackPearl Complete AI Ecosystem vs Standalone Harness" width="850" />
 </p>
 
 ---
@@ -17,19 +17,19 @@ Before installing, ensure you have:
 
 ---
 
-## 📥 Step 1: Clone SUper Suite
+## 📥 Step 1: Clone BlackPearl
 
-Clone the master repository to your preferred tools folder (e.g. `G:\0000 PY PROGRAM\_AI_TOOLS\SUper` or `C:\AI_TOOLS\SUper`):
+Clone the master repository to your preferred tools folder (e.g. `G:\0000 PY PROGRAM\_AI_TOOLS\BlackPearl` or `C:\AI_TOOLS\BlackPearl`):
 
 ```powershell
-git clone https://github.com/modarif/SUper.git "G:\0000 PY PROGRAM\_AI_TOOLS\SUper"
-cd "G:\0000 PY PROGRAM\_AI_TOOLS\SUper"
+git clone https://github.com/modarif/BlackPearl.git "G:\0000 PY PROGRAM\_AI_TOOLS\BlackPearl"
+cd "G:\0000 PY PROGRAM\_AI_TOOLS\BlackPearl"
 ```
 
 *Or on Linux / macOS / WSL:*
 ```bash
-git clone https://github.com/modarif/SUper.git ~/SUper
-cd ~/SUper
+git clone https://github.com/modarif/BlackPearl.git ~/BlackPearl
+cd ~/BlackPearl
 ```
 
 ---
@@ -50,18 +50,18 @@ chmod +x install.sh
 ```
 
 ### What `install.ps1` does automatically:
-1. **SUper Orchestrator (Lead Supervisor)**:
+1. **BlackPearl Orchestrator (Lead Supervisor)**:
    - Creates `~/.gemini/config/`
    - Deploys `AGENTS.md` and `GEMINI.md`
    - Deploys all **345+ Global Skills** into `~/.gemini/config/skills/`
    - Deploys **Universal Hard Rules** (`modular-architecture.md` & `documentation-first-sequential-execution.md`) into `~/.gemini/config/rules/`
-2. **SUper Agent Layer**:
+2. **BlackPearl Layer**:
    - Creates `~/.config/opencode/`
    - Deploys `opencode.jsonc` (283+ registered agents & LLM provider configurations)
    - Deploys all **273 Canonical Agent Markdown Files** into `~/.config/opencode/agents/`
-   - Deploys SUper Core scripts into `~/.config/opencode/scripts/`
-3. **SUper Core Engine**:
-   - Links `dsh-delegate.js` directly to the bundled `frameworks/super-core/` engine
+   - Deploys BlackPearl Core scripts into `~/.config/opencode/scripts/`
+3. **BlackPearl Core Engine**:
+   - Links `dsh-delegate.js` directly to the bundled `frameworks/BlackPearl-core/` engine
    - Configures worktree snapshot isolation & 26 multi-agent team pipelines
 4. **Self-Verification**:
    - Automatically runs `.\verify.ps1` to ensure every path, rule, and agent is 100% operational.
@@ -77,9 +77,9 @@ To manually verify the system at any time, run:
 ```
 
 You should see all green `[PASS]` checks for:
-- SUper Orchestrator AGENTS.md & Skills Pool (345+ skills)
-- SUper Agent Layer `opencode.jsonc` & Canonical Agents (273+ agents)
-- SUper Core dynamic persona loader
+- BlackPearl Orchestrator AGENTS.md & Skills Pool (345+ skills)
+- BlackPearl Layer `opencode.jsonc` & Canonical Agents (273+ agents)
+- BlackPearl Core dynamic persona loader
 - Universal Hard Rules (Modular Architecture + Doc-First Execution)
 
 ---
@@ -89,7 +89,7 @@ You should see all green `[PASS]` checks for:
 ### Do You Need an API Key?
 - **Antigravity IDE / Gemini CLI**: ❌ **NO** (Uses built-in IDE session automatically).
 - **100% Offline / Local Models (Ollama)**: ❌ **NO** (Run `ollama run qwen2.5-coder` or `deepseek-r1` for free).
-- **Cloud Models via OpenCode / SUper Core**: ✅ **YES** (If calling DeepSeek, Claude, OpenAI).
+- **Cloud Models via OpenCode / BlackPearl Core**: ✅ **YES** (If calling DeepSeek, Claude, OpenAI).
 
 ### Setting Up API Keys:
 
@@ -112,7 +112,7 @@ source ~/.bashrc
 When working on a new repository or existing project:
 
 ```powershell
-cd "G:\0000 PY PROGRAM\_AI_TOOLS\SUper"
+cd "G:\0000 PY PROGRAM\_AI_TOOLS\BlackPearl"
 .\scaffold.ps1 -TargetProject "C:\path\to\your-project"
 ```
 
@@ -137,4 +137,5 @@ When you modify skills, agents, or rules:
    git pull origin main
    .\install.ps1
    ```
+
 

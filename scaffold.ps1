@@ -1,6 +1,6 @@
 ﻿# ==============================================================================
-# SUper PROJECT SCAFFOLDER
-# Instantly binds SUper Orchestrator, SUper Skills, and Hard Rules into any project
+# BlackPearl PROJECT SCAFFOLDER
+# Instantly binds BlackPearl Orchestrator, BlackPearl Skills, and Hard Rules into any project
 # ==============================================================================
 
 [CmdletBinding()]
@@ -20,7 +20,7 @@ if (-not $ScriptDir) { $ScriptDir = Get-Location }
 
 $templatesDir = Join-Path $ScriptDir "templates"
 
-Write-Host "Scaffolding SUper Suite AI engineering rules into: $TargetProject" -ForegroundColor Cyan
+Write-Host "Scaffolding BlackPearl Suite AI engineering rules into: $TargetProject" -ForegroundColor Cyan
 
 # 1. Scaffold .agents directory
 $targetAgents = Join-Path $TargetProject ".agents"
@@ -39,4 +39,6 @@ Write-Host "  [OK] Injected .opencode/ configuration & prompt bindings" -Foregro
 Copy-Item (Join-Path $templatesDir "AGENTS.md") -Destination $TargetProject -Force
 Write-Host "  [OK] Injected project AGENTS.md" -ForegroundColor Green
 
-Write-Host "`nProject successfully scaffolded! SUper Suite is fully active in this repository." -ForegroundColor Cyan
+Write-Host "`nProject successfully scaffolded! BlackPearl Suite is fully active in this repository." -ForegroundColor Cyan
+
+
