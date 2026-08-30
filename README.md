@@ -60,23 +60,23 @@ A common question from software engineers is: **"How does SUper Suite compare to
 
 ### 2. Feature-by-Feature Comparison Matrix
 
-| Architectural Capability | 🟦 Standalone Harness (DeepSeek Engine) | 🟩 SUper Suite (Complete Ecosystem) |
+| Architectural Capability | 🟩 SUper Suite (Complete Ecosystem) | 🟦 Standalone DeepSeek Harness (Base Engine) |
 |---|:---:|:---:|
-| **Agent Execution Runtime** | ⭐⭐⭐⭐⭐ (Fast, modular, Cordis-driven) | ⭐⭐⭐⭐⭐ (Powered by DeepSeek Core) |
-| **Plugin Architecture** | ⭐⭐⭐⭐⭐ ("Everything is a plugin") | ⭐⭐⭐⭐⭐ (Fully preserved & extended) |
-| **Worktree Snapshot Isolation** | ✅ Built-in | ✅ Built-in (`RESULT - BASE SNAPSHOT`) |
-| **Out-of-the-Box Skills** | ⚠️ Core framework skills only | ✅ **286+ Production Skills** |
-| **Pre-Configured Specialist Agents** | ⚠️ Generic templates (developer must build) | ✅ **273+ Specialized Personas** |
-| **Enterprise Divisions** | ❌ None (requires manual plugins) | ✅ **18 Full Divisions** (Security, Health, GIS, etc.) |
-| **Lead Orchestrator / Supervisor** | ⚠️ Basic task routing | ✅ **SUper Orchestrator** (345+ auto-skills) |
-| **Universal Hard Rules** | ❌ Manual prompt design | ✅ **5-Level Decomposition & Doc-First Gate** |
-| **Security & AppSec Reviewers** | ⚠️ Generic prompt | ✅ **12+ Specialized AppSec/OWASP Agents** |
-| **Skeptical QA & Reality Checkers** | ⚠️ Generic test prompts | ✅ **9+ Skeptical QA & Accessibility Agents** |
-| **Antigravity / Gemini CLI Support** | ❌ Not built-in | ✅ **Native Platform Layer** |
-| **OpenCode Direct Mentions (`@agent`)** | ⚠️ Indirect | ✅ **283+ Global Mentionable Personas** |
-| **Zero-Config 1-Click Installation** | ⚠️ Requires manual repo setup & build | ✅ **30-Second 1-Click Script (`install.ps1`)** |
-| **Project Scaffolding Tooling** | ❌ Manual configuration | ✅ **Instant Scaffolder (`scaffold.ps1`)** |
-| **Best For** | *Building custom AI tools from scratch* | *Immediate, high-rigor software engineering* |
+| **Agent Execution Runtime** | ⭐⭐⭐⭐⭐ (Powered by DeepSeek Core) | ⭐⭐⭐⭐⭐ (Fast, modular, Cordis-driven) |
+| **Plugin Architecture** | ⭐⭐⭐⭐⭐ (Fully preserved & extended) | ⭐⭐⭐⭐⭐ ("Everything is a plugin") |
+| **Worktree Snapshot Isolation** | ✅ Built-in (`RESULT - BASE SNAPSHOT`) | ✅ Built-in |
+| **Out-of-the-Box Skills** | ✅ **286+ Production Skills** | ⚠️ Core framework skills only |
+| **Pre-Configured Specialist Agents** | ✅ **273+ Specialized Personas** | ⚠️ Generic templates (developer must build) |
+| **Enterprise Divisions** | ✅ **18 Full Divisions** (Security, Health, GIS, etc.) | ❌ None (requires manual plugins) |
+| **Lead Orchestrator / Supervisor** | ✅ **SUper Orchestrator** (345+ auto-skills) | ⚠️ Basic task routing |
+| **Universal Hard Rules** | ✅ **5-Level Decomposition & Doc-First Gate** | ❌ Manual prompt design |
+| **Security & AppSec Reviewers** | ✅ **12+ Specialized AppSec/OWASP Agents** | ⚠️ Generic prompt |
+| **Skeptical QA & Reality Checkers** | ✅ **9+ Skeptical QA & Accessibility Agents** | ⚠️ Generic test prompts |
+| **Antigravity / Gemini CLI Support** | ✅ **Native Platform Layer** | ❌ Not built-in |
+| **OpenCode Direct Mentions (`@agent`)** | ✅ **283+ Global Mentionable Personas** | ⚠️ Indirect |
+| **Zero-Config 1-Click Installation** | ✅ **30-Second 1-Click Script (`install.ps1`)** | ⚠️ Requires manual repo setup & build |
+| **Project Scaffolding Tooling** | ✅ **Instant Scaffolder (`scaffold.ps1`)** | ❌ Manual configuration |
+| **Best For** | *Immediate, high-rigor software engineering* | *Building custom AI tools from scratch* |
 
 ---
 
@@ -422,3 +422,4 @@ SUper/
 
 ## 📜 License
 MIT License. Built for autonomous AI-powered software engineering.
+
