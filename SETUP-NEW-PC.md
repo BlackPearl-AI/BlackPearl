@@ -1,5 +1,5 @@
 ﻿<p align="center">
-  <img src="assets/banner.png" alt="SUper Agent — Orchestrate. Connect. Verify. Execute." width="680" />
+  <img src="assets/banner.png" alt="SUper Agent — Orchestrate. Connect. Verify. Execute." width="480" />
 </p>
 
 # 💻 Complete New PC / Fresh Windows Setup Guide for SUper Suite
@@ -112,3 +112,4 @@ When you modify skills, agents, or rules:
    git pull origin main
    .\install.ps1
    ```
+

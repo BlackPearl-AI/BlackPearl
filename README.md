@@ -1,5 +1,5 @@
 ﻿<p align="center">
-  <img src="assets/banner.png" alt="SUper Agent — Orchestrate. Connect. Verify. Execute." width="100%" />
+  <img src="assets/banner.png" alt="SUper Agent — Orchestrate. Connect. Verify. Execute." width="480" />
 </p>
 
 # ⚡ SUper Suite — The Master Unified AI Engineering Operating System
@@ -335,4 +335,5 @@ SUper/
 
 ## 📜 License
 MIT License. Built for autonomous AI-powered software engineering.
+
 
