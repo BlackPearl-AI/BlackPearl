@@ -1,0 +1,15 @@
+{
+  "id": "836f65e4-79e0-4036-b5a6-546e6d7bd717",
+  "name": "ddcsv4",
+  "projectResources": {
+    "resources": [
+      {
+        "gitFolder": {
+          "folderUri": "file:///g%3A/ddcsv4%282025-04-04%29/ddcsv4",
+          "allowWrite": true
+        }
+      }
+    ]
+  },
+  "updatedAt": "2026-05-16T17:26:52.554745500Z"
+}

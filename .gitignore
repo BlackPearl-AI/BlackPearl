@@ -1,0 +1,17 @@
+﻿node_modules/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+Thumbs.db
+.worktrees/
+.dsh_worktrees/
+.sessions/
+.dsh-build/
+dist/
+build/
+coverage/
+.turbo/
+.next/
+.nuxt/

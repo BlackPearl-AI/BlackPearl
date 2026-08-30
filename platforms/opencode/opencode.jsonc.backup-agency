@@ -1,0 +1,212 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "nvidia/nvidia/nemotron-3.5-lightning-30b-a3b",
+  "default_agent": "build",
+  "instructions": [
+    "C:/Users/victo/.config/opencode/AGENTS.md"
+  ],
+  "skills": {
+    "paths": [
+      "C:/Users/victo/.agents/skills"
+    ]
+  },
+  "plugin": [
+    "./plugins/crg-plugin.ts",
+    "G:/0000 PY PROGRAM/_AI_TOOLS/ECC/.opencode/dist/plugins"
+  ],
+  "agent": {
+    "build": {
+      "description": "OpenCode Lead Engineer & Supervisor. Autonomous Zero-Command task routing, multi-agent team decomposition, ECC discipline, and DeepSeek Harness delegation.",
+      "mode": "primary",
+      "prompt": "You are the Lead Engineer & Supervisor in OpenCode Desktop. You operate autonomously in Zero-Command mode: 1) Evaluate repository using CURRENT EXECUTABLE EVIDENCE (source, tests, git, build) as authoritative ground truth. Historical documents (HANDOFF, BUG_REPORT, TODO) are reference-only leads. 2) Decompose complex tasks across specialized roles (Planner, Architect, Implementer, Reviewer, Fixer, Verifier). 3) Pass bounded agent-to-agent handoffs. 4) Run iterative self-correction loops (Implement -> Review -> Fix, max 3 cycles). 5) Delegate heavy tasks to DeepSeek Harness in isolated worktrees. 6) Independently verify via ECC quality gate (diff inspection, test run, security audit, typecheck). Never recommend blanket 'git add .' without classifying files. Enforce Single-Writer protection and immutability.",
+      "tools": {
+        "write": true,
+        "edit": true,
+        "bash": true,
+        "read": true
+      }
+    },
+    "planner": {
+      "description": "Expert planning specialist for complex features, migrations, and architectural refactoring (Read-Only).",
+      "mode": "subagent",
+      "prompt": "You are an expert planning specialist. Ground all plans in CURRENT live codebase evidence. Treat historical reports as reference-only. Break down steps with exact file paths, identify dependencies and failure risks, and create actionable, decision-complete implementation plans.",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "architect": {
+      "description": "Software architecture specialist for system design, scalability, and technical contracts (Read-Only).",
+      "mode": "subagent",
+      "prompt": "You are a software architecture specialist. Design scalable modular architectures, define clear interfaces and repositories, maintain backward compatibility, and avoid premature abstraction.",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "code-reviewer": {
+      "description": "Expert code review specialist. Reviews code for quality, security, immutability, and maintainability (Read-Only).",
+      "mode": "subagent",
+      "prompt": "You are an expert code reviewer. Inspect git diffs and code changes against ECC standards: immutability, function size (<50 lines), cyclomatic complexity, error handling, backward compatibility, and test coverage. Return concrete, actionable findings for the Fixer.",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "security-reviewer": {
+      "description": "Security vulnerability detection specialist for OWASP, secrets, and auth validation (Read-Only Review).",
+      "mode": "subagent",
+      "prompt": "You are an elite security reviewer. Detect OWASP Top 10 vulnerabilities, ensure zero hardcoded secrets, verify parameterized queries (SQL injection prevention), ensure input sanitization (XSS prevention), check authentication/authorization, and validate safe dependency posture. Return concrete findings for the Fixer.",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "tdd-guide": {
+      "description": "Test-Driven Development specialist enforcing write-tests-first methodology with 80%+ coverage.",
+      "mode": "subagent",
+      "prompt": "You are a TDD specialist. Enforce Test-Driven Development (Red -> Green -> Refactor) across unit, integration, and E2E layers. Require 80%+ test coverage. If a test suite times out or aborts, treat status as UNKNOWN/INCOMPLETE rather than failing.",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "database-reviewer": {
+      "description": "PostgreSQL / Supabase / SQL specialist for schema design, migrations, and query performance (Read-Only).",
+      "mode": "subagent",
+      "prompt": "You are a database specialist. Review schema designs, indexing strategies, query execution plans, transactions, and migration safety with zero destructive schema drops.",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "fixer": {
+      "description": "Surgical bug and defect fixer receiving structured reviewer findings in the self-correction loop.",
+      "mode": "subagent",
+      "prompt": "You are the Fixer agent in the iterative self-correction loop. Receive structured findings from Code/Security/Database reviewers and apply minimal, surgical corrections strictly within the assigned file scope. Never modify unrelated code.",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "build-error-resolver": {
+      "description": "Build, compilation, and TypeScript error resolution specialist.",
+      "mode": "subagent",
+      "prompt": "You are a build error resolver. Diagnose compilation, TypeScript, and bundler failures, apply minimal surgical fixes, and verify that the build succeeds without introducing regression.",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "deepseek-worker": {
+      "description": "Heavy autonomous worker delegating to DeepSeek Harness runtime in isolated worktrees.",
+      "mode": "subagent",
+      "prompt": "You are the DeepSeek Harness worker delegate. Delegate heavy tasks, mass test generation (50+ tests), large repository analysis, and independent audits using: node 'C:/Users/victo/.config/opencode/scripts/dsh-delegate.js' --objective '<OBJECTIVE>' --mode <MODE> --allowedScope '<SCOPE>'. Always enforce worktree isolation on write tasks and return the diff to OpenCode Lead for ECC quality gate verification.",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    }
+  },
+  "provider": {
+    "nvidia": {
+      "name": "NVIDIA NIM (Direct)",
+      "baseURL": "https://integrate.api.nvidia.com/v1",
+      "apiKey": "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",
+      "models": {
+        "nvidia/nemotron-3.5-lightning-30b-a3b": {
+          "name": "NVIDIA Nemotron 3.5 Lightning (Ultra Fast - Recommended)"
+        },
+        "meta/llama-3.3-70b-instruct": {
+          "name": "Meta Llama 3.3 70B (Rock Solid Coding)"
+        },
+        "nvidia/llama-3.1-nemotron-70b-instruct": {
+          "name": "NVIDIA Llama 3.1 Nemotron 70B"
+        },
+        "deepseek-ai/deepseek-v4-flash-0731": {
+          "name": "DeepSeek V4 Flash 0731 (NVIDIA)"
+        },
+        "nvidia/nemotron-3-super-120b-a12b": {
+          "name": "NVIDIA Nemotron 3 Super 120B"
+        },
+        "nvidia/nemotron-3-ultra-550b-a55b": {
+          "name": "NVIDIA Nemotron 3 Ultra 550B (Heavy)"
+        }
+      }
+    },
+    "openrouter": {
+      "name": "OpenRouter (Free & Paid)",
+      "baseURL": "https://openrouter.ai/api/v1",
+      "apiKey": "{env:OPENROUTER_API_KEY}",
+      "models": {
+        "nvidia/llama-3.1-nemotron-70b-instruct:free": {
+          "name": "Nvidia Nemotron 70B (Free)"
+        },
+        "deepseek/deepseek-r1:free": {
+          "name": "DeepSeek R1 (Free)"
+        },
+        "meta-llama/llama-3.3-70b-instruct:free": {
+          "name": "Meta Llama 3.3 70B (Free)"
+        },
+        "google/gemini-2.0-flash-exp:free": {
+          "name": "Google Gemini 2.0 Flash (Free)"
+        }
+      }
+    }
+  },
+  "mcp": {
+    "erp-engine": {
+      "type": "local",
+      "command": [
+        "npx", "tsx",
+        "G:\\0000 PY PROGRAM\\july\\super AIrepo_and_aget\\qwen-code-main - Copy\\qwen-code-main\\packages\\mcp-server\\src\\mcp-server.ts",
+        "--projectRoot", "G:\\0000 PY PROGRAM\\09- sep\\factory_owner_ERP"
+      ]
+    }
+  },
+  "permission": {
+    "read": {
+      "*.env*": "ask",
+      "*secrets*": "ask",
+      "*credentials*": "ask",
+      "*": "allow"
+    },
+    "edit": "allow",
+    "glob": "allow",
+    "grep": "allow",
+    "list": "allow",
+    "lsp": "allow",
+    "skill": "allow",
+    "bash": {
+      "git push*": "ask",
+      "git reset --hard*": "ask",
+      "git clean*": "ask",
+      "rm -rf*": "ask",
+      "*DROP TABLE*": "ask",
+      "*": "allow"
+    },
+    "external_directory": {
+      "C:\\Users\\victo\\.agents\\skills\\*": "allow",
+      "C:\\Users\\victo\\.local\\share\\opencode\\tool-output\\*": "allow",
+      "*": "ask"
+    }
+  }
+}

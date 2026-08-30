@@ -1,0 +1,64 @@
+﻿{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "nvidia/nvidia/nemotron-3.5-lightning-30b-a3b",
+  "permission": "allow",
+  "instructions": [
+    "AGENT_LOOP_INSTRUCTION.md"
+  ],
+  "agent": {
+    "build": {
+      "steps": 500,
+      "prompt": "You are an autonomous bug fixing agent in YOLO mode. When instructed to fix bugs, you MUST loop continuously: 1) Read SHARED_CORE_MASTER_BUG_REPORT_AND_EXECUTION_BLUEPRINT.md, 2) Find the first ticket N without an {N}-bug_fixed_report.md, 3) Open target source files and apply fixes, 4) Create {N}-bug_fixed_report.md, 5) IMMEDIATELY proceed to ticket N+1. Do not ask for user confirmation. Keep executing tools until all tickets are done."
+    },
+    "general": {
+      "steps": 500,
+      "prompt": "You are an autonomous bug fixing agent in YOLO mode. When instructed to fix bugs, you MUST loop continuously: 1) Read SHARED_CORE_MASTER_BUG_REPORT_AND_EXECUTION_BLUEPRINT.md, 2) Find the first ticket N without an {N}-bug_fixed_report.md, 3) Open target source files and apply fixes, 4) Create {N}-bug_fixed_report.md, 5) IMMEDIATELY proceed to ticket N+1. Do not ask for user confirmation. Keep executing tools until all tickets are done."
+    }
+  },
+  "provider": {
+    "nvidia": {
+      "name": "NVIDIA NIM (Direct)",
+      "baseURL": "https://integrate.api.nvidia.com/v1",
+      "apiKey": "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",
+      "models": {
+        "nvidia/nemotron-3.5-lightning-30b-a3b": {
+          "name": "NVIDIA Nemotron 3.5 Lightning (Ultra Fast - Recommended)"
+        },
+        "meta/llama-3.3-70b-instruct": {
+          "name": "Meta Llama 3.3 70B (Rock Solid Coding)"
+        },
+        "nvidia/llama-3.1-nemotron-70b-instruct": {
+          "name": "NVIDIA Llama 3.1 Nemotron 70B"
+        },
+        "deepseek-ai/deepseek-v4-flash-0731": {
+          "name": "DeepSeek V4 Flash 0731 (NVIDIA)"
+        },
+        "nvidia/nemotron-3-super-120b-a12b": {
+          "name": "NVIDIA Nemotron 3 Super 120B"
+        },
+        "nvidia/nemotron-3-ultra-550b-a55b": {
+          "name": "NVIDIA Nemotron 3 Ultra 550B (Heavy)"
+        }
+      }
+    },
+    "openrouter": {
+      "name": "OpenRouter (Free)",
+      "baseURL": "https://openrouter.ai/api/v1",
+      "apiKey": "{env:OPENROUTER_API_KEY}",
+      "models": {
+        "nvidia/llama-3.1-nemotron-70b-instruct:free": { "name": "Nvidia Nemotron 70B (Free)" },
+        "deepseek/deepseek-r1:free": { "name": "DeepSeek R1 (Free)" }
+      }
+    }
+  },
+  "mcp": {
+    "erp-engine": {
+      "type": "local",
+      "command": [
+        "npx", "tsx",
+        "G:\\0000 PY PROGRAM\\july\\super AIrepo_and_aget\\qwen-code-main - Copy\\qwen-code-main\\packages\\mcp-server\\src\\mcp-server.ts",
+        "--projectRoot", "G:\\0000 PY PROGRAM\\09- sep\\factory_owner_ERP"
+      ]
+    }
+  }
+}

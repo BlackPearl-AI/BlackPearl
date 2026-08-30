@@ -1,0 +1,15 @@
+﻿{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "erp-engine": {
+      "type": "local",
+      "command": [
+        "npx",
+        "tsx",
+        "G:\\0000 PY PROGRAM\\july\\super AIrepo_and_aget\\qwen-code-main - Copy\\qwen-code-main\\packages\\mcp-server\\src\\mcp-server.ts",
+        "--projectRoot",
+        "G:\\0000 PY PROGRAM\\09- sep\\factory_owner_ERP"
+      ]
+    }
+  }
+}

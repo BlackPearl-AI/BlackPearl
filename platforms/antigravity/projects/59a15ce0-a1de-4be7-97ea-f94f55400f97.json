@@ -1,0 +1,15 @@
+{
+  "id": "59a15ce0-a1de-4be7-97ea-f94f55400f97",
+  "name": "SRC",
+  "projectResources": {
+    "resources": [
+      {
+        "gitFolder": {
+          "folderUri": "file:///d%3A/SRC",
+          "allowWrite": true
+        }
+      }
+    ]
+  },
+  "updatedAt": "2026-05-21T10:17:35.842013500Z"
+}

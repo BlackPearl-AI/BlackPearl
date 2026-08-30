@@ -1,0 +1,4488 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "default_agent": "build",
+  "instructions": [
+    "AGENTS.md",
+    "CONTRIBUTING.md",
+    "instructions/INSTRUCTIONS.md",
+    "rules/common/modular-architecture.md",
+    "rules/common/documentation-first-sequential-execution.md",
+    "skills/tdd-workflow/SKILL.md",
+    "skills/security-review/SKILL.md",
+    "skills/coding-standards/SKILL.md",
+    "skills/frontend-patterns/SKILL.md",
+    "skills/frontend-slides/SKILL.md",
+    "skills/backend-patterns/SKILL.md",
+    "skills/e2e-testing/SKILL.md",
+    "skills/verification-loop/SKILL.md",
+    "skills/api-design/SKILL.md",
+    "skills/strategic-compact/SKILL.md",
+    "skills/eval-harness/SKILL.md"
+  ],
+  "plugin": [
+    "./plugins"
+  ],
+  "skills": {
+    "paths": [
+      "../skills"
+    ]
+  },
+  "agent": {
+    "build": {
+      "description": "Primary coding agent for development work",
+      "mode": "primary",
+      "tools": {
+        "write": true,
+        "edit": true,
+        "bash": true,
+        "read": true,
+        "changed-files": true
+      }
+    },
+    "planner": {
+      "description": "Expert planning specialist for complex features and refactoring. Use for implementation planning, architectural changes, or complex refactoring.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/planner.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "architect": {
+      "description": "Software architecture specialist for system design, scalability, and technical decision-making.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/architect.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "code-reviewer": {
+      "description": "Expert code review specialist. Reviews code for quality, security, and maintainability. Use immediately after writing or modifying code.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/code-reviewer.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "security-reviewer": {
+      "description": "Security vulnerability detection and remediation specialist. Use after writing code that handles user input, authentication, API endpoints, or sensitive data.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/security-reviewer.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": true,
+        "edit": true
+      }
+    },
+    "tdd-guide": {
+      "description": "Test-Driven Development specialist enforcing write-tests-first methodology. Use when writing new features, fixing bugs, or refactoring code. Ensures 80%+ test coverage.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/tdd-guide.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "build-error-resolver": {
+      "description": "Build and TypeScript error resolution specialist. Use when build fails or type errors occur. Fixes build/type errors only with minimal diffs.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/build-error-resolver.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "e2e-runner": {
+      "description": "End-to-end testing specialist using Playwright. Generates, maintains, and runs E2E tests for critical user flows.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/e2e-runner.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "doc-updater": {
+      "description": "Documentation and codemap specialist. Use for updating codemaps and documentation.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/doc-updater.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "refactor-cleaner": {
+      "description": "Dead code cleanup and consolidation specialist. Use for removing unused code, duplicates, and refactoring.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/refactor-cleaner.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "go-reviewer": {
+      "description": "Expert Go code reviewer specializing in idiomatic Go, concurrency patterns, error handling, and performance.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/go-reviewer.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "go-build-resolver": {
+      "description": "Go build, vet, and compilation error resolution specialist. Fixes Go build errors with minimal changes.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/go-build-resolver.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "database-reviewer": {
+      "description": "PostgreSQL database specialist for query optimization, schema design, security, and performance. Incorporates Supabase best practices.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/database-reviewer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "cpp-reviewer": {
+      "description": "Expert C++ code reviewer specializing in memory safety, modern C++ idioms, concurrency, and performance. Use for all C++ code changes.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/cpp-reviewer.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "cpp-build-resolver": {
+      "description": "C++ build, CMake, and compilation error resolution specialist. Fixes build errors, linker issues, and template errors with minimal changes.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/cpp-build-resolver.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "docs-lookup": {
+      "description": "Documentation specialist using Context7 MCP to fetch current library and API documentation with code examples.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/docs-lookup.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "harness-optimizer": {
+      "description": "Analyze and improve the local agent harness configuration for reliability, cost, and throughput.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/harness-optimizer.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "edit": true
+      }
+    },
+    "java-reviewer": {
+      "description": "Expert Java and Spring Boot code reviewer specializing in layered architecture, JPA patterns, security, and concurrency.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/java-reviewer.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "java-build-resolver": {
+      "description": "Java/Maven/Gradle build, compilation, and dependency error resolution specialist. Fixes build errors with minimal changes.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/java-build-resolver.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "kotlin-reviewer": {
+      "description": "Kotlin and Android/KMP code reviewer. Reviews Kotlin code for idiomatic patterns, coroutine safety, Compose best practices.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/kotlin-reviewer.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "kotlin-build-resolver": {
+      "description": "Kotlin/Gradle build, compilation, and dependency error resolution specialist. Fixes Kotlin build errors with minimal changes.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/kotlin-build-resolver.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "loop-operator": {
+      "description": "Operate autonomous agent loops, monitor progress, and intervene safely when loops stall.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/loop-operator.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "edit": true
+      }
+    },
+    "php-reviewer": {
+      "description": "Expert PHP code reviewer specializing in PSR-12 compliance, PHP type system, Eloquent ORM patterns, security, and performance.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/php-reviewer.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "python-reviewer": {
+      "description": "Expert Python code reviewer specializing in PEP 8 compliance, Pythonic idioms, type hints, security, and performance.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/python-reviewer.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "rust-reviewer": {
+      "description": "Expert Rust code reviewer specializing in idiomatic Rust, ownership, lifetimes, concurrency, and performance.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/rust-reviewer.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "rust-build-resolver": {
+      "description": "Rust build, Cargo, and compilation error resolution specialist. Fixes Rust build errors with minimal changes.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/rust-build-resolver.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-accessibility-auditor": {
+      "description": "Expert accessibility specialist who audits interfaces against WCAG standards, tests with assistive technologies, and ensures inclusive design. Defaults to finding barriers — if it''s not tested with a",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-accessibility-auditor.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "agency-api-tester": {
+      "description": "Expert API testing specialist focused on comprehensive API validation, performance testing, and quality assurance across all systems and third-party integrations",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-api-tester.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-evidence-collector": {
+      "description": "Screenshot-obsessed, fantasy-allergic QA specialist - Default to finding 3-5 issues, requires visual proof for everything",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-evidence-collector.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-performance-benchmarker": {
+      "description": "Expert performance testing and optimization specialist focused on measuring, analyzing, and improving system performance across all applications and infrastructure",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-performance-benchmarker.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "agency-reality-checker": {
+      "description": "Stops fantasy approvals, evidence-based certification - Default to \"NEEDS WORK\", requires overwhelming proof for production readiness",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-reality-checker.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "agency-test-automation-engineer": {
+      "description": "Expert end-to-end test automation engineer for Playwright and Cypress — resilient selectors, flake elimination, isolated test data, CI parallelization, and trace-driven failure debugging.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-test-automation-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-test-results-analyzer": {
+      "description": "Expert test analysis specialist focused on comprehensive test result evaluation, quality metrics analysis, and actionable insight generation from testing activities",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-test-results-analyzer.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "agency-tool-evaluator": {
+      "description": "Expert technology assessment specialist focused on evaluating, testing, and recommending tools, software, and platforms for business use and productivity optimization",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-tool-evaluator.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "agency-workflow-optimizer": {
+      "description": "Expert process improvement specialist focused on analyzing, optimizing, and automating workflows across all business functions for maximum productivity and efficiency",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-workflow-optimizer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-analytics-reporter": {
+      "description": "Expert data analyst transforming raw data into actionable business insights. Creates dashboards, performs statistical analysis, tracks KPIs, and provides strategic decision support through data visual",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-analytics-reporter.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "agency-executive-summary-generator": {
+      "description": "Consultant-grade AI specialist trained to think and communicate like a senior strategy consultant. Transforms complex business inputs into concise, actionable executive summaries using McKinsey SCQA, ",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-executive-summary-generator.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-finance-tracker": {
+      "description": "Expert financial analyst and controller specializing in financial planning, budget management, and business performance analysis. Maintains financial health, optimizes cash flow, and provides strategi",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-finance-tracker.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "agency-infrastructure-maintainer": {
+      "description": "Expert infrastructure specialist focused on system reliability, performance optimization, and technical operations management. Maintains robust, scalable infrastructure supporting business operations ",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-infrastructure-maintainer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-legal-compliance-checker": {
+      "description": "Expert legal and compliance specialist ensuring business operations, data handling, and content creation comply with relevant laws, regulations, and industry standards across multiple jurisdictions.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-legal-compliance-checker.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "agency-support-responder": {
+      "description": "Expert customer support specialist delivering exceptional customer service, issue resolution, and user experience optimization. Specializes in multi-channel support, proactive customer care, and turni",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-support-responder.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-runbook-startup-mvp": {
+      "description": "Executes Startup MVP lifecycle: compressed discovery, UX/UI architecture, TDD build, and reality check.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-runbook-startup-mvp.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-runbook-enterprise-feature": {
+      "description": "Executes Enterprise Feature lifecycle with strict compliance, security audit, architecture gates, and verification.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-runbook-enterprise-feature.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-runbook-incident-response": {
+      "description": "Incident response orchestrator: triage, root-cause isolation, emergency fix, regression test, and postmortem.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-runbook-incident-response.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-runbook-marketing-campaign": {
+      "description": "Marketing campaign orchestrator: launch messaging, content engine, copy reviews, and growth distribution.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-runbook-marketing-campaign.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-mcp-builder": {
+      "description": "Expert Model Context Protocol developer who designs, builds, and tests MCP servers that extend AI agent capabilities with custom tools, resources, and prompts.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-mcp-builder.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-codebase-archaeologist": {
+      "description": "Multi-session, multi-tool drift detection specialist who audits codebases touched by several AI coding tools (Claude, Cursor, Copilot, Windsurf, etc.) over time, finding silent logic mismatches, dead ",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-codebase-archaeologist.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "agency-medical-billing-coding-specialist": {
+      "description": "Expert medical billing and coding specialist for ICD-10-CM/PCS, CPT, and HCPCS coding, claim submission, denial management, revenue cycle optimization, compliance auditing, and payer contract analysis",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-medical-billing-coding-specialist.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "agency-data-privacy-officer": {
+      "description": "Corporate data privacy specialist and DPO who builds GDPR, CCPA, and global privacy compliance programs — covering data mapping, privacy impact assessments, consent management, breach response, vendor",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-data-privacy-officer.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "agency-legal-document-review": {
+      "description": "Comprehensive legal document review specialist for contracts, litigation documents, and real estate agreements — summarizing documents, flagging risk clauses, comparing contract versions, and checking",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-legal-document-review.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "agency-workflow-architect": {
+      "description": "Workflow design specialist who maps complete workflow trees for every system, user journey, and agent interaction — covering happy paths, all branch conditions, failure modes, recovery paths, handoff ",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-workflow-architect.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-visionos-spatial-engineer": {
+      "description": "Native visionOS spatial computing, SwiftUI volumetric interfaces, and Liquid Glass design implementation",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-visionos-spatial-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-macos-spatial-metal-engineer": {
+      "description": "Native Swift and Metal specialist building high-performance 3D rendering systems and spatial computing experiences for macOS and Vision Pro",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-macos-spatial-metal-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-xr-immersive-developer": {
+      "description": "Expert WebXR and immersive technology developer with specialization in browser-based AR/VR/XR applications",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-xr-immersive-developer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-xr-interface-architect": {
+      "description": "Spatial interaction designer and interface strategist for immersive AR/VR/XR environments",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-xr-interface-architect.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "agency-security-ai-generated-code-auditor": {
+      "description": "Security reviewer for AI-generated code: hunts hardcoded secrets, NEXT_PUBLIC_ leaks, broken Supabase RLS, and prompt injection sinks.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-security-ai-generated-code-auditor.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "agency-security-appsec-engineer": {
+      "description": "Application security engineer auditing OWASP Top 10, input sanitization, XSS, CSRF, and CSP headers.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-security-appsec-engineer.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "agency-security-cloud-security-architect": {
+      "description": "Cloud security architect auditing AWS/GCP IAM least privilege, security groups, and storage bucket permissions.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-security-cloud-security-architect.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "agency-security-penetration-tester": {
+      "description": "Ethical hacker and penetration tester probing authentication bypass, privilege escalation, and injection vectors.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-security-penetration-tester.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "agency-security-secrets-credential-engineer": {
+      "description": "Secrets management specialist identifying credential leaks, git history secrets, and rotation protocols.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-security-secrets-credential-engineer.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "agency-ui-designer": {
+      "description": "Expert UI designer specializing in visual design systems, component libraries, and pixel-perfect interface creation. Creates beautiful, consistent, accessible user interfaces that enhance UX and refle",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-ui-designer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-ui-finish-gate-reviewer": {
+      "description": "Product-interface reviewer who catches generic, interchangeable UI before it ships by grounding critique in real product evidence, a written design contract, and a hard implementation finish gate.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-ui-finish-gate-reviewer.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "agency-whimsy-injector": {
+      "description": "Expert creative specialist focused on adding personality, delight, and playful elements to brand experiences. Creates memorable, joyful interactions that differentiate brands through unexpected moment",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-whimsy-injector.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-ux-architect": {
+      "description": "Technical architecture and UX specialist who provides developers with solid foundations, CSS systems, and clear implementation guidance",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-ux-architect.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-brand-guardian": {
+      "description": "Expert brand strategist and guardian specializing in brand identity development, consistency maintenance, and strategic brand positioning",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-brand-guardian.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "agency-product-manager": {
+      "description": "Holistic product leader who owns the full product lifecycle — from discovery and strategy through roadmap, stakeholder alignment, go-to-market, and outcome measurement. Bridges business goals, user ne",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-product-manager.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-sprint-prioritizer": {
+      "description": "Expert product manager specializing in agile sprint planning, feature prioritization, and resource allocation. Focused on maximizing team velocity and business value delivery through data-driven prior",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-sprint-prioritizer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-senior-project-manager": {
+      "description": "Converts specs to tasks and remembers previous projects. Focused on realistic scope, no background processes, exact spec requirements",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-senior-project-manager.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-backend-architect": {
+      "description": "Senior backend architect specializing in scalable system design, database architecture, API development, and cloud infrastructure. Builds robust, secure, performant server-side applications and micros",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-backend-architect.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-mobile-app-builder": {
+      "description": "Specialized mobile application developer with expertise in native iOS/Android development and cross-platform frameworks",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-mobile-app-builder.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-rag-pipeline-engineer": {
+      "description": "Production RAG specialist focused on chunking strategy, retrieval quality, hybrid search, re-ranking, and eval-driven iteration. Builds pipelines that actually retrieve the right context — not just pi",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-rag-pipeline-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-payments-billing-engineer": {
+      "description": "Expert payments engineer for PSP integrations (Stripe, Adyen, Braintree, PayPal), idempotent payment flows, webhook processing, subscription billing, SCA/3DS, PCI scope reduction, and financial reconc",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-payments-billing-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-database-optimizer": {
+      "description": "Expert database specialist focusing on schema design, query optimization, indexing strategies, and performance tuning for PostgreSQL, MySQL, and modern databases like Supabase and PlanetScale.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-database-optimizer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-sre-site-reliability-engineer": {
+      "description": "Expert site reliability engineer specializing in SLOs, error budgets, observability, chaos engineering, and toil reduction for production systems at scale.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-sre-site-reliability-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-clinical-evidence-agent": {
+      "description": "Evidence standards and clinical credibility framework for AI agents",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-clinical-evidence-agent.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "agency-financial-analyst": {
+      "description": "Expert financial analyst specializing in financial modeling, forecasting, scenario analysis, and data-driven decision support. Transforms raw financial data into actionable business intelligence that ",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-financial-analyst.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "agency-web-gis-developer": {
+      "description": "Full-stack web GIS engineer who builds interactive mapping applications — MapLibre GL JS, ArcGIS JS API, Leaflet, real-time dashboards, REST API integration, and geospatial web services.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-web-gis-developer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-game-designer": {
+      "description": "Systems and mechanics architect - Masters GDD authorship, player psychology, economy balancing, and gameplay loop design across all engines and genres",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-game-designer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-economy-designer": {
+      "description": "Virtual economy architect - Masters currency systems, sources and sinks, monetization modeling, inflation control, and data-driven economic balancing for live games",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-economy-designer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-seo-specialist": {
+      "description": "Expert search engine optimization strategist specializing in technical SEO, content optimization, link authority building, and organic search growth. Drives sustainable traffic through data-driven sea",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-seo-specialist.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "agency-growth-hacker": {
+      "description": "Expert growth strategist specializing in rapid user acquisition through data-driven experimentation. Develops viral loops, optimizes conversion funnels, and finds scalable growth channels for exponent",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-growth-hacker.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "agency-outbound-strategist": {
+      "description": "Signal-based outbound specialist who designs multi-channel prospecting sequences, defines ICPs, and builds pipeline through research-driven personalization — not volume.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-outbound-strategist.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "agency-research-synthesist": {
+      "description": "Expert in literature review, source evaluation, and evidence synthesis — turns a scattered pile of sources into a structured, honestly-weighted map of what the evidence actually supports",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-research-synthesist.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "agency-ppc-campaign-strategist": {
+      "description": "Senior paid media strategist specializing in large-scale search, shopping, and performance max campaign architecture across Google, Microsoft, and Amazon ad platforms. Designs account structures, budg",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-ppc-campaign-strategist.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "agency-3d-scene-developer": {
+      "description": "Web 3D visualization specialist who creates immersive 3D scenes, terrain models, point cloud visualizations, and interactive web experiences using Cesium, ArcGIS Scene Viewer, and modern 3D web framew",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-3d-scene-developer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-account-strategist": {
+      "description": "Expert post-sale account strategist specializing in land-and-expand execution, stakeholder mapping, QBR facilitation, and net revenue retention. Turns closed deals into long-term platform relationship",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-account-strategist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-accounts-payable-agent": {
+      "description": "Autonomous payment processing specialist that executes vendor payments, contractor invoices, and recurring bills across any payment rail — crypto, fiat, stablecoins. Integrates with AI agent workflows",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-accounts-payable-agent.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-ad-creative-strategist": {
+      "description": "Paid media creative specialist focused on ad copywriting, RSA optimization, asset group design, and creative testing frameworks across Google, Meta, Microsoft, and programmatic platforms. Bridges the ",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-ad-creative-strategist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-aeo-foundations-architect": {
+      "description": "Expert in AI Engine Optimization infrastructure — implements llms.txt, AI-aware robots.txt, token-budgeted content, structured Markdown availability, and agent discovery files so AI crawlers, citation",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-aeo-foundations-architect.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-aeo-foundations": {
+      "description": "You are an AEO Foundations Architect — the specialist who builds the infrastructure layer that Wave 1 (SEO), Wave 2 (AI citations), and Wave 3 (age...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-aeo-foundations.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-agentic-identity-trust-architect": {
+      "description": "Designs identity, authentication, and trust verification systems for autonomous AI agents operating in multi-agent environments. Ensures agents can prove who they are, what they''re authorized to do, ",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-agentic-identity-trust-architect.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-agentic-identity-trust": {
+      "description": "You are an **Agentic Identity & Trust Architect**, the specialist who builds the identity and verification infrastructure that lets autonomous agen...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-agentic-identity-trust.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-agentic-search-optimizer": {
+      "description": "Expert in WebMCP readiness and agentic task completion — audits whether AI agents can actually accomplish tasks on your site (book, buy, register, subscribe), implements WebMCP declarative and imperat",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-agentic-search-optimizer.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-agents-orchestrator": {
+      "description": "Autonomous pipeline manager that orchestrates the entire development workflow. You are the leader of this process.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-agents-orchestrator.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-aging-parent-care-companion": {
+      "description": "Compassionate, HIPAA-aligned care coordination and decision-support agent for family caregivers managing an aging parent''s appointments, medications, care team communication, and their own caregiver ",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-aging-parent-care-companion.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-ai-citation-strategist": {
+      "description": "Expert in AI recommendation engine optimization (AEO/GEO) — audits brand visibility across ChatGPT, Claude, Gemini, and Perplexity, identifies why competitors get cited instead, and delivers content f",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-ai-citation-strategist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-ai-data-remediation-engineer": {
+      "description": "\"Specialist in self-healing data pipelines — uses air-gapped local SLMs and semantic clustering to automatically detect, classify, and fix data anomalies at scale. Focuses exclusively on the remediati",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-ai-data-remediation-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-ai-engineer": {
+      "description": "Expert AI/ML engineer specializing in machine learning model development, deployment, and integration into production systems. Focused on building intelligent features, data pipelines, and AI-powered ",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-ai-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-ai-generated-code-security-auditor": {
+      "description": "Security reviewer for AI-generated and vibe-coded apps — hunts the hardcoded secrets, broken row-level security, and prompt-injection sinks that coding assistants ship by default, then drives a scan, ",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-ai-generated-code-security-auditor.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-analyst": {
+      "description": "You are **GISAnalyst**, the workhorse of the GIS division. You transform raw data into clear, usable maps. You handle symbology, labeling, layout, ...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-analyst.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-anthropologist": {
+      "description": "Expert in cultural systems, rituals, kinship, belief systems, and ethnographic method — builds culturally coherent societies that feel lived-in rather than invented",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-anthropologist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-api-platform-engineer": {
+      "description": "Expert API platform engineer for public and partner APIs — contract-first design (OpenAPI/gRPC), versioning and deprecation policy, SDK generation, API gateway concerns (auth, rate limiting, quotas), ",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-api-platform-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-app-store-optimizer": {
+      "description": "Expert app store marketing specialist focused on App Store Optimization (ASO), conversion rate optimization, and app discoverability",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-app-store-optimizer.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-application-security-engineer": {
+      "description": "AppSec specialist who secures the software development lifecycle through threat modeling, secure code review, SAST/DAST integration, and developer security education that makes secure code the default",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-application-security-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-auditor": {
+      "description": "Methodical, detail-obsessed paid media auditor who evaluates advertising accounts the way a forensic accountant examines financial statements — lea...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-auditor.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-automation-governance-architect": {
+      "description": "Governance-first architect for business automations (n8n-first) who audits value, risk, and maintainability before implementation.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-automation-governance-architect.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-autonomous-optimization-architect": {
+      "description": "Intelligent system governor that continuously shadow-tests APIs for performance while enforcing strict financial and security guardrails against runaway costs.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-autonomous-optimization-architect.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-baidu-seo-specialist": {
+      "description": "Expert Baidu search optimization specialist focused on Chinese search engine ranking, Baidu ecosystem integration, ICP compliance, Chinese keyword research, and mobile-first indexing for the China mar",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-baidu-seo-specialist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-behavioral-nudge-engine": {
+      "description": "Behavioral psychology specialist that adapts software interaction cadences and styles to maximize user motivation and success.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-behavioral-nudge-engine.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-bilibili-content-strategist": {
+      "description": "Expert Bilibili marketing specialist focused on UP主 growth, danmaku culture mastery, B站 algorithm optimization, community building, and branded content strategy for China''s leading video community pl",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-bilibili-content-strategist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-bim-gis-specialist": {
+      "description": "Integration specialist who bridges Building Information Modeling and Geographic Information Systems — Revit/IFC data conversion, indoor mapping, digital twin architecture, and facility management data",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-bim-gis-specialist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-bim-specialist": {
+      "description": "You are **BIMGISS**, the specialist who connects the building-scale world of BIM with the geographic-scale world of GIS. You convert Revit models t...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-bim-specialist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-blender-add-on-engineer": {
+      "description": "Blender tooling specialist - Builds Python add-ons, asset validators, exporters, and pipeline automations that turn repetitive DCC work into reliable one-click workflows",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-blender-add-on-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-blockchain-security-auditor": {
+      "description": "Expert smart contract security auditor specializing in vulnerability detection, formal verification, exploit analysis, and comprehensive audit report writing for DeFi protocols and blockchain applicat",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-blockchain-security-auditor.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-book-co-author": {
+      "description": "Strategic thought-leadership book collaborator for founders, experts, and operators turning voice notes, fragments, and positioning into structured first-person chapters.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-book-co-author.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-bookkeeper-controller": {
+      "description": "Expert bookkeeper and controller specializing in day-to-day accounting operations, financial reconciliations, month-end close processes, and internal controls. Ensures the accuracy, completeness, and ",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-bookkeeper-controller.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-business-strategist": {
+      "description": "Senior management consulting specialist for competitive analysis, market entry strategy, business model design, growth planning, organizational strategy, and strategic decision-making — translating co",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-business-strategist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-carousel-growth-engine": {
+      "description": "Autonomous TikTok and Instagram carousel generation specialist. Analyzes any website URL with Playwright, generates viral 6-slide carousels via Gemini image generation, publishes directly to feed via ",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-carousel-growth-engine.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-cartography-designer": {
+      "description": "Map aesthetics specialist who designs beautiful, readable, and effective maps — color theory, typography, label placement, basemap selection, and visual hierarchy for both print and web.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-cartography-designer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-change-management-consultant": {
+      "description": "Expert change management specialist using ADKAR, Kotter, and Prosci frameworks to guide organizations through technology implementations, restructuring, culture transformation, and M&A integration — m",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-change-management-consultant.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-chief-financial-officer": {
+      "description": "Strategic finance executive who governs capital allocation, treasury operations, financial planning, M&A finance, investor relations, and board reporting — translating financial complexity into clear ",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-chief-financial-officer.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-chief-of-staff": {
+      "description": "Master coordinator for founders and executives — filters noise, owns processes, enforces consistency, routes decisions, and positions outputs for impact so the boss can think clearly.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-chief-of-staff.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-china-e-commerce-operator": {
+      "description": "Expert China e-commerce operations specialist covering Taobao, Tmall, Pinduoduo, and JD ecosystems with deep expertise in product listing optimization, live commerce, store operations, 618/Double 11 c",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-china-e-commerce-operator.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-china-ecommerce-operator": {
+      "description": "Personality**: Results-obsessed, data-driven, festival-campaign expert who lives and breathes conversion rates and GMV targets",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-china-ecommerce-operator.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-china-market-localization-strategist": {
+      "description": "Full-stack China market localization expert who transforms real-time trend signals into executable go-to-market strategies across Douyin, Xiaohongshu, WeChat, Bilibili, and beyond",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-china-market-localization-strategist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-civil-engineer": {
+      "description": "Expert civil and structural engineer with global standards coverage — Eurocode, DIN, ACI, AISC, ASCE, AS/NZS, CSA, GB, IS, AIJ, and more. Specializes in structural analysis, geotechnical design, const",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-civil-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-cloud-security-architect": {
+      "description": "Cloud-native security specialist designing zero trust architectures, implementing defense-in-depth across AWS, Azure, and GCP, and securing infrastructure-as-code pipelines from day one.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-cloud-security-architect.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-cms-developer": {
+      "description": "Drupal and WordPress specialist for theme development, custom plugins/modules, content architecture, and code-first CMS implementation",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-cms-developer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-coach": {
+      "description": "You are **Sales Coach**, an expert sales coaching specialist who makes every other seller better. You facilitate pipeline reviews, coach call techn...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-coach.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-code-reviewer": {
+      "description": "Expert code reviewer who provides constructive, actionable feedback focused on correctness, maintainability, security, and performance — not style preferences.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-code-reviewer.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-codebase-onboarding-engineer": {
+      "description": "Expert developer onboarding specialist who helps new engineers understand unfamiliar codebases fast by reading source code, tracing code paths, and stating only facts grounded in the code.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-codebase-onboarding-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-compliance-auditor": {
+      "description": "Expert technical compliance auditor specializing in SOC 2, ISO 27001, HIPAA, and PCI-DSS audits — from readiness assessment through evidence collection to certification.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-compliance-auditor.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-content-creator": {
+      "description": "Expert content strategist and creator for multi-platform campaigns. Develops editorial calendars, creates compelling copy, manages brand storytelling, and optimizes content for engagement across all d",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-content-creator.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-coordination-handoffs": {
+      "description": "The Agency specialist agent",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-coordination-handoffs.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-corporate-training-designer": {
+      "description": "Expert in enterprise training system design and curriculum development — proficient in training needs analysis, instructional design methodology, blended learning program design, internal trainer deve",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-corporate-training-designer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-creative-strategist": {
+      "description": "Performance-oriented creative strategist who writes ads that convert, not just ads that sound good. Specializes in responsive search ad architectur...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-creative-strategist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-cross-border-e-commerce-specialist": {
+      "description": "Full-funnel cross-border e-commerce strategist covering Amazon, Shopee, Lazada, AliExpress, Temu, and TikTok Shop operations, international logistics and overseas warehousing, compliance and taxation,",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-cross-border-e-commerce-specialist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-cross-border-ecommerce": {
+      "description": "The Agency specialist agent",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-cross-border-ecommerce.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-cultural-intelligence-strategist": {
+      "description": "CQ specialist that detects invisible exclusion, researches global context, and ensures software resonates authentically across intersectional identities.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-cultural-intelligence-strategist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-customer-service": {
+      "description": "Friendly, professional customer service specialist for any industry — handling inquiries, complaints, account support, FAQs, and seamless escalation with warmth, efficiency, and a genuine commitment t",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-customer-service.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-customer-success-manager": {
+      "description": "Strategic customer success specialist for onboarding, health scoring, QBR facilitation, churn prevention, expansion identification, and renewal management — driving net revenue retention by turning cu",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-customer-success-manager.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-data-consolidation-agent": {
+      "description": "AI agent that consolidates extracted sales data into live reporting dashboards with territory, rep, and pipeline summaries",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-data-consolidation-agent.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-data-engineer": {
+      "description": "Expert data engineer specializing in building reliable data pipelines, lakehouse architectures, and scalable data infrastructure. Masters ETL/ELT, Apache Spark, dbt, streaming systems, and cloud data ",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-data-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-data-visualization-engineer": {
+      "description": "Expert data visualization engineer — chart-type selection by data and question, perceptually honest encodings, colorblind-safe data palettes, accessible and interactive charts, and rendering large dat",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-data-visualization-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-database-reliability-engineer": {
+      "description": "Expert database reliability engineer (DBRE) — high availability and replication, automated failover, backup and point-in-time recovery, zero-downtime online schema migrations, connection pooling, and ",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-database-reliability-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-deal-strategist": {
+      "description": "Senior deal strategist specializing in MEDDPICC qualification, competitive positioning, and win planning for complex B2B sales cycles. Scores opportunities, exposes pipeline risk, and builds deal stra",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-deal-strategist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-desktop-app-engineer": {
+      "description": "Expert desktop application engineer for Electron and Tauri — secure IPC and process isolation, code signing and notarization, auto-update pipelines, native OS integration, and resource-footprint disci",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-desktop-app-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-developer-advocate": {
+      "description": "Expert developer advocate specializing in building developer communities, creating compelling technical content, optimizing developer experience (DX), and driving platform adoption through authentic e",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-developer-advocate.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-developer-tooling-engineer": {
+      "description": "Expert developer-tooling and CLI engineer — building command-line tools and internal developer platforms with great DX: intuitive command design, helpful errors, shell completions, fast startup, cross",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-developer-tooling-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-devops-automator": {
+      "description": "Expert DevOps engineer specializing in infrastructure automation, CI/CD pipeline development, and cloud operations",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-devops-automator.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-discovery-coach": {
+      "description": "Coaches sales teams on elite discovery methodology — question design, current-state mapping, gap quantification, and call structure that surfaces real buying motivation.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-discovery-coach.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-document-generator": {
+      "description": "Expert document creation specialist who generates professional PDF, PPTX, DOCX, and XLSX files using code-based approaches with proper formatting, charts, and data visualization.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-document-generator.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-douyin-strategist": {
+      "description": "Short-video marketing expert specializing in the Douyin platform, with deep expertise in recommendation algorithm mechanics, viral video planning, livestream commerce workflows, and full-funnel brand ",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-douyin-strategist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-drone-reality-mapping-specialist": {
+      "description": "Photogrammetry and reality capture expert who processes drone imagery into orthomosaics, digital terrain models, point clouds, and 3D meshes — bridging field capture and GIS-ready products.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-drone-reality-mapping-specialist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-drone-reality-mapping": {
+      "description": "You are **DroneRealityMapping**, the reality capture specialist who transforms aerial imagery into survey-grade geospatial products. You plan fligh...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-drone-reality-mapping.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-drupal-performance-engineer": {
+      "description": "Expert Drupal 10/11 performance engineer specializing in Core Web Vitals, render and dynamic page caching, BigPipe, cache tags and contexts, database query and Views optimization, CSS/JS aggregation, ",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-drupal-performance-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-drupal-performance": {
+      "description": "You are **The Drupal Performance Engineer** — a specialist who makes Drupal 10 and 11 sites fast and keeps them fast. You live in the render pipeli...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-drupal-performance.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-drupal-shopping-cart-engineer": {
+      "description": "Expert Drupal e-commerce engineer specializing in Drupal Commerce for product catalog management, payment gateway integration, checkout workflow design, order management, tax and promotion configurati",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-drupal-shopping-cart-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-drupal-shopping-cart": {
+      "description": "You are **The Drupal Shopping Cart Engineer** — a specialist e-commerce developer with deep expertise in Drupal Commerce (2.x/3.x) on Drupal 10 and...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-drupal-shopping-cart.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-email-intelligence-engineer": {
+      "description": "Expert in extracting structured, reasoning-ready data from raw email threads for AI agents and automation systems",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-email-intelligence-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-email-marketing-strategist": {
+      "description": "Expert email marketing strategist for CRM-driven campaigns, lifecycle automation, segmentation architecture, and deliverability. Designs sequences (welcome, nurture, reactivation, win-back, review, re",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-email-marketing-strategist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-email-strategist": {
+      "description": "Role**: Expert email marketing strategist who bridges CRM data and ESP execution. You design the data architecture (attributes, lists, segments), t...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-email-strategist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-embedded-firmware-engineer": {
+      "description": "Specialist in bare-metal and RTOS firmware - ESP32/ESP-IDF, PlatformIO, Arduino, ARM Cortex-M, STM32 HAL/LL, Nordic nRF5/nRF Connect SDK, FreeRTOS, Zephyr",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-embedded-firmware-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-engineer": {
+      "description": "Senior pre-sales engineer who bridges the gap between what the product does and what the buyer needs it to mean for their business. Specializes in ...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-esg-sustainability-officer": {
+      "description": "Corporate sustainability strategist and ESG reporting specialist who builds environmental, social, and governance programs, manages disclosures, drives decarbonization initiatives, and aligns business",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-esg-sustainability-officer.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-experiment-tracker": {
+      "description": "Expert project manager specializing in experiment design, execution tracking, and data-driven decision making. Focused on managing A/B tests, feature experiments, and hypothesis validation through sys",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-experiment-tracker.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-fedramp-rmf-compliance-engineer": {
+      "description": "Expert FedRAMP and NIST Risk Management Framework compliance engineer specializing in both FedRAMP authorization pathways — the traditional Rev5 path (NIST 800-53 Rev 5 control implementation, System ",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-fedramp-rmf-compliance-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-fedramp-rmf-compliance": {
+      "description": "You are **The FedRAMP & RMF Compliance Engineer** — a specialist who guides cloud systems and information systems through FedRAMP authorization and...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-fedramp-rmf-compliance.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-feedback-synthesizer": {
+      "description": "Expert in collecting, analyzing, and synthesizing user feedback from multiple channels to extract actionable product insights. Transforms qualitative feedback into quantitative priorities and strategi",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-feedback-synthesizer.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-feishu-integration-developer": {
+      "description": "Full-stack integration expert specializing in the Feishu (Lark) Open Platform — proficient in Feishu bots, mini programs, approval workflows, Bitable (multidimensional spreadsheets), interactive messa",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-feishu-integration-developer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-filament-optimization-specialist": {
+      "description": "Expert in restructuring and optimizing Filament PHP admin interfaces for maximum usability and efficiency. Focuses on impactful structural changes — not just cosmetic tweaks.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-filament-optimization-specialist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-finops-engineer": {
+      "description": "Expert cloud cost engineer for AWS/GCP/Azure — cost allocation and tagging, rightsizing, commitment planning (reserved instances/savings plans), egress and storage optimization, and unit-economics das",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-finops-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-fp-a-analyst": {
+      "description": "Expert Financial Planning & Analysis (FP&A) analyst specializing in budgeting, variance analysis, financial planning, rolling forecasts, and strategic decision support. Bridges the gap between the num",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-fp-a-analyst.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-fpa-analyst": {
+      "description": "You are **Riley**, a sharp FP&A Analyst with 11+ years of experience across high-growth SaaS companies, manufacturing, and retail. You've built ann...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-fpa-analyst.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-french-consulting-market-navigator": {
+      "description": "Navigate the French ESN/SI freelance ecosystem — margin models, platform mechanics (Malt, collective.work), portage salarial, rate positioning, and payment cycle realities",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-french-consulting-market-navigator.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-french-consulting-market": {
+      "description": "You are an expert in the French IT consulting market — specifically the ESN/SI ecosystem where most enterprise IT projects are staffed. You underst...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-french-consulting-market.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-frontend-developer": {
+      "description": "Expert frontend developer specializing in modern web technologies, React/Vue/Angular frameworks, UI implementation, and performance optimization",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-frontend-developer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-game-audio-engineer": {
+      "description": "Interactive audio specialist - Masters FMOD/Wwise integration, adaptive music systems, spatial audio, and audio performance budgeting across all game engines",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-game-audio-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-gaussdb-expert-engineer": {
+      "description": "Expert database specialist focusing on GaussDB OLTP — Huawei''s self-developed enterprise-grade relational database (NOT GaussDB(DWS) OLAP, NOT GaussDB(for openGauss) cloud service, NOT GaussDB(for My",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-gaussdb-expert-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-gaussdb-expert": {
+      "description": "🗄️ GaussDB OLTP Expert",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-gaussdb-expert.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-geoai-ml-engineer": {
+      "description": "Geospatial machine learning specialist who builds models for feature extraction, object detection, image segmentation, and land cover classification from satellite and aerial imagery.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-geoai-ml-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-geographer": {
+      "description": "Expert in physical and human geography, climate systems, cartography, and spatial analysis — builds geographically coherent worlds where terrain, climate, resources, and settlement patterns make scien",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-geographer.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-geoprocessing-specialist": {
+      "description": "ArcPy and Python toolbox expert who automates spatial workflows — builds .pyt toolboxes, Model Builder processes, batch geoprocessing automation, and custom analysis scripts for ArcGIS Pro.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-geoprocessing-specialist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-gis-analyst": {
+      "description": "Day-to-day GIS operator who creates maps, manages layers, performs spatial queries, and maintains geospatial data integrity across desktop and web environments.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-gis-analyst.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-gis-qa-engineer": {
+      "description": "Quality assurance specialist who validates geospatial data integrity — topology checks, metadata audits, CRS consistency, accuracy assessment, and compliance verification.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-gis-qa-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-git-workflow-master": {
+      "description": "Expert in Git workflows, branching strategies, and version control best practices including conventional commits, rebasing, worktrees, and CI-friendly branch management.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-git-workflow-master.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-global-podcast-strategist": {
+      "description": "Expert podcast growth specialist focused on show positioning, audience development, content strategy, and monetisation. Transforms raw ideas into authoritative audio brands that compound listeners and",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-global-podcast-strategist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-godot-gameplay-scripter": {
+      "description": "Composition and signal integrity specialist - Masters GDScript 2.0, C# integration, node-based architecture, and type-safe signal design for Godot 4 projects",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-godot-gameplay-scripter.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-godot-multiplayer-engineer": {
+      "description": "Godot 4 networking specialist - Masters the MultiplayerAPI, scene replication, ENet/WebRTC transport, RPCs, and authority models for real-time multiplayer games",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-godot-multiplayer-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-godot-shader-developer": {
+      "description": "Godot 4 visual effects specialist - Masters the Godot Shading Language (GLSL-like), VisualShader editor, CanvasItem and Spatial shaders, post-processing, and performance optimization for 2D/3D effects",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-godot-shader-developer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-government-digital-presales-consultant": {
+      "description": "Presales expert for China''s government digital transformation market (ToG), proficient in policy interpretation, solution design, bid document preparation, POC validation, compliance requirements (cl",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-government-digital-presales-consultant.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-grant-writer": {
+      "description": "Expert grant writing specialist for nonprofits, research institutions, and social enterprises — covering prospect research, letter of inquiry writing, full proposal development, budget narratives, fed",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-grant-writer.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-healthcare-aging-parent-care-companion": {
+      "description": "\"You are not the doctor, and you don't have to be. Your job is to hold the pieces together so the people who are doctors can do their best work, an...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-healthcare-aging-parent-care-companion.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-healthcare-customer-service": {
+      "description": "Empathetic healthcare customer service specialist for patient support, billing inquiries, appointment management, insurance questions, complaint resolution, and seamless escalation to clinical or admi",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-healthcare-customer-service.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-healthcare-innovation-strategist": {
+      "description": "Strategic narrative architect for healthcare founders operating at",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-healthcare-innovation-strategist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-healthcare-marketing-compliance-specialist": {
+      "description": "Expert in healthcare marketing compliance in China, proficient in the Advertising Law, Medical Advertisement Management Measures, Drug Administration Law, and related regulations — covering pharmaceut",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-healthcare-marketing-compliance-specialist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-healthcare-marketing-compliance": {
+      "description": "You are the **Healthcare Marketing Compliance Specialist**, a seasoned expert in healthcare marketing compliance in China. You are deeply familiar ...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-healthcare-marketing-compliance.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-historian": {
+      "description": "Expert in historical analysis, periodization, material culture, and historiography — validates historical coherence and enriches settings with authentic period detail grounded in primary and secondary",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-historian.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-hospitality-guest-services": {
+      "description": "Comprehensive hospitality guest services specialist for hotels, resorts, restaurants, and event venues — covering reservations, check-in/check-out, concierge services, guest complaint resolution, loya",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-hospitality-guest-services.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-hr-onboarding": {
+      "description": "Comprehensive HR onboarding specialist for employee orientation, documentation management, compliance tracking, benefits enrollment, culture integration, and new hire support — delivering a seamless f",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-hr-onboarding.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-i18n-engineer": {
+      "description": "You are **Internationalization Engineer**, an expert in making software genuinely work across languages, scripts, and regions — not just translated...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-i18n-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-identity-access-engineer": {
+      "description": "Expert identity engineer for OAuth 2.0/OIDC flows, enterprise SSO (SAML/OIDC) and SCIM provisioning, passkeys/WebAuthn, session architecture, and multi-tenant authorization with RBAC/ABAC.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-identity-access-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-identity-graph-operator": {
+      "description": "Operates a shared identity graph that multiple AI agents resolve against. Ensures every agent in a multi-agent system gets the same canonical answer for \"who is this entity?\" - deterministically, even",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-identity-graph-operator.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-image-prompt-engineer": {
+      "description": "Expert photography prompt engineer specializing in crafting detailed, evocative prompts for AI image generation. Masters the art of translating visual concepts into precise language that produces stun",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-image-prompt-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-incident-responder": {
+      "description": "Digital forensics and incident response specialist who leads breach investigations, contains active threats, coordinates crisis response, and writes post-mortems that prevent recurrence.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-incident-responder.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-incident-response-commander": {
+      "description": "Expert incident commander specializing in production incident management, structured response coordination, post-mortem facilitation, SLO/SLI tracking, and on-call process design for reliable engineer",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-incident-response-commander.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-inclusive-visuals-specialist": {
+      "description": "Representation expert who defeats systemic AI biases to generate culturally accurate, affirming, and non-stereotypical images and video.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-inclusive-visuals-specialist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-innovation-strategist": {
+      "description": "You are a **Healthcare Innovation Strategist**, a specialized AI agent for",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-innovation-strategist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-instagram-curator": {
+      "description": "Expert Instagram marketing specialist focused on visual storytelling, community building, and multi-format content optimization. Masters aesthetic development and drives meaningful engagement.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-instagram-curator.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-internationalization-engineer": {
+      "description": "Expert i18n engineer for ICU MessageFormat, CLDR plural rules, RTL and bidirectional layouts, locale-aware date/number/currency formatting, string extraction pipelines, and pseudo-localization testing",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-internationalization-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-investment-researcher": {
+      "description": "Expert investment researcher specializing in market research, due diligence, portfolio analysis, and asset valuation. Conducts rigorous fundamental and quantitative analysis to identify investment opp",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-investment-researcher.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-iot-fleet-engineer": {
+      "description": "Expert IoT and edge fleet engineer — device provisioning and identity, MQTT/telemetry pipelines, staged over-the-air (OTA) firmware updates with rollback, edge compute, and observability across fleets",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-iot-fleet-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-it-service-manager": {
+      "description": "Expert IT service management specialist using ITIL 4 framework for service catalog design, incident and problem management, change control, SLA governance, CMDB maintenance, and continual service impr",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-it-service-manager.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-jira-workflow-steward": {
+      "description": "Expert delivery operations specialist who enforces Jira-linked Git workflows, traceable commits, structured pull requests, and release-safe branch strategy across software teams.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-jira-workflow-steward.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-knowledge-graph-engineer": {
+      "description": "Structures information and capabilities into interconnected nodes (entities) and edges (relationships) — enabling dynamic context navigation, modular competency chaining, lower token costs, and halluc",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-knowledge-graph-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-korean-business-navigator": {
+      "description": "Korean business culture for foreign professionals — 품의 decision process, nunchi reading, KakaoTalk business etiquette, hierarchy navigation, and relationship-first deal mechanics",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-korean-business-navigator.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-kuaishou-strategist": {
+      "description": "Expert Kuaishou marketing strategist specializing in short-video content for China''s lower-tier city markets, live commerce operations, community trust building, and grassroots audience growth on 快手.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-kuaishou-strategist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-language-translator": {
+      "description": "Real-time Spanish ↔ English translation specialist with cultural context, regional dialect awareness, travel phrase guidance, and tone-appropriate communication for everyday, business, and emergency s",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-language-translator.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-legal-billing-time-tracking": {
+      "description": "Comprehensive legal billing and time tracking specialist for accurate time capture, invoice generation, billing narrative writing, collections management, trust account compliance, and billing analysi",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-legal-billing-time-tracking.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-legal-client-intake": {
+      "description": "Comprehensive legal client intake specialist for qualifying prospects, collecting case information, scheduling consultations, managing conflict checks, and delivering attorney-ready intake summaries a",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-legal-client-intake.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-level-designer": {
+      "description": "Spatial storytelling and flow specialist - Masters layout theory, pacing architecture, encounter design, and environmental narrative across all game engines",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-level-designer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-linkedin-content-creator": {
+      "description": "Expert LinkedIn content strategist focused on thought leadership, personal brand building, and high-engagement professional content. Masters LinkedIn''s algorithm and culture to drive inbound opportun",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-linkedin-content-creator.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-livestream-commerce-coach": {
+      "description": "Veteran livestream e-commerce coach specializing in host training and live room operations across Douyin, Kuaishou, Taobao Live, and Channels, covering script design, product sequencing, paid-vs-organ",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-livestream-commerce-coach.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-llm-post-training-engineer": {
+      "description": "Evidence-driven owner for SFT, preference optimization, RLHF/RLVR, MoE post-training, and the release gates that turn a checkpoint into a defensible model change.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-llm-post-training-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-loan-officer-assistant": {
+      "description": "Comprehensive loan officer assistant for mortgage and lending professionals — covering borrower intake, pre-qualification, document collection, pipeline management, compliance tracking, rate quoting, ",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-loan-officer-assistant.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-lsp-index-engineer": {
+      "description": "Language Server Protocol specialist building unified code intelligence systems through LSP client orchestration and semantic indexing",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-lsp-index-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-m-a-integration-manager": {
+      "description": "Mergers and acquisitions integration specialist who designs and executes post-merger integration programs — covering Day 1 readiness, 100-day planning, synergy tracking, cultural integration, function",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-m-a-integration-manager.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-ma-integration-manager": {
+      "description": "You are an M&A Integration Manager — a post-merger integration specialist who turns a signed deal into a functioning, value-creating combined organ...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-ma-integration-manager.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-manager": {
+      "description": "You are **Alex**, a seasoned Product Manager with 10+ years shipping products across B2B SaaS, consumer apps, and platform businesses. You've led p...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-manager.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-master-plan-architect": {
+      "description": "Master planning architect, technical educator, and ruthless plan critic who specializes in deep architectural teaching, Red Teaming / risk critique, and crafting comprehensive Implementation Plans in ",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-master-plan-architect.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-meeting-notes-specialist": {
+      "description": "Extract structured decisions, action items, and open questions from meeting transcripts or rough notes into a clean 4-section summary.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-meeting-notes-specialist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-minimal-change-engineer": {
+      "description": "Engineering specialist focused on minimum-viable diffs — fixes only what was asked, refuses scope creep, prefers three similar lines over a premature abstraction. The discipline that prevents bug-fix ",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-minimal-change-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-mobile-release-engineer": {
+      "description": "Expert mobile release and distribution engineer for iOS and Android — code signing, provisioning, fastlane pipelines, App Store Connect and Play Console submission, phased rollouts, and crash-triaged ",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-mobile-release-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-model-qa-specialist": {
+      "description": "Independent model QA expert who audits ML and statistical models end-to-end - from documentation review and data reconstruction to replication, calibration testing, interpretability analysis, performa",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-model-qa-specialist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-model-qa": {
+      "description": "You are **Model QA Specialist**, an independent QA expert who audits machine learning and statistical models across their full lifecycle. You chall...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-model-qa.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-multi-agent-systems-architect": {
+      "description": "Systems architect specializing in the design, coordination, and governance of multi-agent AI pipelines — covering topology selection, context management, inter-agent trust, failure recovery, human-in-",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-multi-agent-systems-architect.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-multi-platform-publisher": {
+      "description": "Expert orchestrator for one-click Chinese blog publishing. Routes a single article to 知乎 / 小红书 / CSDN / B站 / 公众号 / 掘金 via Wechatsync (main channel) with xhs-mcp and biliup as specialized fallbacks. Ha",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-multi-platform-publisher.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-narrative-designer": {
+      "description": "Story systems and dialogue architect - Masters GDD-aligned narrative design, branching dialogue, lore architecture, and environmental storytelling across all game engines",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-narrative-designer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-narratologist": {
+      "description": "Expert in narrative theory, story structure, character arcs, and literary analysis — grounds advice in established frameworks from Propp to Campbell to modern narratology",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-narratologist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-network-engineer": {
+      "description": "Expert network engineer for Cisco IOS/IOS-XE, Cisco ASA/FTD, Juniper Junos, and Palo Alto PAN-OS routing, switching, firewalling, and troubleshooting.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-network-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-nexus-playbook": {
+      "description": "🌐 NEXUS — Network of EXperts, Unified in Strategy",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-nexus-playbook.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-offer-lead-gen-strategist": {
+      "description": "Top-of-funnel architect who designs irresistible offers and lead magnets that attract qualified buyers at scale. Specializes in value-equation offer construction, lead magnet typology, multi-channel l",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-offer-lead-gen-strategist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-operations-manager": {
+      "description": "Business operations specialist who applies Lean, Six Sigma, and systems thinking to process mapping, capacity planning, KPI governance, vendor management, and organizational efficiency — turning opera",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-operations-manager.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-organizational-psychologist": {
+      "description": "Applied organizational psychologist who diagnoses team dynamics, psychological safety, burnout risk, and culture health — using evidence-based frameworks to help leaders build high-performing, resilie",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-organizational-psychologist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-orgscript-engineer": {
+      "description": "Expert in designing, parsing, and implementing OrgScript grammar, AST validation, and business logic definitions.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-orgscript-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-paid-media-auditor": {
+      "description": "Comprehensive paid media auditor who systematically evaluates Google Ads, Microsoft Ads, and Meta accounts across 200+ checkpoints spanning account structure, tracking, bidding, creative, audiences, a",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-paid-media-auditor.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-paid-social-strategist": {
+      "description": "Cross-platform paid social advertising specialist covering Meta (Facebook/Instagram), LinkedIn, TikTok, Pinterest, X, and Snapchat. Designs full-funnel social ad programs from prospecting through reta",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-paid-social-strategist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-penetration-tester": {
+      "description": "Offensive security specialist conducting authorized penetration tests, red team operations, and vulnerability assessments across networks, web applications, and cloud infrastructure.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-penetration-tester.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-persona-walkthrough-specialist": {
+      "description": "Simulate cognitive walkthroughs of web pages from a defined persona''s psychological perspective — captures emotional reactions and rational thought at each scroll position, then delivers structured C",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-persona-walkthrough-specialist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-personal-growth-mentor": {
+      "description": "Cross-domain personal development mentor for goal clarity, habit design, strategic decisions, and accountability without motivational fluff.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-personal-growth-mentor.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-pipeline-analyst": {
+      "description": "Revenue operations analyst specializing in pipeline health diagnostics, deal velocity analysis, forecast accuracy, and data-driven sales coaching. Turns CRM data into actionable pipeline intelligence ",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-pipeline-analyst.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-podcast-strategist": {
+      "description": "Content strategy and operations expert for the Chinese podcast market, with deep expertise in Xiaoyuzhou, Ximalaya, and other major audio platforms, covering show positioning, audio production, audien",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-podcast-strategist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-ppc-strategist": {
+      "description": "Senior paid search and performance media strategist with deep expertise in Google Ads, Microsoft Advertising, and Amazon Ads. Specializes in enterp...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-ppc-strategist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-pr-communications-manager": {
+      "description": "Strategic public relations and communications specialist for media relations, press releases, crisis communications, executive thought leadership, brand reputation management, and integrated communica",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-pr-communications-manager.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-pricing-analyst": {
+      "description": "Specialized pricing analyst who develops optimal pricing models through market research, competitor analysis, cost structure evaluation, and margin optimization — turning pricing from guesswork into a",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-pricing-analyst.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-privacy-engineer": {
+      "description": "Expert privacy engineer who implements privacy in code — PII discovery and classification, data minimization, consent enforcement at the API layer, automated DSAR and deletion across services, pseudon",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-privacy-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-private-domain-operator": {
+      "description": "Expert in building enterprise WeChat (WeCom) private domain ecosystems, with deep expertise in SCRM systems, segmented community operations, Mini Program commerce integration, user lifecycle managemen",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-private-domain-operator.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-programmatic-buyer": {
+      "description": "Strategic display and programmatic media buyer who operates across the full spectrum — from self-serve Google Display Network to managed partner me...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-programmatic-buyer.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-programmatic-display-buyer": {
+      "description": "Display advertising and programmatic media buying specialist covering managed placements, Google Display Network, DV360, trade desk platforms, partner media (newsletters, sponsored content), and ABM d",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-programmatic-display-buyer.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-project-manager-senior": {
+      "description": "You are **SeniorProjectManager**, a senior PM specialist who converts site specifications into actionable development tasks. You have persistent me...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-project-manager-senior.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-project-shepherd": {
+      "description": "Expert project manager specializing in cross-functional project coordination, timeline management, and stakeholder alignment. Focused on shepherding projects from conception to completion while managi",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-project-shepherd.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-prompt-engineer": {
+      "description": "Specialist in crafting, testing, and systematically optimizing prompts for LLMs — turning vague instructions into reliable, production-grade AI behaviors.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-prompt-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-proposal-strategist": {
+      "description": "Strategic proposal architect who transforms RFPs and sales opportunities into compelling win narratives. Specializes in win theme development, competitive positioning, executive summary craft, and bui",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-proposal-strategist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-psychologist": {
+      "description": "Expert in human behavior, personality theory, motivation, and cognitive patterns — builds psychologically credible characters and interactions grounded in clinical and research frameworks",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-psychologist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-qa-engineer": {
+      "description": "You are **GISQAEngineer**, the quality gate of the GIS division. Every dataset, every map, every service must pass your inspection before it reache...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-qa-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-rapid-prototyper": {
+      "description": "Specialized in ultra-fast proof-of-concept development and MVP creation using efficient tools and frameworks",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-rapid-prototyper.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-real-estate-buyer-seller": {
+      "description": "Comprehensive real estate agent assistant for buyer representation, seller representation, listing management, offer negotiation, transaction coordination, and closing support — delivering a world-cla",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-real-estate-buyer-seller.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-realtime-collaboration-engineer": {
+      "description": "Expert realtime systems engineer for WebSocket/SSE infrastructure, presence, CRDT and OT-based collaborative editing, offline-first sync engines, and fan-out scaling with reconnect-safe protocols.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-realtime-collaboration-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-recruitment-specialist": {
+      "description": "Expert recruitment operations and talent acquisition specialist — skilled in China''s major hiring platforms, talent assessment frameworks, and labor law compliance. Helps companies efficiently attrac",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-recruitment-specialist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-reddit-community-builder": {
+      "description": "Expert Reddit marketing specialist focused on authentic community engagement, value-driven content creation, and long-term relationship building. Masters Reddit culture navigation.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-reddit-community-builder.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-report-distribution-agent": {
+      "description": "AI agent that automates distribution of consolidated sales reports to representatives based on territorial parameters",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-report-distribution-agent.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-resume-tailor": {
+      "description": "Candidate-side resume optimization specialist who analyzes job descriptions, maps real experience to role requirements, improves ATS keyword alignment, and rewrites bullets without fabricating qualifi",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-resume-tailor.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-retail-customer-returns": {
+      "description": "Comprehensive retail customer returns specialist for processing returns, exchanges, and refunds across in-store, online, and omnichannel retail — handling policy enforcement, fraud prevention, custome",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-retail-customer-returns.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-roblox-avatar-creator": {
+      "description": "Roblox UGC and avatar pipeline specialist - Masters Roblox''s avatar system, UGC item creation, accessory rigging, texture standards, and the Creator Marketplace submission pipeline",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-roblox-avatar-creator.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-roblox-experience-designer": {
+      "description": "Roblox platform UX and monetization specialist - Masters engagement loop design, DataStore-driven progression, Roblox monetization systems (Passes, Developer Products, UGC), and player retention for R",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-roblox-experience-designer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-roblox-systems-scripter": {
+      "description": "Roblox platform engineering specialist - Masters Luau, the client-server security model, RemoteEvents/RemoteFunctions, DataStore, and module architecture for scalable Roblox experiences",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-roblox-systems-scripter.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-rust-refactoring-specialist": {
+      "description": "Expert Rust engineer for repository-scale refactoring, safe renames, module restructuring, duplication removal, panic hardening, ownership improvements, and compiler or Clippy remediation.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-rust-refactoring-specialist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-sales-coach": {
+      "description": "Expert sales coaching specialist focused on rep development, pipeline review facilitation, call coaching, deal strategy, and forecast accuracy. Makes every rep and every deal better through structured",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-sales-coach.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-sales-data-extraction-agent": {
+      "description": "AI agent specialized in monitoring Excel files and extracting key sales metrics (MTD, YTD, Year End) for internal live reporting",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-sales-data-extraction-agent.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-sales-engineer": {
+      "description": "Senior pre-sales engineer specializing in technical discovery, demo engineering, POC scoping, competitive battlecards, and bridging product capabilities to business outcomes. Wins the technical decisi",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-sales-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-sales-outreach": {
+      "description": "Consultative B2B sales outreach specialist for cold prospecting, lead follow-up, objection handling, proposal writing, and pipeline management — combining data-driven targeting with genuine relationsh",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-sales-outreach.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-salesforce-architect": {
+      "description": "Solution architecture for Salesforce platform — multi-cloud design, integration patterns, governor limits, deployment strategy, and data model governance for enterprise-scale orgs",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-salesforce-architect.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-search-query-analyst": {
+      "description": "Specialist in search term analysis, negative keyword architecture, and query-to-intent mapping. Turns raw search query data into actionable optimizations that eliminate waste and amplify high-intent t",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-search-query-analyst.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-search-relevance-engineer": {
+      "description": "Expert search engineer for Elasticsearch and OpenSearch — index and analyzer design, BM25 query tuning, hybrid lexical+vector retrieval, and judgment-based relevance evaluation with nDCG and online ex",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-search-relevance-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-secrets-credential-hygiene-engineer": {
+      "description": "Owns the full lifecycle of secrets and credentials — detection, prevention, vaulting, rotation, and leak response — so an application runs on short-lived, least-privilege credentials that are never in",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-secrets-credential-hygiene-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-section-508-accessibility-specialist": {
+      "description": "Expert U.S. federal Section 508 accessibility engineer (the 508 legal baseline is WCAG 2.0 Level AA; WCAG 2.1/2.2 AA are recommended best practice, and ADA Title II requires WCAG 2.1 AA for state/loca",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-section-508-accessibility-specialist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-section-508-specialist": {
+      "description": "You are **The Section 508 Accessibility Specialist** — an engineer who makes web applications genuinely usable by people with disabilities and comp...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-section-508-specialist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-security-architect": {
+      "description": "Expert security architect specializing in threat modeling, secure-by-design architecture, trust-boundary analysis, defense-in-depth, and risk-based security reviews across web, API, cloud-native, and ",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-security-architect.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-security-blockchain-security-auditor": {
+      "description": "You are **Blockchain Security Auditor**, a relentless smart contract security researcher who assumes every contract is exploitable until proven oth...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-security-blockchain-security-auditor.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-security-compliance-auditor": {
+      "description": "You are **ComplianceAuditor**, an expert technical compliance auditor who guides organizations through security and privacy certification processes...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-security-compliance-auditor.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-security-incident-responder": {
+      "description": "You are **Incident Responder**, the calm voice in the war room when everything is on fire. You have led incident response for ransomware attacks at...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-security-incident-responder.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-security-senior-secops": {
+      "description": "You are successful when:",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-security-senior-secops.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-security-threat-detection-engineer": {
+      "description": "You are **Threat Detection Engineer**, the specialist who builds the detection layer that catches attackers after they bypass preventive controls. ...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-security-threat-detection-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-security-threat-intelligence-analyst": {
+      "description": "You are **Threat Intelligence Analyst**, the intelligence operator who turns raw threat data into decisions. You have tracked nation-state APT grou...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-security-threat-intelligence-analyst.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-senior-developer": {
+      "description": "Premium implementation specialist - Masters Laravel/Livewire/FluxUI, advanced CSS, Three.js integration",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-senior-developer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-senior-secops-engineer": {
+      "description": "Defensive application security specialist who scans every code submission for secrets and sensitive data exposure before anything else, then implements or audits security controls following the organi",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-senior-secops-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-short-video-editing-coach": {
+      "description": "Hands-on short-video editing coach covering the full post-production pipeline, with mastery of CapCut Pro, Premiere Pro, DaVinci Resolve, and Final Cut Pro across composition and camera language, colo",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-short-video-editing-coach.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-social-media-strategist": {
+      "description": "Expert social media strategist for LinkedIn, Twitter, and professional platforms. Creates cross-platform campaigns, builds communities, manages real-time engagement, and develops thought leadership st",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-social-media-strategist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-software-architect": {
+      "description": "Expert software architect specializing in system design, domain-driven design, architectural patterns, and technical decision-making for scalable, maintainable systems.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-software-architect.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-solidity-smart-contract-engineer": {
+      "description": "Expert Solidity developer specializing in EVM smart contract architecture, gas optimization, upgradeable proxy patterns, DeFi protocol development, and security-first contract design across Ethereum a",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-solidity-smart-contract-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-solution-engineer": {
+      "description": "Hands-on GIS prototype builder who takes strategy from Technical Consultant and turns it into working demos, proof-of-concepts, and technical validations across the full Esri and open-source stack.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-solution-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-sovereign-health-systems-agent": {
+      "description": "Government health mandate engagement framework for AI agents",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-sovereign-health-systems-agent.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-spatial-data-engineer": {
+      "description": "ETL specialist who transforms messy geospatial data from any source into clean, standardized, production-ready datasets — format conversion, CRS reprojection, attribute normalization, and automated pi",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-spatial-data-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-spatial-data-scientist": {
+      "description": "Advanced spatial analytics specialist who applies statistical modeling, spatial econometrics, clustering, and predictive analytics to geospatial data — finding patterns that aren''t visible on a map.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-spatial-data-scientist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-sre": {
+      "description": "You are **SRE**, a site reliability engineer who treats reliability as a feature with a measurable budget. You define SLOs that reflect user experi...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-sre.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-statistician": {
+      "description": "Expert in quantitative research methodology, experimental design, and statistical inference — pressure-tests claims, designs sound studies, and separates real signal from noise, chance, and bias",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-statistician.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-strategy-duel-agent": {
+      "description": "Conducts live strategy duels using game theory and the 36 Chinese stratagems",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-strategy-duel-agent.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-studio-operations": {
+      "description": "Expert operations manager specializing in day-to-day studio efficiency, process optimization, and resource coordination. Focused on ensuring smooth operations, maintaining productivity standards, and ",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-studio-operations.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-studio-producer": {
+      "description": "Senior strategic leader specializing in high-level creative and technical project orchestration, resource allocation, and multi-project portfolio management. Focused on aligning creative vision with b",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-studio-producer.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-study-abroad-advisor": {
+      "description": "Full-spectrum study abroad planning expert covering the US, UK, Canada, Australia, Europe, Hong Kong, and Singapore — proficient in undergraduate, master''s, and PhD application strategy, school selec",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-study-abroad-advisor.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-supply-chain-strategist": {
+      "description": "Expert supply chain management and procurement strategy specialist — skilled in supplier development, strategic sourcing, quality control, and supply chain digitalization. Grounded in China''s manufac",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-supply-chain-strategist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-synthesist": {
+      "description": "You are **Research Synthesist**, a research methodologist who specializes in finding, evaluating, and synthesizing existing literature rather than ...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-synthesist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-tax-strategist": {
+      "description": "Expert tax strategist specializing in tax optimization, multi-jurisdictional compliance, transfer pricing, and strategic tax planning. Navigates complex tax codes to minimize liability while ensuring ",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-tax-strategist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-technical-artist": {
+      "description": "Art-to-engine pipeline specialist - Masters shaders, VFX systems, LOD pipelines, performance budgeting, and cross-engine asset optimization",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-technical-artist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-technical-consultant": {
+      "description": "Strategic GIS advisor who translates business problems into geospatial solutions — gap analysis, technology roadmaps, RFP responses, and digital transformation strategy across Esri and open-source eco",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-technical-consultant.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-technical-writer": {
+      "description": "Expert technical writer specializing in developer documentation, API references, README files, and tutorials. Transforms complex engineering concepts into clear, accurate, and engaging docs that devel",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-technical-writer.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-terminal-integration-specialist": {
+      "description": "Terminal emulation, text rendering optimization, and SwiftTerm integration for modern Swift applications",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-terminal-integration-specialist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-threat-detection-engineer": {
+      "description": "Expert detection engineer specializing in SIEM rule development, MITRE ATT&CK coverage mapping, threat hunting, alert tuning, and detection-as-code pipelines for security operations teams.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-threat-detection-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-threat-intelligence-analyst": {
+      "description": "Cyber threat intelligence specialist who tracks adversary groups, maps attack campaigns to MITRE ATT&CK, produces actionable intelligence reports, and builds detection rules that catch real threats.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-threat-intelligence-analyst.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-tiktok-strategist": {
+      "description": "Expert TikTok marketing specialist focused on viral content creation, algorithm optimization, and community building. Masters TikTok''s unique culture and features for brand growth.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-tiktok-strategist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-tracking-measurement-specialist": {
+      "description": "Expert in conversion tracking architecture, tag management, and attribution modeling across Google Tag Manager, GA4, Google Ads, Meta CAPI, LinkedIn Insight Tag, and server-side implementations. Ensur",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-tracking-measurement-specialist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-tracking-specialist": {
+      "description": "Precision-focused tracking and measurement engineer who builds the data foundation that makes all paid media optimization possible. Specializes in ...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-tracking-specialist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-trend-researcher": {
+      "description": "Expert market intelligence analyst specializing in identifying emerging trends, competitive analysis, and opportunity assessment. Focused on providing actionable insights that drive product strategy a",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-trend-researcher.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-twitter-engager": {
+      "description": "Expert Twitter marketing specialist focused on real-time engagement, thought leadership building, and community-driven growth. Builds brand authority through authentic conversation participation and v",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-twitter-engager.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-unity-architect": {
+      "description": "Data-driven modularity specialist - Masters ScriptableObjects, decoupled systems, and single-responsibility component design for scalable Unity projects",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-unity-architect.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-unity-editor-tool-developer": {
+      "description": "Unity editor automation specialist - Masters custom EditorWindows, PropertyDrawers, AssetPostprocessors, ScriptedImporters, and pipeline automation that saves teams hours per week",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-unity-editor-tool-developer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-unity-multiplayer-engineer": {
+      "description": "Networked gameplay specialist - Masters Netcode for GameObjects, Unity Gaming Services (Relay/Lobby), client-server authority, lag compensation, and state synchronization",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-unity-multiplayer-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-unity-shader-graph-artist": {
+      "description": "Visual effects and material specialist - Masters Unity Shader Graph, HLSL, URP/HDRP rendering pipelines, and custom pass authoring for real-time visual effects",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-unity-shader-graph-artist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-unreal-multiplayer-architect": {
+      "description": "Unreal Engine networking specialist - Masters Actor replication, GameMode/GameState architecture, server-authoritative gameplay, network prediction, and dedicated server setup for UE5",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-unreal-multiplayer-architect.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-unreal-systems-engineer": {
+      "description": "Performance and hybrid architecture specialist - Masters C++/Blueprint continuum, Nanite geometry, Lumen GI, and Gameplay Ability System for AAA-grade Unreal Engine projects",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-unreal-systems-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-unreal-technical-artist": {
+      "description": "Unreal Engine visual pipeline specialist - Masters the Material Editor, Niagara VFX, Procedural Content Generation, and the art-to-engine pipeline for UE5 projects",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-unreal-technical-artist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-unreal-world-builder": {
+      "description": "Open-world and environment specialist - Masters UE5 World Partition, Landscape, procedural foliage, HLOD, and large-scale level streaming for seamless open-world experiences",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-unreal-world-builder.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-uswds-developer": {
+      "description": "Expert U.S. Web Design System frontend developer specializing in USWDS components and design tokens, accessible-by-default patterns, responsive government UI, Sass settings/theming, the federal design",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-uswds-developer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-ux-researcher": {
+      "description": "Expert user experience researcher specializing in user behavior analysis, usability testing, and data-driven design insights. Provides actionable research findings that improve product usability and u",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-ux-researcher.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-video-optimization-specialist": {
+      "description": "Video marketing strategist specializing in YouTube algorithm optimization, audience retention, chaptering, thumbnail concepts, and cross-platform video syndication.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-video-optimization-specialist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-video-streaming-engineer": {
+      "description": "Expert video streaming engineer for adaptive bitrate delivery — HLS/DASH packaging, ffmpeg transcode ladders, CMAF low-latency, DRM, CDN delivery, and QoE-driven player tuning.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-video-streaming-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-visual-storyteller": {
+      "description": "Expert visual communication specialist focused on creating compelling visual narratives, multimedia content, and brand storytelling through design. Specializes in transforming complex information into",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-visual-storyteller.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-voice-ai-integration-engineer": {
+      "description": "Expert in building end-to-end speech transcription pipelines using Whisper-style models and cloud ASR services — from raw audio ingestion through preprocessing, transcript cleanup, subtitle generation",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-voice-ai-integration-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-webassembly-engineer": {
+      "description": "Expert WebAssembly engineer — compiling Rust/C++/Go to Wasm, JS interop and the boundary marshalling cost, WASI and server-side runtimes (Wasmtime/Wasmer), the component model, and near-native perform",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-webassembly-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-wechat-mini-program-developer": {
+      "description": "Expert WeChat Mini Program developer specializing in 小程序 development with WXML/WXSS/WXS, WeChat API integration, payment systems, subscription messaging, and the full WeChat ecosystem.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-wechat-mini-program-developer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-wechat-official-account-manager": {
+      "description": "Expert WeChat Official Account (OA) strategist specializing in content marketing, subscriber engagement, and conversion optimization. Masters multi-format content and builds loyal communities through ",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-wechat-official-account-manager.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-wechat-official-account": {
+      "description": "You are a WeChat Official Account (微信公众号) marketing virtuoso with deep expertise in China's most intimate business communication platform. You unde...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-wechat-official-account.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-weibo-strategist": {
+      "description": "Full-spectrum operations expert for Sina Weibo, with deep expertise in trending topic mechanics, Super Topic community management, public sentiment monitoring, fan economy strategies, and Weibo advert",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-weibo-strategist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-wordpress-performance-engineer": {
+      "description": "Expert WordPress performance engineer specializing in Core Web Vitals, object caching (Redis/Memcached), page caching, database and WP_Query optimization, the Transients API, asset minification/deferr",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-wordpress-performance-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-wordpress-performance": {
+      "description": "You are **The WordPress Performance Engineer** — a specialist who makes WordPress sites fast and keeps them fast, on real mobile devices, under rea...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-wordpress-performance.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-wordpress-shopping-cart-engineer": {
+      "description": "Expert WordPress e-commerce engineer specializing in WooCommerce for product catalog management, payment gateway integration, checkout customization, order management, tax and coupon configuration, an",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-wordpress-shopping-cart-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-wordpress-shopping-cart": {
+      "description": "You are **The WordPress Shopping Cart Engineer** — a specialist e-commerce developer with deep expertise in WooCommerce on WordPress: product and v...",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-wordpress-shopping-cart.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-x-twitter-intelligence-analyst": {
+      "description": "Social intelligence specialist for X/Twitter research, trend detection, account monitoring, and evidence-backed audience insights using public signals and structured data workflows.",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-x-twitter-intelligence-analyst.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-xiaohongshu-specialist": {
+      "description": "Expert Xiaohongshu marketing specialist focused on lifestyle content, trend-driven strategies, and authentic community engagement. Masters micro-content creation and drives viral growth through aesthe",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-xiaohongshu-specialist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-xr-cockpit-interaction-specialist": {
+      "description": "Specialist in designing and developing immersive cockpit-based control systems for XR environments",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-xr-cockpit-interaction-specialist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-zhihu-strategist": {
+      "description": "Expert Zhihu marketing specialist focused on thought leadership, community credibility, and knowledge-driven engagement. Masters question-answering strategy and builds brand authority through authenti",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-zhihu-strategist.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-zk-steward": {
+      "description": "\"Knowledge-base steward in the spirit of Niklas Luhmann''s Zettelkasten. Default perspective: Luhmann; switches to domain experts (Feynman, Munger, Ogilvy, etc.) by task. Enforces atomic notes, connec",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-zk-steward.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-blender-addon-engineer": {
+      "description": "Blender tooling specialist - Builds Python add-ons, asset validators, exporters, and pipeline automations that turn repetitive DCC work into reliable one-click workflows",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-blender-addon-engineer.txt}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "agency-coord-agent-activation-prompts": {
+      "description": "The Agency strategy/coordination specialist",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-coord-agent-activation-prompts.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-coord-handoff-templates": {
+      "description": "The Agency strategy/coordination specialist",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-coord-handoff-templates.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-phase-0-discovery": {
+      "description": "The Agency strategy/playbooks specialist",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-phase-0-discovery.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-phase-1-strategy": {
+      "description": "The Agency strategy/playbooks specialist",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-phase-1-strategy.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-phase-2-foundation": {
+      "description": "The Agency strategy/playbooks specialist",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-phase-2-foundation.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-phase-3-build": {
+      "description": "The Agency strategy/playbooks specialist",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-phase-3-build.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-phase-4-hardening": {
+      "description": "The Agency strategy/playbooks specialist",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-phase-4-hardening.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-phase-5-launch": {
+      "description": "The Agency strategy/playbooks specialist",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-phase-5-launch.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-phase-6-operate": {
+      "description": "The Agency strategy/playbooks specialist",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-phase-6-operate.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-runbook-scenario-enterprise-feature": {
+      "description": "The Agency strategy/runbooks specialist",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-runbook-scenario-enterprise-feature.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-runbook-scenario-incident-response": {
+      "description": "The Agency strategy/runbooks specialist",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-runbook-scenario-incident-response.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-runbook-scenario-marketing-campaign": {
+      "description": "The Agency strategy/runbooks specialist",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-runbook-scenario-marketing-campaign.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-runbook-scenario-startup-mvp": {
+      "description": "The Agency strategy/runbooks specialist",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-runbook-scenario-startup-mvp.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-example-nexus-spatial-discovery": {
+      "description": "The Agency examples specialist",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-example-nexus-spatial-discovery.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-example-workflow-book-chapter": {
+      "description": "The Agency examples specialist",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-example-workflow-book-chapter.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-example-workflow-landing-page": {
+      "description": "The Agency examples specialist",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-example-workflow-landing-page.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-example-workflow-startup-mvp": {
+      "description": "The Agency examples specialist",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-example-workflow-startup-mvp.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    },
+    "agency-example-workflow-with-memory": {
+      "description": "The Agency examples specialist",
+      "mode": "subagent",
+      "prompt": "{file:prompts/agents/agency-example-workflow-with-memory.txt}",
+      "tools": {
+        "read": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    }
+  },
+  "command": {
+    "plan": {
+      "description": "Create a detailed implementation plan for complex features",
+      "template": "{file:commands/plan.md}\n\n$ARGUMENTS",
+      "agent": "planner",
+      "subtask": true
+    },
+    "tdd": {
+      "description": "Enforce TDD workflow with 80%+ test coverage",
+      "template": "{file:commands/tdd.md}\n\n$ARGUMENTS",
+      "agent": "tdd-guide",
+      "subtask": true
+    },
+    "code-review": {
+      "description": "Review code for quality, security, and maintainability",
+      "template": "{file:commands/code-review.md}\n\n$ARGUMENTS",
+      "agent": "code-reviewer",
+      "subtask": true
+    },
+    "security": {
+      "description": "Run comprehensive security review",
+      "template": "{file:commands/security.md}\n\n$ARGUMENTS",
+      "agent": "security-reviewer",
+      "subtask": true
+    },
+    "build-fix": {
+      "description": "Fix build and TypeScript errors with minimal changes",
+      "template": "{file:commands/build-fix.md}\n\n$ARGUMENTS",
+      "agent": "build-error-resolver",
+      "subtask": true
+    },
+    "e2e": {
+      "description": "Generate and run E2E tests with Playwright",
+      "template": "{file:commands/e2e.md}\n\n$ARGUMENTS",
+      "agent": "e2e-runner",
+      "subtask": true
+    },
+    "refactor-clean": {
+      "description": "Remove dead code and consolidate duplicates",
+      "template": "{file:commands/refactor-clean.md}\n\n$ARGUMENTS",
+      "agent": "refactor-cleaner",
+      "subtask": true
+    },
+    "orchestrate": {
+      "description": "Orchestrate multiple agents for complex tasks",
+      "template": "{file:commands/orchestrate.md}\n\n$ARGUMENTS",
+      "agent": "planner",
+      "subtask": true
+    },
+    "learn": {
+      "description": "Extract patterns and learnings from session",
+      "template": "{file:commands/learn.md}\n\n$ARGUMENTS"
+    },
+    "checkpoint": {
+      "description": "Save verification state and progress",
+      "template": "{file:commands/checkpoint.md}\n\n$ARGUMENTS"
+    },
+    "verify": {
+      "description": "Run verification loop",
+      "template": "{file:commands/verify.md}\n\n$ARGUMENTS"
+    },
+    "eval": {
+      "description": "Run evaluation against criteria",
+      "template": "{file:commands/eval.md}\n\n$ARGUMENTS"
+    },
+    "update-docs": {
+      "description": "Update documentation",
+      "template": "{file:commands/update-docs.md}\n\n$ARGUMENTS",
+      "agent": "doc-updater",
+      "subtask": true
+    },
+    "update-codemaps": {
+      "description": "Update codemaps",
+      "template": "{file:commands/update-codemaps.md}\n\n$ARGUMENTS",
+      "agent": "doc-updater",
+      "subtask": true
+    },
+    "test-coverage": {
+      "description": "Analyze test coverage",
+      "template": "{file:commands/test-coverage.md}\n\n$ARGUMENTS",
+      "agent": "tdd-guide",
+      "subtask": true
+    },
+    "setup-pm": {
+      "description": "Configure package manager",
+      "template": "{file:commands/setup-pm.md}\n\n$ARGUMENTS"
+    },
+    "go-review": {
+      "description": "Go code review",
+      "template": "{file:commands/go-review.md}\n\n$ARGUMENTS",
+      "agent": "go-reviewer",
+      "subtask": true
+    },
+    "go-test": {
+      "description": "Go TDD workflow",
+      "template": "{file:commands/go-test.md}\n\n$ARGUMENTS",
+      "agent": "tdd-guide",
+      "subtask": true
+    },
+    "go-build": {
+      "description": "Fix Go build errors",
+      "template": "{file:commands/go-build.md}\n\n$ARGUMENTS",
+      "agent": "go-build-resolver",
+      "subtask": true
+    },
+    "skill-create": {
+      "description": "Generate skills from git history",
+      "template": "{file:commands/skill-create.md}\n\n$ARGUMENTS"
+    },
+    "instinct-status": {
+      "description": "View learned instincts",
+      "template": "{file:commands/instinct-status.md}\n\n$ARGUMENTS"
+    },
+    "instinct-import": {
+      "description": "Import instincts",
+      "template": "{file:commands/instinct-import.md}\n\n$ARGUMENTS"
+    },
+    "instinct-export": {
+      "description": "Export instincts",
+      "template": "{file:commands/instinct-export.md}\n\n$ARGUMENTS"
+    },
+    "evolve": {
+      "description": "Cluster instincts into skills",
+      "template": "{file:commands/evolve.md}\n\n$ARGUMENTS"
+    },
+    "promote": {
+      "description": "Promote project instincts to global scope",
+      "template": "{file:commands/promote.md}\n\n$ARGUMENTS"
+    },
+    "projects": {
+      "description": "List known projects and instinct stats",
+      "template": "{file:commands/projects.md}\n\n$ARGUMENTS"
+    },
+    "reality-check": {
+      "description": "Run skeptical reality check and evidence verification against implementation",
+      "template": "Run reality check and verify evidence for: ",
+      "agent": "agency-reality-checker",
+      "subtask": true
+    },
+    "a11y-audit": {
+      "description": "Run WCAG 2.2 accessibility audit on target UI components",
+      "template": "Audit accessibility for: ",
+      "agent": "agency-accessibility-auditor",
+      "subtask": true
+    },
+    "api-test": {
+      "description": "Run contract and edge-case API tests",
+      "template": "Test API endpoints and contracts for: ",
+      "agent": "agency-api-tester",
+      "subtask": true
+    },
+    "perf-benchmark": {
+      "description": "Run performance benchmark and latency audit",
+      "template": "Benchmark performance for: ",
+      "agent": "agency-performance-benchmarker",
+      "subtask": true
+    },
+    "compliance-check": {
+      "description": "Run legal and regulatory compliance audit (GDPR, HIPAA, CCPA, PCI-DSS)",
+      "template": "Audit legal and regulatory compliance for: ",
+      "agent": "agency-legal-compliance-checker",
+      "subtask": true
+    },
+    "infra-status": {
+      "description": "Inspect infrastructure health, reliability, and deployment status",
+      "template": "Check infrastructure status and reliability for: ",
+      "agent": "agency-infrastructure-maintainer",
+      "subtask": true
+    },
+    "finance-track": {
+      "description": "Analyze cloud spending, cost breakdown, and unit economics",
+      "template": "Track financial costs and cloud spending for: ",
+      "agent": "agency-finance-tracker",
+      "subtask": true
+    },
+    "executive-summary": {
+      "description": "Generate concise executive summary and leadership briefing",
+      "template": "Generate executive summary for: ",
+      "agent": "agency-executive-summary-generator",
+      "subtask": true
+    },
+    "runbook-mvp": {
+      "description": "Execute Startup MVP delivery runbook",
+      "template": "Execute Startup MVP delivery runbook for: ",
+      "agent": "agency-runbook-startup-mvp",
+      "subtask": true
+    },
+    "runbook-enterprise": {
+      "description": "Execute Enterprise Feature delivery runbook with compliance and security gates",
+      "template": "Execute Enterprise Feature runbook for: ",
+      "agent": "agency-runbook-enterprise-feature",
+      "subtask": true
+    },
+    "runbook-incident": {
+      "description": "Execute Incident Response and root-cause recovery runbook",
+      "template": "Execute Incident Response runbook for: ",
+      "agent": "agency-runbook-incident-response",
+      "subtask": true
+    },
+    "mcp-build": {
+      "description": "Build or extend a Model Context Protocol (MCP) server",
+      "template": "Design and build MCP server for: ",
+      "agent": "agency-mcp-builder",
+      "subtask": true
+    },
+    "code-archaeology": {
+      "description": "Excavate and document legacy architecture or undocumented modules",
+      "template": "Excavate and map architecture for: ",
+      "agent": "agency-codebase-archaeologist",
+      "subtask": true
+    },
+    "medical-code": {
+      "description": "Audit or generate medical ICD-10/CPT billing codes and claims",
+      "template": "Review medical codes for: ",
+      "agent": "agency-medical-billing-coding-specialist",
+      "subtask": true
+    },
+    "contract-review": {
+      "description": "Review contracts and legal documents for risk and compliance",
+      "template": "Review legal document for: ",
+      "agent": "agency-legal-document-review",
+      "subtask": true
+    },
+    "spatial-visionos": {
+      "description": "Build or optimize VisionOS SwiftUI volumetric interfaces",
+      "template": "Design and build visionOS spatial interface for: ",
+      "agent": "agency-visionos-spatial-engineer",
+      "subtask": true
+    },
+    "spatial-webxr": {
+      "description": "Build WebXR and Three.js 3D web interfaces",
+      "template": "Build WebXR 3D experience for: ",
+      "agent": "agency-xr-immersive-developer",
+      "subtask": true
+    },
+    "ai-sec-audit": {
+      "description": "Audit AI-generated code for secrets, broken RLS, and prompt injection",
+      "template": "Audit AI code security for: ",
+      "agent": "agency-security-ai-generated-code-auditor",
+      "subtask": true
+    },
+    "appsec-scan": {
+      "description": "Run comprehensive application security audit (OWASP Top 10)",
+      "template": "Run AppSec audit for: ",
+      "agent": "agency-security-appsec-engineer",
+      "subtask": true
+    },
+    "pen-test": {
+      "description": "Simulate penetration test and authorization bypass audit",
+      "template": "Run penetration testing evaluation on: ",
+      "agent": "agency-security-penetration-tester",
+      "subtask": true
+    },
+    "secrets-audit": {
+      "description": "Scan codebase and history for leaked secrets and API keys",
+      "template": "Audit secrets and credentials for: ",
+      "agent": "agency-security-secrets-credential-engineer",
+      "subtask": true
+    },
+    "ui-design": {
+      "description": "Design comprehensive UI system, tokens, and components",
+      "template": "Design UI components and design system for: ",
+      "agent": "agency-ui-designer",
+      "subtask": true
+    },
+    "ui-finish-gate": {
+      "description": "Audit UI against generic patterns and set a pre-ship finish gate",
+      "template": "Run UI finish gate review on: ",
+      "agent": "agency-ui-finish-gate-reviewer",
+      "subtask": true
+    },
+    "whimsy-inject": {
+      "description": "Add micro-interactions, smooth animations, and delightful UX details",
+      "template": "Inject micro-interactions and animations into: ",
+      "agent": "agency-whimsy-injector",
+      "subtask": true
+    },
+    "product-spec": {
+      "description": "Generate comprehensive PRD and feature specification",
+      "template": "Generate PRD and product spec for: ",
+      "agent": "agency-product-manager",
+      "subtask": true
+    },
+    "sprint-prioritize": {
+      "description": "Prioritize feature backlog and tasks using RICE scoring",
+      "template": "Prioritize sprint backlog for: ",
+      "agent": "agency-sprint-prioritizer",
+      "subtask": true
+    },
+    "rag-build": {
+      "description": "Design and build RAG vector retrieval pipeline",
+      "template": "Build RAG pipeline for: ",
+      "agent": "agency-rag-pipeline-engineer",
+      "subtask": true
+    },
+    "mobile-build": {
+      "description": "Build native or cross-platform mobile app screens",
+      "template": "Build mobile screens and logic for: ",
+      "agent": "agency-mobile-app-builder",
+      "subtask": true
+    },
+    "payments-build": {
+      "description": "Implement Stripe/payments integration with webhook safety",
+      "template": "Implement payments integration for: ",
+      "agent": "agency-payments-billing-engineer",
+      "subtask": true
+    },
+    "db-optimize": {
+      "description": "Audit and optimize database queries and index coverage",
+      "template": "Optimize database performance for: ",
+      "agent": "agency-database-optimizer",
+      "subtask": true
+    },
+    "clinical-evidence": {
+      "description": "Evaluate healthcare features against clinical evidence and guidelines",
+      "template": "Evaluate clinical evidence for: ",
+      "agent": "agency-clinical-evidence-agent",
+      "subtask": true
+    },
+    "financial-model": {
+      "description": "Build financial model, revenue projection, or SaaS unit economics",
+      "template": "Build financial model for: ",
+      "agent": "agency-financial-analyst",
+      "subtask": true
+    },
+    "gis-map": {
+      "description": "Build interactive Web GIS maps and spatial data layers",
+      "template": "Build GIS mapping component for: ",
+      "agent": "agency-web-gis-developer",
+      "subtask": true
+    },
+    "game-design": {
+      "description": "Design gameplay mechanics and core game loops",
+      "template": "Design game systems for: ",
+      "agent": "agency-game-designer",
+      "subtask": true
+    },
+    "economy-model": {
+      "description": "Model in-game economy, virtual currency sinks/sources, and inflation",
+      "template": "Model virtual economy for: ",
+      "agent": "agency-economy-designer",
+      "subtask": true
+    },
+    "seo-audit": {
+      "description": "Run technical SEO audit and schema markup inspection",
+      "template": "Audit SEO and search visibility for: ",
+      "agent": "agency-seo-specialist",
+      "subtask": true
+    },
+    "growth-hack": {
+      "description": "Design viral growth loop and user acquisition strategy",
+      "template": "Design growth strategy for: ",
+      "agent": "agency-growth-hacker",
+      "subtask": true
+    },
+    "outbound-plan": {
+      "description": "Create personalized B2B outbound campaign and messaging",
+      "template": "Build outbound sales sequence for: ",
+      "agent": "agency-outbound-strategist",
+      "subtask": true
+    },
+    "research-synthesis": {
+      "description": "Synthesize research data, market signals, and competitor reports",
+      "template": "Synthesize research and market analysis for: ",
+      "agent": "agency-research-synthesist",
+      "subtask": true
+    },
+    "paid-campaign": {
+      "description": "Plan paid advertising campaign and budget allocation (Google/Meta Ads)",
+      "template": "Plan paid media campaign for: ",
+      "agent": "agency-ppc-campaign-strategist",
+      "subtask": true
+    }
+  },
+  "permission": {
+    "mcp_*": "ask"
+  }
+}

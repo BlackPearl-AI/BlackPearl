@@ -1,0 +1,135 @@
+﻿# ⚡ SUper — The Master Unified AI Engineering Ecosystem
+
+> **The Ultimate Standalone Monorepo for Autonomous AI Software Engineering.**  
+> Bundles **Antigravity Lead Orchestrator**, **Everything Claude Code (ECC)**, **DeepSeek Harness (Multi-Process Worktree Isolation)**, and **The Agency (18 Specialist Divisions / 273+ Subagents)** into a single, fully portable, one-click Git repository.
+
+---
+
+## 🌟 What is SUper?
+
+**SUper** is an enterprise-grade AI software development repository designed to be portable across machines, operating systems, and fresh installations. Cloning this repository and running a single script immediately configures:
+
+1. **Antigravity Global Lead Supervisor** (`~/.gemini/config/`)
+   - 345+ specialized skills auto-activated on intent.
+   - Master rules (`AGENTS.md`, `GEMINI.md`) with Section 11 Division Routing.
+   - Universal Hard Rules (5-Level Modular Decomposition & Doc-First Sequential Execution).
+2. **OpenCode Global Environment** (`~/.config/opencode/`)
+   - 283+ registered subagents with `@` direct mentions in ANY project across your system.
+   - 273 canonical `.md` agent files with custom UI hex color codes.
+   - DeepSeek Harness execution scripts (`dsh-delegate.js` & `dsh-team.js`).
+3. **DeepSeek Harness Multi-Agent Worktree Layer** (`frameworks/deepseek-harness/`)
+   - Universal Dynamic Agency Persona Loader (`getAgencyPrompt()`).
+   - Isolated worktree snapshots with automatic base diffing (`DSH RESULT - BASE SNAPSHOT`).
+   - 26 pre-configured automated multi-agent pipelines (`dsh-team.js`).
+4. **Everything Claude Code (ECC)** (`frameworks/ecc/`)
+   - 68 specialized engineering subagents.
+   - 286+ skills, 94 slash commands, and automated hook workflows.
+5. **The Agency Ecosystem** (`frameworks/the-agency/`)
+   - 18 complete specialist divisions (Engineering, Testing, Security, Design, Product, PM, Healthcare, Finance, GIS, GameDev, Marketing, Sales, Academic, Research, Spatial Computing, Support, Strategy, Specialized).
+   - 273 canonical subagents, 6 strategy runbooks, and 7 lifecycle playbooks.
+
+---
+
+## 🚀 Quick Setup on New PC or Reinstalled Windows
+
+### Step 1: Clone the Repository
+```powershell
+git clone <YOUR-GIT-REPO-URL> "G:\0000 PY PROGRAM\_AI_TOOLS\SUper"
+cd "G:\0000 PY PROGRAM\_AI_TOOLS\SUper"
+```
+
+### Step 2: Run the One-Click Master Installer
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\install.ps1
+```
+
+### Step 3: Run the Health Verification Suite
+```powershell
+.\verify.ps1
+```
+
+*Your entire system is now 100% configured, synchronized, and operational!*
+
+---
+
+## 📁 Repository Architecture
+
+```
+SUper/
+├── install.ps1                 # Master Windows one-click installer
+├── install.sh                  # Master Unix/macOS/WSL one-click installer
+├── verify.ps1                  # Automated health verification suite
+├── scaffold.ps1                # Project scaffolder (binds rules to any new repo)
+├── README.md                   # System documentation
+├── SETUP-NEW-PC.md             # Migration & setup guide
+├── .gitignore                  # Production gitignore
+│
+├── platforms/                  # Ready-to-deploy Global Platform Configurations
+│   ├── antigravity/            # ~/.gemini/config (AGENTS.md, rules, 345+ skills)
+│   └── opencode/               # ~/.config/opencode (opencode.jsonc, 273+ agents, scripts)
+│
+├── frameworks/                 # Complete Framework Source Code & Engines
+│   ├── ecc/                    # Everything Claude Code (68 agents, skills, hooks)
+│   ├── the-agency/             # The Agency 18 Specialist Divisions & Runbooks
+│   └── deepseek-harness/       # DeepSeek Harness Execution Engine
+│
+└── templates/                  # Reusable Scaffolding Templates for any project
+    ├── .agents/                # Project rules (Modular Architecture & Doc-First)
+    ├── .opencode/              # Project opencode.json & prompts
+    └── AGENTS.md               # Project-level agent directives
+```
+
+---
+
+## 🏢 The Agency — 18 Specialist Divisions (273+ Subagents)
+
+| Division | Primary Focus | Key Subagents |
+|---|---|---|
+| 💻 **Engineering (59)** | Clean APIs, Native/Cross Mobile, RAG, Databases, SRE | `agency-backend-architect`, `agency-mobile-app-builder`, `agency-rag-pipeline-engineer`, `agency-sre` |
+| 🧪 **Testing (9)** | Skeptical QA, WCAG 2.2 a11y, API contract fuzzing | `agency-reality-checker`, `agency-accessibility-auditor`, `agency-api-tester`, `agency-performance-benchmarker` |
+| 🛡️ **Security (12)** | AI-code scan, OWASP Top 10, Secrets governance | `agency-security-ai-generated-code-auditor`, `agency-security-appsec-engineer`, `agency-security-penetration-tester` |
+| 🎨 **Design (10)** | Design systems, CSS tokens, Anti-generic finish gate | `agency-ui-designer`, `agency-ui-finish-gate-reviewer`, `agency-whimsy-injector`, `agency-ux-architect` |
+| 📦 **Product (5)** | PRD specs, RICE scoring, user journeys | `agency-product-manager`, `agency-sprint-prioritizer`, `agency-behavioral-nudge-engine` |
+| 📋 **Project Mgmt (7)** | Spec-to-task conversion, milestone delivery | `agency-senior-project-manager`, `agency-project-shepherd`, `agency-meeting-notes-specialist` |
+| 📊 **Strategy (6)** | Multi-agent runbooks: Startup MVP, Enterprise | `agency-runbook-startup-mvp`, `agency-runbook-enterprise-feature`, `agency-runbook-incident-response` |
+| 🏥 **Healthcare (3)** | Clinical evidence mapping, medical guidelines | `agency-clinical-evidence-agent`, `agency-healthcare-innovation-strategist` |
+| 💰 **Finance (5)** | Financial pro-forma models, SaaS unit economics | `agency-financial-analyst`, `agency-tax-strategist`, `agency-fpa-analyst` |
+| 🗺️ **GIS & Spatial (13)**| Web GIS maps, GeoJSON, PostGIS, Drone mapping | `agency-web-gis-developer`, `agency-spatial-data-scientist`, `agency-drone-reality-mapping` |
+| 🥽 **Spatial Comp (6)** | VisionOS SwiftUI volumetric UI, Metal 90fps GPU | `agency-visionos-spatial-engineer`, `agency-macos-spatial-metal-engineer`, `agency-xr-immersive-developer` |
+| 🎮 **Game Dev (6)** | Core gameplay loops, virtual economy balancing | `agency-game-designer`, `agency-economy-designer`, `agency-game-audio-engineer` |
+| 📢 **Marketing (36)** | SEO, AEO, viral growth loops, TikTok, Social | `agency-seo-specialist`, `agency-growth-hacker`, `agency-aeo-foundations-architect` |
+| 🎯 **Paid Media (7)** | Google/Meta PPC campaigns, ROAS optimization | `agency-ppc-campaign-strategist`, `agency-paid-social-strategist`, `agency-paid-media-auditor` |
+| 💼 **Sales (9)** | B2B outbound prospecting, discovery call coaching | `agency-outbound-strategist`, `agency-discovery-coach`, `agency-deal-strategist` |
+| 🎓 **Academic (6)** | Statistical rigor, psychological models | `agency-statistician`, `agency-psychologist`, `agency-narratologist` |
+| 🔬 **Research (1)** | Cross-source research synthesis, competitive matrix | `agency-research-synthesist` |
+| 🧩 **Specialized (58)**| MCP server builder, Codebase archaeology, Privacy | `agency-mcp-builder`, `agency-codebase-archaeologist`, `agency-data-privacy-officer` |
+
+---
+
+## 🛠️ Binding AI Engineering Rules into Any Project
+
+To bind Antigravity, OpenCode, and the Hard Rules into any software project:
+
+```powershell
+cd "G:\0000 PY PROGRAM\_AI_TOOLS\SUper"
+.\scaffold.ps1 -TargetProject "C:\path\to\your-project"
+```
+
+---
+
+## 🔒 Master Hard Rules (Enforced Universally)
+
+### 1. Modular Architecture (5-Level Decomposition)
+`Project → Module/Domain → Feature/Capability → Use-case → Responsibility → File`
+- **One Business Action = One Use-case File**: No 4000-line service files or monster components.
+- **Strict Dependency Direction**: UI/API → Application → Domain ← Infrastructure.
+
+### 2. Documentation-First & Sequential Execution
+> *"Never confuse understanding the goal with permission to immediately implement the goal."*
+- **Sequence**: Stop ➔ Discover Docs ➔ Verify Live Code ➔ Plan ➔ Execute **EXACTLY ONE** active micro-task at a time (`Implement ➔ Test ➔ Diff Review ➔ Close`).
+
+---
+
+## 📜 License
+MIT License. Built for autonomous AI-powered software engineering.

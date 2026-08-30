@@ -1,0 +1,15 @@
+{
+  "id": "7ad2edb1-2c3b-44da-a34f-83e8fba8357c",
+  "name": "FLOWERS",
+  "projectResources": {
+    "resources": [
+      {
+        "gitFolder": {
+          "folderUri": "file:///g%3A/00%20BPM/FLOWERS",
+          "allowWrite": true
+        }
+      }
+    ]
+  },
+  "updatedAt": "2026-05-13T11:29:03.556430500Z"
+}

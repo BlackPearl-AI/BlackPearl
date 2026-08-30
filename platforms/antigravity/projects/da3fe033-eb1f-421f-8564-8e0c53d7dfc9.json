@@ -1,0 +1,36 @@
+{
+  "id": "da3fe033-eb1f-421f-8564-8e0c53d7dfc9",
+  "name": "victo_large150",
+  "projectResources": {
+    "resources": [
+      {
+        "folderUri": "file:///g%3A/My%20Auto%20program/telegram-member-adder-scrapper-main/VictoTelegramTool_150_PERCENT_LARGE_UI_FULL_WORKING/victo_large150"
+      }
+    ]
+  },
+  "permissionGrants": {
+    "permissionGrants": {
+      "allow": [
+        "read_file(G:\\0000 PY PROGRAM\\july\\doodhwala)",
+        "read_file(G:\\0000 PY PROGRAM\\july)",
+        "command(powershell)",
+        "write_file(G:\\0000 PY PROGRAM\\july\\doodhwala\\requirements.txt)",
+        "write_file(G:\\0000 PY PROGRAM\\july\\doodhwala\\database.py)",
+        "write_file(G:\\0000 PY PROGRAM\\july\\doodhwala\\app.py)",
+        "write_file(G:\\0000 PY PROGRAM\\july\\doodhwala\\templates\\index.html)",
+        "write_file(G:\\0000 PY PROGRAM\\july\\doodhwala\\static\\css\\style.css)",
+        "write_file(G:\\0000 PY PROGRAM\\july\\doodhwala\\static\\js\\main.js)",
+        "write_file(G:\\0000 PY PROGRAM\\july\\doodhwala\\run_app.bat)",
+        "write_file(G:\\0000 PY PROGRAM\\july\\doodhwala\\static\\manifest.json)",
+        "write_file(G:\\0000 PY PROGRAM\\july\\doodhwala\\static\\sw.js)"
+      ]
+    }
+  },
+  "settings": {
+    "fileAccessPolicy": "AGENT_SETTING_POLICY_ASK",
+    "internetPolicy": "AGENT_SETTING_POLICY_ASK",
+    "autoExecutionPolicy": "CASCADE_COMMANDS_AUTO_EXECUTION_OFF",
+    "artifactReviewMode": "ARTIFACT_REVIEW_MODE_ALWAYS"
+  },
+  "updatedAt": "2026-08-01T14:34:26.946104800Z"
+}

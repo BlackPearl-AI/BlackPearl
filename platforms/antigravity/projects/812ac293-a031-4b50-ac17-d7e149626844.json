@@ -1,0 +1,15 @@
+{
+  "id": "812ac293-a031-4b50-ac17-d7e149626844",
+  "name": "FarmManager",
+  "projectResources": {
+    "resources": [
+      {
+        "gitFolder": {
+          "folderUri": "file:///d%3A/0000%20PY%20PROGRAM/GOT%20farming/C%23/python/C%23/FarmManager",
+          "allowWrite": true
+        }
+      }
+    ]
+  },
+  "updatedAt": "2026-05-16T13:17:12.994244800Z"
+}

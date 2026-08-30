@@ -1,0 +1,28 @@
+{
+  "id": "e482433c-134a-46b1-88ec-22a783583a5c",
+  "name": "factory_owner_ERP",
+  "projectResources": {
+    "resources": [
+      {
+        "gitFolder": {
+          "folderUri": "file:///g%3A/0000%20PY%20PROGRAM/09-%20sep/factory_owner_ERP",
+          "defaultBranch": "main"
+        }
+      }
+    ]
+  },
+  "permissionGrants": {
+    "permissionGrants": {
+      "allow": [
+        "command(Copy-Item \"C:\\Users\\victo\\.gemini\\antigravity\\brain\\08bf0bcb-ba55-4879-a598-cacf3d2e6917\\implementation_plan.md\" \"G:\\0000 PY PROGRAM\\09- sep\\factory_owner_ERP\\2026-08-28\\MAIN_IMPLEMENTATION_PLAN_COPY.md\"; Write-Host \"Copied main plan\"; Get-ChildItem \"G:\\0000 PY PROGRAM\\09- sep\\factory_owner_ERP\\2026-08-28\" -Recurse | Where-Object {!$_.PSIsContainer} | Select-Object FullName, @{N='SizeKB';E={[math]::Round($_.Length/1KB,1)}} | Format-Table -AutoSize)",
+        "command(Get-ChildItem \"G:\\0000 PY PROGRAM\\09- sep\\factory_owner_ERP\\2026-08-28\" -Recurse -File | Select-Object @{N='Phase';E={$_.Directory.Name}}, Name, @{N='SizeKB';E={[math]::Round($_.Length/1KB,1)}} | Sort-Object Phase | Format-Table -AutoSize)",
+        "command(Get-ChildItem \"G:\\0000 PY PROGRAM\\09- sep\\factory_owner_ERP\" -File | Select-Object Name, @{N='SizeKB';E={[math]::Round($_.Length/1KB,1)}}, LastWriteTime | Sort-Object Name | Format-Table -AutoSize)",
+        "command(New-Item -ItemType Directory -Path \"G:\\0000 PY PROGRAM\\09- sep\\factory_owner_ERP\\scrap\" -Force | Out-Null; $files = Get-ChildItem \"G:\\0000 PY PROGRAM\\09- sep\\factory_owner_ERP\" -File | Where-Object { $_.Name -match \"COMPLETE_REPORT\" -or $_.Name -match \"bug_fixed_report\" }; $count = $files.Count; foreach ($f in $files) { Move-Item $f.FullName \"G:\\0000 PY PROGRAM\\09- sep\\factory_owner_ERP\\scrap\\\" -Force }; Write-Host \"Moved $count files to scrap/\")",
+        "command(Write-Host \"=== SCRAP FOLDER CONTENTS ===\" -ForegroundColor Yellow; Get-ChildItem \"G:\\0000 PY PROGRAM\\09- sep\\factory_owner_ERP\\scrap\" -File | Select-Object Name | Format-Table -AutoSize; Write-Host \"\"; Write-Host \"=== ROOT - TAB REPORTS REMAINING (should be 0) ===\" -ForegroundColor Green; $remaining = Get-ChildItem \"G:\\0000 PY PROGRAM\\09- sep\\factory_owner_ERP\" -File | Where-Object { $_.Name -match \"COMPLETE_REPORT\" -or $_.Name -match \"bug_fixed_report\" }; if ($remaining.Count -eq 0) { Write-Host \"ROOT IS CLEAN — 0 fake reports remaining ✅\" -ForegroundColor Green } else { $remaining | Select-Object Name | Format-Table })"
+      ]
+    }
+  },
+  "settings": {},
+  "updatedAt": "2026-08-28T12:12:24.563862300Z",
+  "isWorkspaceOnly": false
+}
