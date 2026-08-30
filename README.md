@@ -1,4 +1,7 @@
-﻿# ⚡ BlackPearl — Smart Unified Agent Orchestration Runtime
+﻿<p align="center">
+  <img src="assets/banner.png" alt="BlackPearl — Autonomous AI Engineering Operating System" width="620" />
+</p>
+# ⚡ BlackPearl — Autonomous AI Engineering Operating System
 
 > **ORCHESTRATE. CONNECT. VERIFY. EXECUTE.**  
 > **BlackPearl** is a comprehensive, production-ready **Smart Unified Agent Orchestration Runtime** for AI agents, skills, automation, and full-stack developer workflows. Bundles **BlackPearl Orchestrator** (Lead Supervisor), **BlackPearl Skills Engine** (286+ engineering workflows), **BlackPearl Core Engine** (Multi-Process Worktree Isolation), and **BlackPearl Divisions** (18 Specialist Divisions / 273+ Subagents) into a single, fully portable, one-click Git repository.
@@ -423,6 +426,7 @@ BlackPearl/
 
 ## 📜 License
 MIT License. Built for autonomous AI-powered software engineering.
+
 
 
 

@@ -1,4 +1,7 @@
-﻿# 💻 Complete New PC / Fresh Windows Setup Guide for BlackPearl
+﻿<p align="center">
+  <img src="assets/banner.png" alt="BlackPearl — Autonomous AI Engineering Operating System" width="620" />
+</p>
+# 💻 Complete New PC / Fresh Windows Setup Guide for BlackPearl
 
 This guide provides step-by-step instructions for getting your complete AI engineering ecosystem running on a fresh PC or after reinstalling Windows.
 
@@ -137,5 +140,6 @@ When you modify skills, agents, or rules:
    git pull origin main
    .\install.ps1
    ```
+
 
 

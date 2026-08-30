@@ -1,4 +1,7 @@
-﻿# 📜 BlackPearl — Smart Unified Agent Orchestration Runtime Manifesto
+﻿<p align="center">
+  <img src="assets/banner.png" alt="BlackPearl — Autonomous AI Engineering Operating System" width="620" />
+</p>
+# 📜 BlackPearl — Official Manifesto & Ecosystem Declaration
 
 > **Unified Autonomous AI Engineering Operating System**  
 > *Curated, standardized, and orchestrated by Arif (`modarif`).*
@@ -84,6 +87,7 @@ BlackPearl respects, honors, and builds upon the open-source community:
 
 **Crafted with precision for the future of Autonomous AI Engineering.**  
 *Official Repository: [https://github.com/modarif/BlackPearl](https://github.com/modarif/BlackPearl)*
+
 
 
 
