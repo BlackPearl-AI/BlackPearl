@@ -1,6 +1,14 @@
-﻿# 💻 Complete New PC / Fresh Windows Setup Guide for SUper Suite
+﻿<p align="center">
+  <img src="assets/banner.png" alt="SUper Agent — Orchestrate. Connect. Verify. Execute." width="680" />
+</p>
+
+# 💻 Complete New PC / Fresh Windows Setup Guide for SUper Suite
 
 This guide provides step-by-step instructions for getting your complete AI engineering ecosystem running on a fresh PC or after reinstalling Windows.
+
+<p align="center">
+  <img src="assets/comparison-infographic.png" alt="SUper Agent Complete AI Ecosystem vs Standalone Harness" width="850" />
+</p>
 
 ---
 
@@ -9,7 +17,7 @@ This guide provides step-by-step instructions for getting your complete AI engin
 Before installing, ensure you have:
 1. **Git**: [https://git-scm.com/downloads](https://git-scm.com/downloads)
 2. **Node.js (v18+)**: [https://nodejs.org/](https://nodejs.org/)
-3. **PowerShell 5.1 or 7+** (built into Windows)
+3. **PowerShell 5.1 or 7+** (built into Windows) or **Bash** (Linux/macOS/WSL)
 
 ---
 
@@ -31,6 +39,12 @@ Run the PowerShell installer script:
 ```powershell
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 .\install.ps1
+```
+
+*Or on Linux / macOS / WSL:*
+```bash
+chmod +x install.sh
+./install.sh
 ```
 
 ### What `install.ps1` does automatically:

@@ -8,6 +8,7 @@
 > Bundles **SUper Orchestrator** (Lead Supervisor), **SUper Skills Engine** (286+ engineering workflows), **SUper Core Engine** (Multi-Process Worktree Isolation), and **SUper Divisions** (18 Specialist Divisions / 273+ Subagents) into a single, fully portable, one-click Git repository.
 
 [![Declaration](https://img.shields.io/badge/Manifesto-Ecosystem%20Declaration-blueviolet.svg)](DECLARATION.md)
+[![Setup Guide](https://img.shields.io/badge/Guide-New%20PC%20Setup-blue.svg)](SETUP-NEW-PC.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Platforms: Windows | Linux | macOS](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-blue.svg)](SETUP-NEW-PC.md)
 
@@ -27,6 +28,10 @@
 ---
 
 ## ⚖️ Deep-Dive Analysis: SUper Suite vs. Foundational Agent Engines
+
+<p align="center">
+  <img src="assets/comparison-infographic.png" alt="SUper Agent Complete AI Ecosystem vs Standalone Harness" width="900" />
+</p>
 
 ```
                                  ┌─────────────────────────────────────────┐
@@ -149,26 +154,114 @@ SUper Suite focuses on real-world engineering productivity:
 
 ---
 
-## 🚀 Quick Setup on New PC or Reinstalled Windows
+## 💻 Complete New PC / Fresh Windows Setup Guide
 
-### Step 1: Clone the Repository
+Everything you need to get your complete AI engineering ecosystem running on a fresh PC or after reinstalling Windows:
+
+### 📋 Prerequisites
+Before installing, ensure you have:
+1. **Git**: [https://git-scm.com/downloads](https://git-scm.com/downloads)
+2. **Node.js (v18+)**: [https://nodejs.org/](https://nodejs.org/)
+3. **PowerShell 5.1 or 7+** (built into Windows) or **Bash** (Linux/macOS/WSL)
+
+---
+
+### 📥 Step 1: Clone SUper Suite
+
+Clone the master repository to your preferred location (e.g. `G:\0000 PY PROGRAM\_AI_TOOLS\SUper` or `C:\AI_TOOLS\SUper`):
+
 ```powershell
 git clone https://github.com/modarif/SUper.git "G:\0000 PY PROGRAM\_AI_TOOLS\SUper"
 cd "G:\0000 PY PROGRAM\_AI_TOOLS\SUper"
 ```
 
-### Step 2: Run the One-Click Master Installer
+*Or on Linux / macOS / WSL:*
+```bash
+git clone https://github.com/modarif/SUper.git ~/SUper
+cd ~/SUper
+```
+
+---
+
+### ⚡ Step 2: Run the One-Click Master Installer
+
+**On Windows (PowerShell):**
 ```powershell
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 .\install.ps1
 ```
 
-### Step 3: Run the Health Verification Suite
+**On Linux / macOS / WSL (Bash):**
+```bash
+chmod +x install.sh
+./install.sh
+```
+
+#### What `install.ps1` & `install.sh` do automatically:
+1. **SUper Orchestrator (Lead Supervisor)**:
+   - Creates global `~/.gemini/config/`
+   - Deploys `AGENTS.md` and `GEMINI.md`
+   - Deploys all **345+ Global Skills** into `~/.gemini/config/skills/`
+   - Deploys **Universal Hard Rules** (`modular-architecture.md` & `documentation-first-sequential-execution.md`) into `~/.gemini/config/rules/`
+2. **SUper Agent Layer**:
+   - Creates global `~/.config/opencode/`
+   - Deploys `opencode.jsonc` (283+ registered agents & LLM provider configurations)
+   - Deploys all **273 Canonical Agent Markdown Files** into `~/.config/opencode/agents/`
+   - Deploys SUper Core scripts into `~/.config/opencode/scripts/`
+3. **SUper Core Engine**:
+   - Links `dsh-delegate.js` directly to the bundled `frameworks/super-core/` engine
+   - Configures worktree snapshot isolation & 26 multi-agent team pipelines
+4. **Automated Self-Verification**:
+   - Automatically executes `.\verify.ps1` to ensure every path, rule, and agent is 100% operational.
+
+---
+
+### ✅ Step 3: Verify the Installation
+
+To manually audit and verify the system health at any time, run:
+
 ```powershell
 .\verify.ps1
 ```
 
-*Your entire system is now 100% configured, synchronized, and operational!*
+You should see all green `[PASS]` checks:
+- `[PASS]` SUper Orchestrator AGENTS.md & Skills Pool (345+ skills)
+- `[PASS]` SUper Agent Layer `opencode.jsonc` & Canonical Agents (273+ agents)
+- `[PASS]` SUper Core Dynamic Persona Loader
+- `[PASS]` Universal Hard Rules (Modular Architecture + Doc-First Execution)
+
+---
+
+### 📂 Step 4: Binding SUper Rules into Any Project
+
+When starting a new repository or working on an existing codebase (e.g. C#, Python, React, Go):
+
+```powershell
+cd "G:\0000 PY PROGRAM\_AI_TOOLS\SUper"
+.\scaffold.ps1 -TargetProject "C:\path\to\your-project"
+```
+
+This immediately wires the target project with:
+- `.agents/rules/` (Modular architecture & doc-first execution)
+- `.opencode/opencode.json` (Project subagents & slash commands)
+- `AGENTS.md` (Project agent guidelines)
+
+---
+
+### 🔄 Step 5: Syncing Updates Across Machines
+
+When you modify skills, agents, or rules on one computer:
+1. Commit and push from your current machine:
+   ```powershell
+   git add .
+   git commit -m "feat: updated specialist agents and skills"
+   git push origin main
+   ```
+2. On your other computer, simply pull and re-run:
+   ```powershell
+   git pull origin main
+   .\install.ps1
+   ```
 
 ---
 
@@ -227,17 +320,6 @@ SUper/
 
 ---
 
-## 🛠️ Binding SUper Rules into Any Project
-
-To bind SUper Suite rules into any software project:
-
-```powershell
-cd "G:\0000 PY PROGRAM\_AI_TOOLS\SUper"
-.\scaffold.ps1 -TargetProject "C:\path\to\your-project"
-```
-
----
-
 ## 🔒 Master Hard Rules (Enforced Universally)
 
 ### 1. Modular Architecture (5-Level Decomposition)
@@ -253,4 +335,3 @@ cd "G:\0000 PY PROGRAM\_AI_TOOLS\SUper"
 
 ## 📜 License
 MIT License. Built for autonomous AI-powered software engineering.
-
