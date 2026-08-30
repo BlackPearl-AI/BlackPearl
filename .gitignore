@@ -15,3 +15,17 @@ coverage/
 .turbo/
 .next/
 .nuxt/
+
+# Generated build artifacts
+*.tsbuildinfo
+*.tsbuildinfo.*
+
+# Large generated files in framework subdirs
+frameworks/deepseek-harness/pnpm-lock.yaml
+frameworks/deepseek-harness/vendor/
+frameworks/deepseek-harness/.zcode/
+
+# Backup files
+*.backup
+*.bak*
+*.bak.*
