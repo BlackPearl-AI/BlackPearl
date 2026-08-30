@@ -1,0 +1,46 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "openrouter/nvidia/llama-3.1-nemotron-70b-instruct:free",
+  "provider": {
+    "openrouter": {
+      "name": "OpenRouter",
+      "baseURL": "https://openrouter.ai/api/v1",
+      "apiKey": "{env:OPENROUTER_API_KEY}",
+      "models": {
+        "nvidia/llama-3.1-nemotron-70b-instruct:free": {
+          "name": "Nvidia Llama 3.1 Nemotron 70B (Free)"
+        },
+        "deepseek/deepseek-r1:free": {
+          "name": "DeepSeek R1 (Free)"
+        },
+        "meta-llama/llama-3.3-70b-instruct:free": {
+          "name": "Meta Llama 3.3 70B (Free)"
+        },
+        "google/gemini-2.0-flash-exp:free": {
+          "name": "Google Gemini 2.0 Flash (Free)"
+        }
+      }
+    }
+  },
+  "mcp": {
+    "deepseek-harness-agent": {
+      "type": "local",
+      "command": "node",
+      "args": [
+        "--import",
+        "tsx/esm",
+        "G:/0000 PY PROGRAM/_AI_TOOLS/Deepseek/packages/examples/acp-demo/src/bin.ts",
+        "--config",
+        "G:/0000 PY PROGRAM/_AI_TOOLS/Deepseek/examples/acp-agent/cordis.yml",
+        "--patch",
+        "G:/0000 PY PROGRAM/_AI_TOOLS/Deepseek/cordis.acp-free.patch.yml"
+      ],
+      "env": {
+        "DEEPSEEK_API_KEY": "{env:DEEPSEEK_API_KEY}",
+        "OPENROUTER_API_KEY": "{env:OPENROUTER_API_KEY}"
+      },
+      "enabled": true
+    }
+  }
+}
+

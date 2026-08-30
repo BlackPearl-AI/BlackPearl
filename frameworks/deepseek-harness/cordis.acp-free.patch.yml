@@ -1,0 +1,66 @@
+# ACP Agent NVIDIA NIM & Free Models Patch
+# Registered providers: NVIDIA NIM (direct) + OpenRouter (free)
+
+- id: llm-pi-ai
+  config:
+    providers:
+      nvidia:
+        displayName: NVIDIA NIM
+        apiKeyEnv: NVIDIA_API_KEY
+        api: openai-completions
+        baseURL: https://integrate.api.nvidia.com/v1
+        models:
+          - id: nvidia/nemotron-3-ultra-550b-a55b
+            name: NVIDIA Nemotron 3 Ultra 550B
+          - id: nvidia/nemotron-3.5-lightning-30b-a3b
+            name: NVIDIA Nemotron 3.5 Lightning 30B
+          - id: nvidia/llama-3.1-nemotron-70b-instruct
+            name: NVIDIA Llama 3.1 Nemotron 70B
+      openrouter:
+        displayName: OpenRouter Free
+        apiKeyEnv: OPENROUTER_API_KEY
+        api: openai-completions
+        baseURL: https://openrouter.ai/api/v1
+        models:
+          - id: z-ai/glm-5.3-flash
+            name: GLM-5.3 Flash (Ox Alpha)
+          - id: nvidia/llama-3.1-nemotron-70b-instruct:free
+            name: Nvidia Nemotron 70B (Free)
+          - id: deepseek/deepseek-r1:free
+            name: DeepSeek R1 (Free)
+          - id: meta-llama/llama-3.3-70b-instruct:free
+            name: Meta Llama 3.3 70B (Free)
+          - id: google/gemini-2.0-flash-exp:free
+            name: Google Gemini 2.0 Flash (Free)
+
+# ACP agent uses NVIDIA Nemotron 3.5 Lightning
+- id: acp-agent
+  config:
+    provider: nvidia
+    model: nvidia/nemotron-3.5-lightning-30b-a3b
+    persistenceRoot: ./.sessions
+    persistenceCompression: zstd
+    workspaceContext:
+      maxBytes: 65536
+    persona: |
+      You are an autonomous coding assistant powered by NVIDIA Nemotron 3.5 Lightning. Your working directory is {{cwd}}. Your bash/pwsh tool runs under a file sandbox — a `[sandbox: file access denied …]` result is policy, not a command bug.
+
+      Verify your work by running the code or tests. Keep answers brief and factual.
+
+# Default model override
+- id: agent-default-model
+  config:
+    provider: nvidia
+    model: nvidia/nemotron-3.5-lightning-30b-a3b
+
+# Mount Universal AI Development Governance Engine
+- id: governance-layer
+  name: '@deepseek-ai/dsh-governance-layer'
+  config:
+    promptEnabled: true
+    preExecutionEnabled: true
+    completionEnabled: true
+    projectRoot: ./.project
+
+
+

@@ -1,0 +1,63 @@
+/**
+ * 20-phase MASTER RECOVERY & DEVELOPMENT BLUEPRINT: orchestrator, types,
+ * and user-facing tools.
+ *
+ * @module @deepseek-ai/dsh-governance-layer/blueprint
+ */
+
+export { BlueprintOrchestrator } from './orchestrator.ts'
+export {
+  createStartBlueprintTool,
+  createAdvanceBlueprintTool,
+  createGetBlueprintStatusTool,
+  getActiveOrchestrator,
+  resetOrchestrator,
+} from './tools.ts'
+export type {
+  BlueprintPhase,
+  PhaseStatus,
+  PhaseExecutionRecord,
+  BlueprintState,
+  OnboardingOutput,
+  ProjectMap,
+  DirectoryEntry,
+  PackageEntry,
+  ModuleMap,
+  ModuleMapEntry,
+  DocumentationMap,
+  DocEntry,
+  RulesMap,
+  RuleMapEntry,
+  ArchitectureMap,
+  TestMap,
+  TestEntry,
+  GoalCaptureInput,
+  CapturedGoal,
+  LedgerEntry,
+  ConversationLedger,
+  GoalBreakdownOutput,
+  ModuleIdentificationOutput,
+  DeepAnalysisOutput,
+  GoalBlueprintOutput,
+  FileFolderBlueprintOutput,
+  FileBlueprint,
+  FolderBlueprint,
+  ElementRegistryOutput,
+  BlueprintElement,
+  RuleGovernanceOutput,
+  DependencyMappingOutput,
+  TaskDecompositionOutput,
+  TaskEntry,
+  PreCodingAuditOutput,
+  AuditCheck,
+  ImplementationOutput,
+  TestEvidenceOutput,
+  IndependentAuditOutput,
+  AuditFinding,
+  ModuleExitGateOutput,
+  ExitCheck,
+  NextModuleLinkingOutput,
+  RepairEntry,
+  RepairIndexOutput,
+  GoldenJourneyOutput,
+} from './types.ts'

@@ -1,0 +1,72 @@
+{
+  "name": "@deepseek-ai/dsh-governance-layer",
+  "description": "Governance Layer plugin: universal state-machine, pre-execution gate, completion gate, and prompt section for agent governance",
+  "version": "0.1.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deepseek-ai/deepseek-harness.git",
+    "directory": "packages/governance/governance-layer"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./state-machine": {
+      "types": "./lib/types/state-machine.d.ts",
+      "default": "./lib/state-machine.js"
+    },
+    "./pre-execution": {
+      "types": "./lib/types/pre-execution.d.ts",
+      "default": "./lib/pre-execution.js"
+    },
+    "./completion": {
+      "types": "./lib/types/completion.d.ts",
+      "default": "./lib/completion.js"
+    },
+    "./prompt-section": {
+      "types": "./lib/types/prompt-section.d.ts",
+      "default": "./lib/prompt-section.js"
+    },
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/state-machine.js",
+    "lib/pre-execution.js",
+    "lib/completion.js",
+    "lib/prompt-section.js",
+    "lib/types/**/*.d.ts"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@deepseek-ai/schemastery": "workspace:^"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-agent": "workspace:^",
+    "@deepseek-ai/dsh-tools": "workspace:^",
+    "@deepseek-ai/dsh-system-prompt": "workspace:^",
+    "@deepseek-ai/dsh-goal": "workspace:^",
+    "@deepseek-ai/dsh-llm": "workspace:^",
+    "@deepseek-ai/cordis": "workspace:^"
+  },
+  "devDependencies": {
+    "@deepseek-ai/dsh-agent": "workspace:^",
+    "@deepseek-ai/dsh-agent-loop": "workspace:^",
+    "@deepseek-ai/dsh-agent-loop-testkit": "workspace:^",
+    "@deepseek-ai/dsh-tools": "workspace:^",
+    "@deepseek-ai/dsh-system-prompt": "workspace:^",
+    "@deepseek-ai/dsh-goal": "workspace:^",
+    "@deepseek-ai/dsh-llm": "workspace:^",
+    "@deepseek-ai/dsh-session": "workspace:^",
+    "@deepseek-ai/dsh-invariants": "workspace:^",
+    "@deepseek-ai/cordis": "workspace:^"
+  }
+}
