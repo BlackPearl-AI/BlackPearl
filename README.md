@@ -3,6 +3,23 @@
 > **The Ultimate Standalone Monorepo for Autonomous AI Software Engineering.**  
 > Bundles **SUper Orchestrator** (Lead Supervisor), **SUper Skills Engine** (286+ engineering workflows), **SUper Core Engine** (Multi-Process Worktree Isolation), and **SUper Divisions** (18 Specialist Divisions / 273+ Subagents) into a single, fully portable, one-click Git repository.
 
+[![Declaration](https://img.shields.io/badge/Manifesto-Ecosystem%20Declaration-blueviolet.svg)](DECLARATION.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Platforms: Windows | Linux | macOS](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-blue.svg)](SETUP-NEW-PC.md)
+
+---
+
+## 📜 Ecosystem Declaration & Origins
+
+> **Read the complete manifesto**: **[📜 DECLARATION.md](DECLARATION.md)**
+
+**SUper Suite** is a curated, standardized meta-operating system created by synthesizing the top-quality architectures, rules, execution harnesses, and agent personas from across the global open-source AI community:
+
+- 🎯 **SUper Orchestrator**: Built upon **Antigravity & Gemini CLI** global supervisor architecture (345+ intent-triggered skills).
+- ⚡ **SUper Core Engine**: Powered by **DeepSeek Harness & Cordis** multi-process worktree snapshot isolation.
+- 🛠️ **SUper Skills Engine**: Standardized on **Everything Claude Code (ECC)** engineering rules, TDD workflows, and subagents.
+- 🎭 **SUper Divisions**: Housing all 18 enterprise specialist divisions (273+ personas) curated from **The Agency**.
+
 ---
 
 ## 🌟 What is SUper Suite?
@@ -57,6 +74,7 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 
 ```
 SUper/
+├── DECLARATION.md              # Official Ecosystem Declaration & Origin Manifesto
 ├── install.ps1                 # Master Windows one-click installer
 ├── install.sh                  # Master Unix/macOS/WSL one-click installer
 ├── verify.ps1                  # Automated health verification suite
