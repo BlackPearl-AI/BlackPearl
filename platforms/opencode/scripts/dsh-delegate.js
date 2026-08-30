@@ -174,15 +174,15 @@ function getAgencyPrompt(role) {
   const slug = norm.startsWith('agency-') ? norm : 'agency-' + norm.replace(/_/g, '-');
   
   const searchPaths = [
-    \G:\\\\0000 PY PROGRAM\\\\_AI_TOOLS\\\\ECC\\\\.opencode\\\\prompts\\\\agents\\\\\.txt\,
-    \G:\\\\0000 PY PROGRAM\\\\_AI_TOOLS\\\\ECC\\\\skills\\\\\\\\\SKILL.md\,
-    \C:\\\\Users\\\\victo\\\\.gemini\\\\config\\\\skills\\\\\\\\\SKILL.md\
+    `G:\\0000 PY PROGRAM\\_AI_TOOLS\\SUper\\frameworks\\blackpearl-skills\\.opencode\\prompts\\agents\\${slug}.txt`,
+    `G:\\0000 PY PROGRAM\\_AI_TOOLS\\SUper\\frameworks\\blackpearl-skills\\skills\\${slug}\\SKILL.md`,
+    `C:\\Users\\victo\\.gemini\\config\\skills\\${slug}\\SKILL.md`
   ];
 
   for (const sp of searchPaths) {
     if (fs.existsSync(sp)) {
       let txt = fs.readFileSync(sp, 'utf8');
-      return txt.replace(/^---[\\s\\S]*?---\\s*/, '').trim();
+      return txt.replace(/^---[\s\S]*?---\s*/, '').trim();
     }
   }
   return null;
@@ -332,10 +332,10 @@ function getRoleInstructions(role) {
       return '- Synthesize industry literature, competitive research, and market data into actionable technical briefs (SOFT READ-ONLY).';
     case 'DSH_OUTBOUND_STRATEGIST':
       return '- Design targeted outbound messaging, ICP criteria, and multi-channel prospecting flows (SOFT READ-ONLY).';
-    default: {
+        default: {
       const agencyPrompt = getAgencyPrompt(role);
       if (agencyPrompt) {
-        return \- Specialized Persona Instructions (The Agency):\n\\;
+        return '- Specialized Persona Instructions (The Agency):\n' + agencyPrompt;
       }
       return '- Execute assigned task with surgical precision.';
     }
@@ -581,6 +581,9 @@ main().catch((err) => {
   console.error('[Antigravity Lead] Unhandled exception:', err);
   process.exit(1);
 });
+
+
+
 
 
 
