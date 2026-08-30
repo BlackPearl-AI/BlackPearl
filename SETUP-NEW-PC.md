@@ -1,8 +1,4 @@
-﻿<p align="center">
-  <img src="assets/banner.png" alt="SUper Agent — Orchestrate. Connect. Verify. Execute." width="480" />
-</p>
-
-# 💻 Complete New PC / Fresh Windows Setup Guide for SUper Suite
+﻿# 💻 Complete New PC / Fresh Windows Setup Guide for SUper Suite
 
 This guide provides step-by-step instructions for getting your complete AI engineering ecosystem running on a fresh PC or after reinstalling Windows.
 
@@ -112,4 +108,5 @@ When you modify skills, agents, or rules:
    git pull origin main
    .\install.ps1
    ```
+
 

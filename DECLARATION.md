@@ -1,8 +1,4 @@
-﻿<p align="center">
-  <img src="assets/banner.png" alt="SUper Agent — Orchestrate. Connect. Verify. Execute." width="480" />
-</p>
-
-# 📜 SUper Suite — Official Manifesto & Ecosystem Declaration
+﻿# 📜 SUper Suite — Official Manifesto & Ecosystem Declaration
 
 > **Unified Autonomous AI Engineering Operating System**  
 > *Curated, standardized, and orchestrated by Arif (`modarif`).*
@@ -88,5 +84,6 @@ SUper Suite respects, honors, and builds upon the open-source community:
 
 **Crafted with precision for the future of Autonomous AI Engineering.**  
 *Official Repository: [https://github.com/modarif/SUper](https://github.com/modarif/SUper)*
+
 
 
