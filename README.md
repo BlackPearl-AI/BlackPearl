@@ -1,5 +1,5 @@
 ﻿<p align="center">
-  <img src="assets/banner.png" alt="SUper Agent — Orchestrate. Connect. Verify. Execute." width="680" />
+  <img src="assets/banner.png" alt="SUper Agent — Orchestrate. Connect. Verify. Execute." width="100%" />
 </p>
 
 # ⚡ SUper Suite — The Master Unified AI Engineering Operating System
@@ -30,7 +30,7 @@
 ## ⚖️ Deep-Dive Analysis: SUper Suite vs. Foundational Agent Engines
 
 <p align="center">
-  <img src="assets/comparison-infographic.png" alt="SUper Agent Complete AI Ecosystem vs Standalone Harness" width="900" />
+  <img src="assets/comparison-infographic.png" alt="SUper Agent Complete AI Ecosystem vs Standalone Harness" width="100%" />
 </p>
 
 ```
@@ -335,3 +335,4 @@ SUper/
 
 ## 📜 License
 MIT License. Built for autonomous AI-powered software engineering.
+
