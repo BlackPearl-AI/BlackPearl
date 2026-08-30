@@ -26,6 +26,12 @@ git clone https://github.com/modarif/SUper.git "G:\0000 PY PROGRAM\_AI_TOOLS\SUp
 cd "G:\0000 PY PROGRAM\_AI_TOOLS\SUper"
 ```
 
+*Or on Linux / macOS / WSL:*
+```bash
+git clone https://github.com/modarif/SUper.git ~/SUper
+cd ~/SUper
+```
+
 ---
 
 ## ⚡ Step 2: Run the One-Click Master Installer
@@ -78,7 +84,30 @@ You should see all green `[PASS]` checks for:
 
 ---
 
-## 📂 Step 4: Scaffolding into Any Project
+## 🔑 Step 4: API Keys & Provider Configuration (Optional)
+
+### Do You Need an API Key?
+- **Antigravity IDE / Gemini CLI**: ❌ **NO** (Uses built-in IDE session automatically).
+- **100% Offline / Local Models (Ollama)**: ❌ **NO** (Run `ollama run qwen2.5-coder` or `deepseek-r1` for free).
+- **Cloud Models via OpenCode / SUper Core**: ✅ **YES** (If calling DeepSeek, Claude, OpenAI).
+
+### Setting Up API Keys:
+
+**On Windows (PowerShell):**
+```powershell
+# Set DeepSeek API Key (Permanent for current user)
+[System.Environment]::SetEnvironmentVariable('DEEPSEEK_API_KEY', 'sk-your-deepseek-api-key-here', 'User')
+```
+
+**On Linux / macOS / WSL (Bash/Zsh):**
+```bash
+echo 'export DEEPSEEK_API_KEY="sk-your-deepseek-api-key-here"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+---
+
+## 📂 Step 5: Scaffolding into Any Project
 
 When working on a new repository or existing project:
 
@@ -94,7 +123,7 @@ This immediately wires the target project with:
 
 ---
 
-## 🔄 Syncing Updates Across Machines
+## 🔄 Step 6: Syncing Updates Across Machines
 
 When you modify skills, agents, or rules:
 1. Commit and push from your working machine:
@@ -108,5 +137,3 @@ When you modify skills, agents, or rules:
    git pull origin main
    .\install.ps1
    ```
-
-

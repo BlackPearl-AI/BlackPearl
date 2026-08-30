@@ -26,7 +26,7 @@
 ## ⚖️ Deep-Dive Analysis: SUper Suite vs. Foundational Agent Engines
 
 <p align="center">
-  <img src="assets/comparison-infographic.png" alt="SUper Agent Complete AI Ecosystem vs Standalone Harness" width="100%" />
+  <img src="assets/comparison-infographic.png" alt="SUper Agent Complete AI Ecosystem vs Standalone Harness" width="900" />
 </p>
 
 ```
@@ -261,6 +261,97 @@ When you modify skills, agents, or rules on one computer:
 
 ---
 
+## 🔑 LLM API Keys & Provider Configuration (Cloud & Offline Models)
+
+A frequent question is: **"Do I need to configure API keys, and which ones are supported?"**
+
+### 1. Quick Decision: Do You Need an API Key?
+
+| Environment / Use-Case | API Key Required? | Details |
+|---|:---:|---|
+| **Antigravity IDE / Gemini CLI** | ❌ **NO** | Runs automatically using the IDE's built-in session. Zero configuration needed. |
+| **Local Offline Models (Ollama / LM Studio)** | ❌ **NO** | 100% Free, Private, and Offline (`ollama run qwen2.5-coder` or `deepseek-r1`). |
+| **OpenCode / SUper Core Cloud Execution** | ✅ **YES (Optional)** | Required only when invoking cloud models (DeepSeek, Claude, OpenAI, Gemini). |
+
+---
+
+### 2. Why Configure a DeepSeek API Key?
+- **Ultra-High Reasoning at Minimal Cost**: DeepSeek-V3 and DeepSeek-R1 offer state-of-the-art code reasoning at **~$0.14 per million tokens** (up to 95% cheaper than comparable cloud models).
+- **Parallel Multi-Agent Worktree Swarms**: Enables SUper Core to spawn multi-process reviewer teams (`DSH_PLANNER ➔ DSH_IMPLEMENTER ➔ DSH_REVIEWER ➔ DSH_VERIFIER`) autonomously in isolated worktrees.
+
+---
+
+### 3. How & Where to Configure API Keys
+
+You can configure your API keys in any of the following three ways:
+
+#### Option A: Persistent Global User Environment Variable (Recommended)
+
+**On Windows (PowerShell):**
+```powershell
+# Set DeepSeek API Key (Permanent for current user)
+[System.Environment]::SetEnvironmentVariable('DEEPSEEK_API_KEY', 'sk-your-deepseek-api-key-here', 'User')
+
+# Optional: Other providers if needed
+[System.Environment]::SetEnvironmentVariable('ANTHROPIC_API_KEY', 'sk-ant-your-key', 'User')
+[System.Environment]::SetEnvironmentVariable('OPENAI_API_KEY', 'sk-your-openai-key', 'User')
+[System.Environment]::SetEnvironmentVariable('GEMINI_API_KEY', 'your-gemini-key', 'User')
+```
+
+**On Linux / macOS / WSL (Bash or Zsh):**
+```bash
+# Add to ~/.bashrc or ~/.zshrc
+echo 'export DEEPSEEK_API_KEY="sk-your-deepseek-api-key-here"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+#### Option B: Global OpenCode Config (`~/.config/opencode/opencode.jsonc`)
+Add your keys under the `provider` section in `~/.config/opencode/opencode.jsonc`:
+```jsonc
+{
+  "provider": {
+    "deepseek": {
+      "apiKey": "sk-your-deepseek-api-key-here"
+    }
+  }
+}
+```
+
+#### Option C: Project-Level `.env` File
+In any specific target project repository, create a `.env` file:
+```env
+DEEPSEEK_API_KEY=sk-your-deepseek-api-key-here
+```
+*(Note: SUper Hard Rules ensure `.env` files are automatically git-ignored and never committed).*
+
+---
+
+### 4. Running 100% Free & Offline with Ollama
+
+If you do not want to use any cloud API keys, you can run SUper Suite entirely locally with [Ollama](https://ollama.com/):
+
+```bash
+# Install high-performance coding model locally
+ollama run qwen2.5-coder:7b
+
+# Or local DeepSeek reasoning model
+ollama run deepseek-r1:8b
+```
+OpenCode will automatically route subagent tasks to your local Ollama instance at `http://localhost:11434` with **zero API keys and zero cost**.
+
+---
+
+### 5. Verifying Your API Key Configuration
+
+To test if your environment variables are active, run:
+
+**PowerShell:**
+```powershell
+if ($env:DEEPSEEK_API_KEY) { Write-Host "DeepSeek API Key is active!" -ForegroundColor Green } else { Write-Host "No DeepSeek API key detected (using local/IDE fallback)" -ForegroundColor Yellow }
+```
+
+---
+
 ## 📁 Repository Architecture
 
 ```
@@ -331,6 +422,3 @@ SUper/
 
 ## 📜 License
 MIT License. Built for autonomous AI-powered software engineering.
-
-
-
